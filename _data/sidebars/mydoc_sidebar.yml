@@ -1,0 +1,98 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Perturbo
+  version: 1.0
+  folders:
+
+  - title:
+    output: pdf
+    type: frontmatter
+    folderitems:
+    - title:
+      url: /titlepage.html
+      output: pdf
+      type: frontmatter
+    - title:
+      url: /tocpage.html
+      output: pdf
+      type: frontmatter
+
+  - title: Getting started
+    output: web, pdf
+    folderitems:
+
+    - title: Introduction
+      url: /index.html
+      output: web, pdf
+      type: homepage
+
+    - title: Supported features
+      url: /mydoc_features.html
+      output: web, pdf
+
+    - title: Installation and compilation
+      url: /mydoc_installation.html
+      output: web, pdf
+
+    - title: Research team	
+      url: /mydoc_about.html	
+      output: web, pdf
+
+  - title: Release Notes
+    output: web, pdf
+    folderitems:
+
+    - title: 1.0 Release notes
+      url: /mydoc_release_notes_10.html
+      output: web, pdf
+
+  - title: Workflow
+    output: web, pdf
+    folderitems:
+
+    - title: qe2pert.x
+      url: /mydoc_qe2pertx.html
+      output: web, pdf
+
+    - title: perturbo.x
+      url: /mydoc_perturbox.html
+      output: web, pdf
+
+  - title: Tutorials
+    output: web, pdf
+
+    folderitems:
+    - title: Introduction
+      url: /mydoc_tutorial_intro.html
+      output: web, pdf
+
+    - title: Silicon 
+      url: /mydoc_tutorial_si.html
+      output: web, pdf
+
+    - title: GaAs 
+      url: /mydoc_tutorial_gaas.html
+      output: web, pdf
+
+    - title: Graphene 
+      url: /mydoc_tutorial_graphene.html
+      output: web, pdf
+
+    - title: Aluminum 
+      url: /mydoc_tutorial_al.html
+      output: web, pdf
+
+  - title: Input parameters
+    output: web, pdf
+
+    folderitems:
+    - title: qe2pert.x
+      url: /mydoc_parameters_qe2pertx.html
+      output: web, pdf
+
+    - title: perturbo.x
+      url: /mydoc_parameters_perturbox.html
+      output: web, pdf
+

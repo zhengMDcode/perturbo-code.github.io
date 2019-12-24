@@ -1,0 +1,232 @@
+[
+
+
+
+
+
+
+{
+"title": "Introduction",
+"tags": "getting_started",
+"keywords": "introduction homepage",
+"url": "index.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Bernardi Research Group",
+"tags": "",
+"keywords": "",
+"url": "mydoc_about.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Features",
+"tags": "",
+"keywords": "",
+"url": "mydoc_features.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Installation and compilation",
+"tags": "",
+"keywords": "",
+"url": "mydoc_installation.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Parameters for perturbo.x",
+"tags": "",
+"keywords": "",
+"url": "mydoc_parameters_perturbox.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Parameters for qe2pert.x",
+"tags": "",
+"keywords": "",
+"url": "mydoc_parameters_qe2pertx.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "PERTURBO calculation",
+"tags": "",
+"keywords": "",
+"url": "mydoc_perturbox.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Quantum Espresso to PERTURBO",
+"tags": "",
+"keywords": "",
+"url": "mydoc_qe2pertx.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Release Notes 1.0",
+"tags": "",
+"keywords": "",
+"url": "mydoc_release_notes_10.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Shuffle layout",
+"tags": "special_layouts",
+"keywords": "shuffle, card layout, dynamic grid, doc portal, support portal",
+"url": "mydoc_shuffle.html",
+"summary": "This layout shows an example of a knowledge-base style navigation system, where there is no hierarchy, just groups of pages that have certain tags."
+}
+,
+
+
+
+{
+"title": "Aluminum (metal)",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_al.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "GaAs (polar material)",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_gaas.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Graphene (2D material)",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_graphene.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_intro.html",
+"summary": "In addition to the silicon example discussed above, we provide several tutorial examples to explore the various capabilities of Perturbo. Before starting this tutorial, please read the sections on perturbo.x and qe2pert.x of this manual."
+}
+,
+
+
+
+{
+"title": "Silicon (with spin-orbit coupling)",
+"tags": "",
+"keywords": "",
+"url": "mydoc_tutorial_si.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "News",
+"tags": "",
+"keywords": "news, blog, updates, release notes, announcements",
+"url": "news_archive.html",
+"summary": ""
+}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+"title": "",
+"tags": "",
+"keywords": "",
+"url": "assetscssstyle.css",
+"summary": ""
+}
+,
+
+
+
+
+
+{
+"title": "Release of PERTURBO 1.0",
+"tags": "news",
+"keywords": "",
+"url": "news_realease_10.html",
+"summary": "First release"
+}
+
+
+
+]

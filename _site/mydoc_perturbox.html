@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>PERTURBO calculation  | Perturbo | Manual</title>
+
+
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/modern-business.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/customstyles.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/theme-blue.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="/mydoc-pdf/css/printstyles.css">
+
+<script>
+    Prince.addScriptFunc("datestamp", function() {
+        return "PDF last generated: December 23, 2019";
+    });
+</script>
+
+<script>
+    Prince.addScriptFunc("guideName", function() {
+        return "Jekyll theme for documentation — mydoc product User Guide";
+    });
+</script>
+
+
+
+</head>
+
+<body class=" print">
+
+<!-- Page Content -->
+<div class="container">
+    <!-- Content Column -->
+    <div class="col-md-9">
+
+        <div class="post-header">
+    <h1 class="post-title-main" id="mydoc_perturbox.html">PERTURBO calculation</h1>
+</div>
+
+<div class="post-content">
+
+    
+    <p>In this section, we will discuss all the features (or calculation modes) of perturbo.x. The variable for the calculation mode is <em>calc_mode</em>. Here are the possible values for calc_mode, and the corresponding tasks carried out by PERTURBO:</p>
+
+<ul>
+  <li>‘bands’: interpolate electronic band structures using maximally localized Wannier functions</li>
+  <li>‘phdips’: interpolate phonon dispersion by Fourier transforming real-space interatomic force constants</li>
+  <li>‘ephmat’: interpolate e-ph matrix elements using maximally localized Wannier functions</li>
+  <li>‘setup’: set up transport calculations</li>
+  <li>‘imsigma’: compute the e-ph self-energy for electronic crystal momenta read from a list</li>
+  <li>‘meanfp’: compute the e-ph mean free path</li>
+  <li>‘trans’: compute electrical conductivity for metals, semiconductors, and insulators, or carrier mobility for semiconductors (computationally demanding for the iterative approach)</li>
+  <li>‘trans-pp’: compute the Seebeck coefficient</li>
+  <li>(ADD ULTRAFAST DYNAMICS )</li>
+</ul>
+
+<p>In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory “examples/example01-silicon-perturbo/perturbo”). <strong>To run perturbo.x one first needs to generate the file perfix_epwan.h5</strong> (in this case, si_epwan.h5), which is prepared using qe2pert.x as we discuss below. The file si_epwan.h5 is inside the directory “examples/example01-silicon-perturbo/qe2pert.x”. For each calculation mode, we also provide reference results in the directory “References”. In all calculations, the same prefix value as in the QE DFT calculation should be used.</p>
+
+<h3 id="calc_mode--bands">calc_mode = ‘bands’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-band </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Interpolated electronic band structure given an electronic crystal momentum path  </div>
+
+<p>Users specify three variables in the input file (pert.in)</p>
+<ul>
+  <li><em>calc_mode</em>: set to ‘bands’</li>
+  <li><em>fklist</em>: the filename of a file containing the high-symmetry crystal momentum path or k list</li>
+</ul>
+
+<p>Here is the input file or namelist (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix = 'si'
+ calc_mode = 'bands'
+ fklist = 'si_band.kpt'
+/
+</code></pre></div></div>
+
+<p>In this example, fklist=’si_band.kpt’, the file si_band.kpt containing the k-point list:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6
+0.500   0.500   0.500   50
+0.000   0.000   0.000   50
+0.500   0.000   0.500   20
+0.500   0.250   0.750   20
+0.375   0.375   0.750   50
+0.000   0.000   0.000   1
+</code></pre></div></div>
+
+<p>The first line specifies how many lines there are below the first line. Columns 1-3 give, respectively, the x, y, and z coordinates of a crystal momentum <strong>in crystal units</strong>. The last column is the number of points from the current crystal momentum to the next crystal momentum. One can also provide an explicit k-point list, rather than specifying the path, by providing the number of k points in the first line, the coordinates of each k point, and setting the values in the last column to 1.</p>
+
+<p>Before running perturbo.x, remember to put si_epwan.h5 in the current directory “pert-band” (You may choose to copy the HDF5 file using <code class="language-plaintext highlighter-rouge">$ cp ../../qe2pert/si_epwan.h5 .</code>, or link the file using <code class="language-plaintext highlighter-rouge">$ ln -sf ../../qe2pert/si_epwan.h5</code>. We recommend linking rather than copying the HDF5 file due to the relatively large file size).</p>
+
+<p>Run pertubo.x:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out 
+</code></pre></div></div>
+
+<p>Remember to set the number of pools (-npools) equal to the number of MPI process (-n or -np).  It takes just a few seconds to obtain the interpolated band structure. We obtain an output file called prefix.bands (in this case, si.bands) with the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> 0.0000000      0.50000    0.50000    0.50000     -3.4658249872
+ ......
+ 3.7802390      0.00000    0.00000    0.00000     -5.8116812661
+ 
+ 0.0000000      0.50000    0.50000    0.50000     -0.8385755999
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      6.1762484317
+ 
+ 0.0000000      0.50000    0.50000    0.50000      4.9707614733
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      6.1762484335
+ 
+ 0.0000000      0.50000    0.50000    0.50000      4.9707614740
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      6.1762484335
+ 
+ 0.0000000      0.50000    0.50000    0.50000      7.6304859491
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      8.6898783415
+ 
+ 0.0000000      0.50000    0.50000    0.50000      9.4530710727
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      8.6898783428
+ 
+ 0.0000000      0.50000    0.50000    0.50000      9.4530710753
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      8.6898783429
+ 
+ 0.0000000      0.50000    0.50000    0.50000     13.6984850767
+ ......
+ 3.7802390      0.00000    0.00000    0.00000      9.4608102223
+ 
+</code></pre></div></div>
+
+<p>Note that there are 8 blocks in this example, one for each of the 8 bands, because we use 8 Wannier functions in the Wannierization procedure in this example. The 1st column is an irrelevant coordinate used to plot the band structure. The 2nd to 4th columns are the x, y, and z coordinates of the crystal momenta <strong>in crystal units</strong>. The 5th column is the energy, in eV units, of each electronic state.</p>
+
+<h3 id="calc_mode--phdisp">calc_mode = ‘phdisp’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-phdisp  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  Interpolated phonon dispersions along a given crystal momentum path   </div>
+
+<p>Users specify three variables in the input file (pert.in):</p>
+<ul>
+  <li><em>prefix</em>: the same prefix used in ‘prefix’_epwan.h5</li>
+  <li><em>calc_mode</em>: set to ‘phdisp’</li>
+  <li><em>fqlist</em>: the filename of a file containing the high-symmetry crystal momentum path or q list</li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix = 'si'
+ calc_mode = 'phdisp'
+ fqlist = 'si_phdisp.qpt'
+/
+</code></pre></div></div>
+
+<p>In this example, fqlist=’si_phdisp.qpt’, and the file “si_phdisp.qpt” contains a crystal momentum path or list with the same format as the file <em>fklist</em> (see the section on calc_mode=’bands’).</p>
+
+<p>Remember to link (or copy) si_epwan.h5 in the current directory using <code class="language-plaintext highlighter-rouge">ln -sf ...</code>.</p>
+
+<p>Run pertubo.x:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out 
+</code></pre></div></div>
+
+<p>It takes a few seconds to obtain the phonon dispersion. We obtain an output file called prefix.phdisp (in this case, si.phdisp) with the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.0000000      0.50000    0.50000    0.50000     12.9198400723
+......
+3.7802390      0.00000    0.00000    0.00000     -0.0000024786
+
+0.0000000      0.50000    0.50000    0.50000     12.9198400723
+......
+3.7802390      0.00000    0.00000    0.00000     -0.0000022344
+
+0.0000000      0.50000    0.50000    0.50000     45.6922098051
+......
+3.7802390      0.00000    0.00000    0.00000      0.0000014170
+
+0.0000000      0.50000    0.50000    0.50000     50.7258504163
+......
+3.7802390      0.00000    0.00000    0.00000     63.1558948005
+
+0.0000000      0.50000    0.50000    0.50000     60.2661349902
+......
+3.7802390      0.00000    0.00000    0.00000     63.1558948005
+
+</code></pre></div></div>
+
+<p>Note that there are 6 blocks, one for each of the to 6 phonon modes in silicon. The 1st column an irrelevant coordinate used to plot the phonon dispersion. The 2nd to 4th columns are the x, y, and z coordinates of the crystal momenta, in crystal units. The 5th column is the phonon energy in meV units.</p>
+
+<h3 id="calc_mode--ephmat">calc_mode = ‘ephmat’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-ephmat  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  The absolute values of the e-ph matrix elements, summed over the number of electronic bands, given two lists of k and q points. In a typical scenario, one computes the e-ph matrix elements for a chosen k-point as a function of q point  </div>
+
+<p>Requires to specify at least 7 variables:</p>
+<ul>
+  <li><em>prefix</em>: the same prefix as in ‘prefix’_epwan.h5</li>
+  <li><em>calc_mode</em>: set to ‘ephmat’</li>
+  <li><em>fklist</em>: the file containing a list of k points (see the section on calc_mode=’bands’)</li>
+  <li><em>fqlist</em>: the file containing a list of q points (see the section on calc_mode=’bands’)</li>
+  <li><em>band_min</em>, <em>band_max</em>: bands used for the band summation in computing e-ph matrix elements</li>
+  <li>
+    <p><em>phfreq_cutoff</em>: phonon energy (meV) smaller than the cutoff will be ignored</p>
+  </li>
+  <li>In a typical scenario, the user wants to check if the interpolated e-ph matrix elements match with the density functional perturbation theory (DFPT) result. <strong>Here we assume that users know how to obtain the DFPT e-ph matrix elements from the PHONON package in QE. –NOT TRUE, NEED PATCHING</strong></li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix = 'si'
+ calc_mode = 'ephmat'
+ fklist = 'eph.kpt'
+ fqlist = 'eph.qpt'
+
+ band_min = 2
+ band_max = 4
+
+ phfreq_cutoff = 1   !meV
+/
+</code></pre></div></div>
+
+<p>In this example, we compute the e-ph matrix elements summed over the bands 2 to 4. The band index here refers to the band index of the Wannier functions, and it may not be the same as the band index in the DFT output from QE because sometimes bands are excluded in the Wannierization procedure. Make sure you know band range appropriate for your calculation, and provide accordingly <em>band_min</em> and <em>band_max</em>.</p>
+
+<p>The variable <em>phfreq_cutoff</em> is used to avoid numerical stabilities in the phonon calculations, and we recommend using a value between 0.5 to 2 meV (unless you know that phonons in that energy range play a critical role). Do not set phfreq_cutoff to a large value, otherwise too many phonon modes will be excluded in the calculations.</p>
+
+<p>For the format of fklist or fqlist, please refer to the section on calc_mode=’bands’.</p>
+
+<p>Before running perturbo.x, ensure that three files exist in the current directory “pert-ephmat”:</p>
+
+<ul>
+  <li><em>prefix_epwan.h5</em>: here si_epwan.h5</li>
+  <li><em>fklist</em>: here eph.kpt</li>
+  <li><em>fqlist</em>: here eph.qpt</li>
+</ul>
+
+<p>Run pertubo.x:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out 
+</code></pre></div></div>
+
+<p>The calculation typically takes a few minutes. The output file, called <em>prefix.ephmat</em>, contains the absolute values of the e-ph matrix elements summed over bands from <em>band_min</em> to <em>band_max</em>. In our example, we obtain the output file have si.ephmat, which is shown next:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#  ik      xk     iq      xq   imod    omega(meV)      deform. pot.(eV/A)           |g|(meV)
+    1   0.00000    1   0.00000  001    12.919840     0.219927308382E+00   0.118026594146E+02
+    1   0.00000    1   0.00000  002    12.919840     0.219927308382E+00   0.118026594146E+02
+    1   0.00000    1   0.00000  003    45.692210     0.621221217159E+01   0.177277853210E+03
+    1   0.00000    1   0.00000  004    50.725850     0.472050460536E+01   0.127850679974E+03
+    1   0.00000    1   0.00000  005    60.266135     0.588886380766E+01   0.146326884271E+03
+    1   0.00000    1   0.00000  006    60.266135     0.588886380766E+01   0.146326884271E+03
+    1   0.00000    2   0.01698  001    12.919176     0.222183631468E+00   0.119240540866E+02
+    1   0.00000    2   0.01698  002    12.919176     0.222183631468E+00   0.119240540866E+02
+    1   0.00000    2   0.01698  003    45.618607     0.618085532274E+01   0.176525258121E+03
+    1   0.00000    2   0.01698  004    50.785889     0.475470902657E+01   0.128700934013E+03
+    1   0.00000    2   0.01698  005    60.266760     0.589432282022E+01   0.146461770958E+03
+    1   0.00000    2   0.01698  006    60.266760     0.589432282022E+01   0.146461770958E+03
+......
+</code></pre></div></div>
+
+<p>The 1st column is a dummy index for the k-point. The 2nd column is the k-point coordinate used for plotting. The 3rd and 4th columns are the dummy index and the q-point coordinate used for plotting, respectively. The 5th column is the phonon mode index. The 6th column is the phonon energy (in meV). The 7th column is the deformation potential (in eV/Å units), namely the expectation value of the phonon perturbation potential with respect to the initial and final electronic states. The 8th column is the absolute values of the e-ph matrix elements (meV units) summed over the number of bands specified by the user.</p>
+
+<h3 id="calc_mode--setup">calc_mode = ‘setup’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-setup-electron (pert-setup-hole)  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  Set up transport property calculations (i.e., electrical conductivity, carrier mobility and Seebeck) by providing k-points, k-point tetrahedra and (if needed) finding chemical potentials for given carrier concentrations  </div>
+
+<p>Requires to specify up to 14 variables in the input file (pert.in)</p>
+<ul>
+  <li><em>prefix</em>: same prefix as in ‘prefix’_epwan.h5</li>
+  <li><em>calc_mode</em>: set to ‘setup’</li>
+  <li><em>hole</em>: compute hole carrier concentration. By default <em>hole</em> is set to .false., and electron carrier concentration will be computed. Set it to .true. when one needs hole carrier concentration.</li>
+  <li><em>boltz_kdim(1)</em>, <em>boltz_kdim(2)</em>, <em>boltz_kdim(3)</em>: number of k points along each dimension of a k-point grid for the electrons momentum. This k-point grid is employed to compute the mobility or conductivity.</li>
+  <li><em>boltz_qdim(1)</em>, <em>boltz_qdim(2)</em>, <em>boltz_qdim(3)</em>: number of q points along each dimension of a uniform grid for the phonon momentum; the default is that <em>boltz_qdim(i)=boltz_kdim(i)</em>. If users need the size as same as the k grid, no need to specify these variables.</li>
+  <li><em>boltz_emin</em>, <em>boltz_emax</em>: energy window (in eV units) used to compute transport properties. The suggested values are from 6 k_BT below E_F (boltz_emin) to 6k_BT above E_F (boltz_emax), where E<sub>F</sub> is the Fermi energy, k<sub>B</sub> the Boltzmann constant, and T is temperature in K units.</li>
+  <li><em>band_min</em>, <em>band_max</em>: bands used for transport property calculations</li>
+  <li><em>ftemper</em>: the filename of a file containing the temperature(s), chemical potential(s), and corresponding carrier concentration(s) for transport property calculations.</li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix      = 'si'
+ calc_mode   = 'setup'
+
+ boltz_kdim(1) = 80
+ boltz_kdim(2) = 80
+ boltz_kdim(3) = 80
+
+ boltz_emin = 6.4
+ boltz_emax = 6.9
+ band_min = 5
+ band_max = 6
+
+ ftemper  = 'si.temper'
+/
+</code></pre></div></div>
+
+<p>In the input file pert.in, we use a k-grid of 80 x 80 x 80 for electrons, which corresponds to boltz_kdim(i)=80, and use a q-grid for phonons. When a phonon q-grid different from the electron k-grid is desired, the user has to provide the q-grid variables  <em>boltz_qdim(1)</em>,  <em>boltz_qdim(2)</em>, and <em>boltz_qdim(3)</em> in the input file.</p>
+
+<p>In this example, we want to compute the electron mobility, so we choose an energy window that includes the conduction band minimum. Here the energy window is between 6.4 (<em>boltz_emin</em>) and 6.9 eV (<em>boltz_emax</em>), and the conduction band minimum is at 6.63 eV in this case. We include the two lowest conduction bands, with band indices 5 and 6 (<em>band_min</em> and <em>band_max</em>).</p>
+
+<p>In this case, the ftemper file si.temper has the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 T
+300.00   6.52   1.0E+18
+</code></pre></div></div>
+
+<p>The integer in the first line is the number of settings at which we want to compute the mobility. The logical variable in the first line can be set to ‘T’ (for true), as is the case here, or ‘F’ (for false). perturbo.x to will determine the chemical potential using the carrier concentration and temperature provided as input in each of the rows below the first. If the logical variable is false (‘F’), perturbo.x will use the chemical potential provided in each of the rows below the first. Each of the following lines contains three values, the temperature (K), Fermi level (eV), and carrier concentration (cm<sup>-3</sup> in 3D materials or cm<sup>-2</sup> in 2D materials). There are two possible scenarios. If the user wants perturbo.x to determine the chemical potential corresponding to a given carrier concentration and temperature, the logical variable in the first line is ‘T’ and upon running perturbo.x ftemper file will be overwritten. In the ftemper file generated by perturbo.x, the logical variable will become ‘F’, and the chemical potentials in each line below the first will be replaced by the values found by perturbo.x, which can solve for the chemical potential in the energy window between boltz_emin and boltz_emax (so make sure this window is large enough to include the chemical potential). In a second scenario, the logical variable is ‘F’, and ftemper will not be overwritten and will be used as is. In short, if the users want to find the chemical potentials for each combination of carrier concentration and a temperature provided as input, they need to first set the logical variable as ‘T’ and run the code to generate the ftemper with the desired chemical potential to be used in the transport calculation.</p>
+
+<p>Run perturbo.x with the following command (remember to link or copy prefix_epwan.h5 in the current directory):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out 
+</code></pre></div></div>
+
+<p>The calculation will take a few minutes or longer, depending the number of k- and q- points and the size of the energy window. We obtain 4 output files (<em>prefix.doping</em>, <em>prefix_tet.h5</em>, <em>prefix_tet.kpt</em>, and <em>prefix.dos</em>):</p>
+
+<ul>
+  <li><em>prefix.doping</em> contains chemical potentials and carrier concentrations for each tempearture of interest. The format is easy to understand so we do not show it here. Please take a look at the file by yourself.</li>
+  <li><em>prefix_tet.h5</em> contains information on the k-points (in the irreducible wedge) used to compute transport properties. Users familiar with HDF5 can read and manipulate this file with the standard HDF5 commands. The other users can just ignore the data stored in the file.</li>
+  <li><em>prefix_tet.kpt</em> contains the coordinates (in crystal units) of the irreducible k-points, and the associated k-point tetrahedra, in the energy window of interest. The format is different from that of <em>fklist</em> discussed above in the calculation mode ‘bands’.</li>
+  <li><em>prefix.dos</em> contains the density of states (number of states per eV per unit cell volume) as a function of energy (eV). The format is easy to understand so we do not show it here. The density of states sets the phase space for several electron scattering processes, so it is convenient to compute it and print it out.</li>
+</ul>
+
+<p>In our example, since we used ‘T’ in the first line of ftemper, a new ftemper file is generated as output: that the ftemper file ‘si.temper’ has now become:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 F
+300.00   6.5504824219   0.9945847E+18
+</code></pre></div></div>
+
+<p>Note how perturbo.x has computed the chemical potential (second entry in the second row) for the given temperature and carrier concentration (first and third entries of the second row). The logical variable in the first line is now ‘F’, and si.temper can now be used as is in subsequent calculations.</p>
+
+<p>The above explanation focuses on electrons. For holes carriers, please refer to “examples/example01-silicon-perturbo/perturbo/pert-setup/pert-setup-hole”. In the input file for holes, remember to use hole=.true. (default: hole=.false.), and choose an appropriate energy window and the band indices for holes.</p>
+
+<h3 id="calc_mode--imsigma">calc_mode = ‘imsigma’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-imsigma-electron (pert-imsigma-hole)  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  The imaginary part of the lowest-order (so-called ‘Fan’) e-ph self-energy for states in a range of bands and with crystal momenta k read from a list. The scattering rates can also be obtained using 2/hbar * ImSigma  </div>
+
+<p>Specify up to 12 variables in the input file (pert.in)</p>
+<ul>
+  <li><em>prefix</em>: the same prefix as the file ‘prefix’_epwan.h5</li>
+  <li><em>calc_mode</em>: set to ‘imsigma’</li>
+  <li><em>band_min</em>, <em>band_max</em>: bands used for transport property calculations</li>
+  <li><em>ftemper</em>: the filename of a file containing temperature, chemical potential, and carrier concentration values (for the format, see the section above on the calculation mode ‘setup’)</li>
+  <li><em>fklist</em>: the filename of a file containing the coordinates of a given electron k-point list (for the format, see the section on the calculation mode ‘bands’)</li>
+  <li><em>phfreq_cutoff</em>: the cutoff energy for the phonons. Phonon with their energy smaller than the cutoff (in meV) is ignored; 0.5-2 meV is recommended.</li>
+  <li><em>delta_smear</em>: the broadening (in meV) used for the Gaussian function used to model the Dirac delta function</li>
+  <li><em>sampling</em>: sampling type, ‘uniform’ or ‘cauchy’; the former is a uniform random Brillouin zone grid, and is the default, while the ‘Cauchy’ is a useful option for polar materials</li>
+  <li><em>cauchy_scale</em>: the width of the Cauchy function; used only when <em>sampling</em> is ‘cauchy’ for polar materials</li>
+  <li><em>nsamples</em>: number of q-points used to compute the imaginary part of the e-ph self-energy for each k-point</li>
+  <li><em>polar_split</em>: describes how to compute the e-ph matrix elements for in the presence of a polar e-ph interaction (here, the ab initio Frohlich interaction). Three options: ‘‘(none), ‘polar’, or ‘rmpol’. Leave it blank if users want to describes how to compute the entire e-ph matrix elements (including the polar contribution). Set it to ‘polar’ when computing only for elements (including the polar contribution); set if to ‘rmpol’ when computing only the nonpolar part of the matrix elements (the total minus the polar part). This variable is relevant only for polar materials.</li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix      = 'si'
+ calc_mode   = 'imsigma'
+
+ fklist   = 'si_tet.kpt'
+ ftemper  = 'si.temper'
+
+ band_min = 5
+ band_max = 6
+
+ phfreq_cutoff = 1 ! meV
+ delta_smear = 10 ! meV
+
+ sampling = 'uniform'
+ nsamples = 1000000
+/
+</code></pre></div></div>
+
+<p>In the current example, we compute the imaginary part of the e-ph self-energy of a k-points in the fklist file (in this case, we use the irreducible Monkhorst-Pack k-point list in si_tet.kpt obtained from the calculation mode ‘setup’). Note that if one is only interested in a high symmetry line, one can provide k-point path in the fklist file instead. The temperature, chemical potential, and carrier concentration values for computing the e-ph self-energy are given in the ftemper file, si.temper, obtained from the perturbo ‘setup’ process. Note that perturbo.x will do calculations, at once, for as many combinations of temperature and chemical potential as are specified in the lines below the first of ftemper.</p>
+
+<p>Here we use a uniform random sampling (sampling=’uniform’) with 1 million randomly sampled q-points (nsample=1000000). The phonon frequency cutoff is 1 meV (phfreq_cutoff=1), and the smearing for the Gaussian function is 10 meV (delta_smear=10). In the imaginary part of the e-ph self-energy (or equivalently, e-ph scattering rate) calculations, the energy difference between the initial and final states must match the energy of the involved phonon, within a range of +/- 3*<em>delta_smear</em> from gaussian smearing. To converge the e-ph self-energy, one must vary the input variables ‘nsample’ and ‘delta_smear’. A small parameter η ≈ 5 meV usually a good starting point, as this value is known to sufficiently converge the scattering rates in GaAs (Reference Jinjian).</p>
+
+<p>Before running perturbo.x, remember to link or copy prefix_epwan.h5 in the current directory.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out
+</code></pre></div></div>
+
+<p>We obtain two output files:</p>
+
+<ul>
+  <li>_prefix.imsigma contains the computed imaginary part of the e-ph self-energy</li>
+  <li>_prefix.imsigma_mode contains the computed imaginary part of the e-ph self-energy (one separate file for each phonon mode, where phonon modes are numbered for increasing energy values).</li>
+</ul>
+
+<p>The following is the format of prefix.imsigma (in this case, si.imsigma):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Electron (Imaginary) Self-Energy in the Migdal Approximation #
+ #      (WARNING: only output a part of the eigenstates)        #
+ #==============================================================#
+ #NO.k:    450   NO.bands:   2   NO.T:   1   NO.modes:   1
+ # it     ik   ibnd    E(ibnd)(eV)     Im(Sigma)(meV)
+ # Temperature(T)=  25.85203 meV;  Chem.Pot.(mu)=   6.55048 eV
+   1       1     1      6.955370   1.2413716479777598E+01
+   1       1     2      8.625216   8.0941033638003375E+01
+ #------------------------------------------------------------
+ ......
+</code></pre></div></div>
+
+<p>The variable <em>it</em> is a dummy variable for enumerating the temperature values, while, <em>ik</em> is the number of k-points in the fklist, <em>ibnd</em> the band number (in this case, band indices are 5 and 6). <em>Im(Sigma)</em> is the imaginary part of the e-ph self-energy (in meV units) for each state of interest.</p>
+
+<p>Similiarly, the format for si.imsigma_mode is</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> # Electron (Imaginary) Self-Energy in the Migdal Approximation #
+ #      (WARNING: only output a part of the eigenstates)        #
+ #==============================================================#
+ #NO.k:    450   NO.bands:   2   NO.T:   1   NO.modes:   6
+ # it     ik   ibnd    E(ibnd)(eV)  imode    Im(Sigma)(meV)
+ # Temperature(T)=  25.85203 meV;  Chem.Pot.(mu)=   6.55048 eV
+   1       1     1      6.955370     1   1.4153504009369593E+00
+   1       1     1      6.955370     2   5.7649932505673829E-01
+   1       1     1      6.955370     3   3.3560451875664166E+00
+   1       1     1      6.955370     4   9.1248572526519600E-01
+   1       1     1      6.955370     5   6.7828926275888612E-01
+   1       1     1      6.955370     6   5.4750465781934041E+00
+   1       1     2      8.625216     1   1.4251118413529920E+01
+   1       1     2      8.625216     2   2.3885895867766276E+01
+   1       1     2      8.625216     3   1.9149613992834450E+01
+   1       1     2      8.625216     4   8.0914088438082139E+00
+   1       1     2      8.625216     5   5.5520190253046220E+00
+   1       1     2      8.625216     6   1.0010977494759880E+01
+ #------------------------------------------------------------
+ ......
+</code></pre></div></div>
+
+<p>Here we have an extra column with the phonon mode index (imode).</p>
+
+<p><strong>Remember to converge the Im(Sigma) results with respect to the number of samples (<em>nsamples</em>).</strong></p>
+
+<p>(ADD EXPLANATION)</p>
+
+<p>Using the results in the <em>prefix.imsigma</em> file, one can easily obtain, with a small script, the scattering rates for each state, which are equal to 2/hbar x ImSigma (it’s convenient to use hbar = 0.65821195 eV fs to this end). Using additional tools provided in perturbo.x, we can also compute the mean free path for each electronic state, as well as a range of phonon-limited transport properties.</p>
+
+<p>One way of obtaining the relaxation times (and their inverse, the scattering rates) is to run the Python script ***.py (ADD HERE) we provide to post-process the imsigma output. Another way is to obtain the relaxation times is to run a calculation of the mean free paths (see below), which conveniently outputs both the relaxation times and the mean free path for the desired electronic states.</p>
+
+<p>Also note that an example calculation of the e-ph self-energy for holes, is provided in the example folder “examples/example01-silicon-perturbo/perturbo/pert-imsigma-hole”, where we use different band indices (<em>band_min=2</em> and <em>band_max=4</em>), and the files, fklist and ftemper, are also different and obtained in a different perturbo ‘setup’ calculation.</p>
+
+<h3 id="calc_mode--meanfp">calc_mode = ‘meanfp’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-meanfp-electron (pert-meanfp-hole)  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  The e-ph mean free paths for electronic states in a user-defined k-point list and range of bands  </div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The mean free path calculation relies on the results of the calculation mode “imsigma” values obtained. Therefore, the user should first run the calculation mode imsigma, and then compute the mean free paths</div>
+
+<p>Requires the same files as <em>calc_mode=’imsigma’</em> but needs an additional file, <em>prefix.imsigma</em>, obtained from the as output in the ‘imsigma’ calculation.</p>
+
+<p>Here is the input file (pert.in). It should be the same input as the one for the “imsigma” calculation mode, except for the line specifying <em>calc_mode=’meanfp’</em>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix      = 'si'
+ calc_mode   = 'meanfp'
+
+ fklist   = 'si_tet.kpt'
+ ftemper  = 'si.temper'
+
+ band_min = 5
+ band_max = 6
+
+ phfreq_cutoff = 1 ! meV
+ delta_smear = 10 ! meV
+
+ sampling = 'uniform'
+ nsamples = 1000000
+/
+</code></pre></div></div>
+
+<p>Before running perturbo.x, make sure you have the following files in the current directory (“pert-meanfp-electron”): <em>prefix_epwan.h5</em>, <em>prefix.imsigma</em> the fklist file (si_tet.kpt in this example), and the ftemper file (e.g., si.temper in this example). As explained above, one can reuse the input file of the calculation mode “imsigma” by replacing the calculation mode with <em>calc_mode=’meanfp’</em>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out
+</code></pre></div></div>
+
+<p>This calculation usually takes only takes a few seconds. We obtain two output files:</p>
+
+<ul>
+  <li><em>prefix.mfp</em> contains the relaxation time and mean free path of each electronic state. Note that the MFP is the product of the state relaxation time and band velocity.</li>
+  <li><em>prefix.vel</em> contains the band velocity of each state</li>
+</ul>
+
+<p>The format of <em>prefix.mfp</em> is as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#         Electron Mean Free Path (tau_nk*v_nk, in nm)       #
+###################################################################
+#NO.k:     450   NO.bands:    2   NO.T:    1
+# it   ik  ibnd   E(ibnd)(eV)   Relaxation time(in fs)           MFP (in nm)
+# Temperature(T)=   25.85203 meV;  Chem.Pot.(mu)=    6.55048 eV
+1       1     1      6.955370   2.6511488462206518E+01   9.5929573542019302E+00
+1       1     2      8.625216   4.0659982512529345E+00   4.8049949684520232E+00
+#-------
+......
+</code></pre></div></div>
+
+<p>The variable <em>it</em> is the dummy variable for temperature; in this case, we only used one temperature (300 K). <em>ik</em> is the dummy variable for the given crystal momentum in the file fklist. <em>ibnd</em> is the dummy variable for bands; in this case, ibnd=1 corresponds to band index 5 and ibnd=2 is the band index 6. The 3rd, 4th, and 5th columns are energy (eV), relaxation time (fs), and mean free path (nm) of each state, respectively.</p>
+
+<p>The format of <em>prefix.vel</em> is shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#                    Band velocity                   #
+###################################################################
+#  ik  ibnd   E(ibnd)(eV)     k.coord. (cart. alat)                vel-dir                  |vel| (m/s)
+   1     1      6.955370  -0.01250  0.58750 -0.01250     -0.24926 -0.93581 -0.24926   3.6184152269976016E+05
+   1     2      8.625216  -0.01250  0.58750 -0.01250     -0.04306 -0.99814 -0.04306   1.1817503775293969E+06
+   2     1      6.915451   0.00000  0.60000  0.00000     -0.00000 -1.00000  0.00000   3.1811354238290834E+05
+   2     2      8.510979   0.00000  0.60000  0.00000      0.00000 -1.00000 -0.00000   1.1197561247449291E+06
+   3     1      6.932859  -0.02500  0.60000  0.00000     -0.49908 -0.86656  0.00000   3.6515768155811669E+05
+   3     2      8.520464  -0.02500  0.60000  0.00000     -0.08888 -0.99604 -0.00000   1.1259209936791812E+06
+......
+</code></pre></div></div>
+
+<p>The 1st to 3rd columns are the same as in <em>prefix.mfp</em>. The 4th to 6th columns are the k-point coordinates in the crystal units. The 7th to 9th columns are the components of the unit vector specifying the direction of the velocity of each electronic states. The last column is the magnitude of the velocity (m/s) of each state.</p>
+
+<p>For an example calculation of mean free paths for holes, please see the folder “examples/example01-silicon-perturbo/perturbo/pert-meanfp-hole”.</p>
+
+<h3 id="calc_mode--trans">calc_mode = ‘trans’</h3>
+
+<p>The calculation mode ‘trans’ computes the electrical conductivity and carrier mobility tensors. The code can compute these quantities using the relaxation time approximantion (RTA) of the Boltzmann transport equation (BTE) or an iterative approach (ITA) to fully solve the linearized BTE.</p>
+
+<h4 id="relaxation-time-approximation-rta">Relaxation time approximation (RTA)</h4>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-trans-RTA-electron (pert-trans-RTA-hole)    </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b>  The phonon-limited conductivity and carrier mobility using the RTA of the BTE
+ </div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The user needs to run the calculation modes “setup” and then “imsigma” since this calculation mode relies on their outputs</div>
+
+<p>Requires the same variables as those specified in the calculation mode “setup”, except for the following two variables:</p>
+<ul>
+  <li><em>calc_mode</em>: set to ‘trans’</li>
+  <li><em>boltz_nstep</em>: set to 0, which means computing the mobility using the RTA</li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix      = 'si'
+ calc_mode   = 'trans'
+
+ boltz_kdim(1) = 80
+ boltz_kdim(2) = 80
+ boltz_kdim(3) = 80
+
+ boltz_emin = 6.4
+ boltz_emax = 6.9
+ band_min = 5
+ band_max = 6
+
+ ftemper  = 'si.temper'
+ 
+ boltz_nstep = 0  ! RTA
+/
+</code></pre></div></div>
+
+<p>Before running perturbo.x, remember to put the following files in the current directory:</p>
+
+<ul>
+  <li>_prefix_epwan.h5: here si_epwan.h5</li>
+  <li><em>ftemper</em>: here ‘si.temper’ obtained in the ‘setup’ calculation</li>
+  <li><em>prefix_tet.h5</em>: here si_tet.h5 obtained in the ‘setup’ calculation</li>
+  <li><em>prefix.imsigma</em>: here si.imsigma obtained in the ‘imsigma’ calculation</li>
+</ul>
+
+<p>Run perturbo.x:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out
+</code></pre></div></div>
+
+<p>This calculation usually takes a few minutes. We obtain three output files:</p>
+
+<ul>
+  <li><em>prefix.cond</em> contains the conductivity and mobility tensors as a function of temperature</li>
+  <li><em>prefix.tdf</em> contains transport distribution function (TDF) as a function of carrier energy and temperature</li>
+  <li><em>prefix_tdf.h5</em> includes all the information of the TDF for each temperature in HDF5 format</li>
+</ul>
+
+<p>In our example, the output file is si.cond, which is shown here:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          #==========================================================#
+          #                  Conductivity (1/Ohm/m)                  #
+          #----------------------------------------------------------#
+
+#  T (K)   E_f(eV)   n_c (cm^-3)      sigma_xx       sigma_xy       sigma_yy       sigma_xz       sigma_yz       sigma_zz
+  300.00   6.55048   0.99458E+18    0.256282E+05  -0.867734E-06   0.256282E+05  -0.643904E-06  -0.266436E-04   0.256282E+05
+
+
+          #==========================================================#
+          #                    Mobility (cm^2/V/s)                   #
+          #--------------------(for semiconductor)-------------------#
+
+#  T (K)   E_f(eV)   n_c (cm^-3)       mu_xx          mu_xy          mu_yy          mu_xz          mu_yz          mu_zz
+  300.00   6.55048   0.99458E+18    0.160830E+04  -0.544546E-07   0.160830E+04  -0.404082E-07  -0.167202E-05   0.160830E+04
+</code></pre></div></div>
+
+<p>The calculated electron mobility at 300 K is ~ 1608 cm<sup>2</sup>V<sup>-1</sup>s<sup>-1</sup>, in reasonably good agreement with the experimental value of roughly 1400 cm<sup>2</sup>V<sup>-1</sup>s<sup>-1</sup>.</p>
+
+<p>(THE VALUE DEVIATES SIGNIFICANTLY FROM WHAT I(JINSOO)’VE DONE BEFORE. WHY IS THIS? WE SHOULD RE-DO THE CALCULATIONS)</p>
+
+<p>The second output file is si.tdf, whose format is shown below:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#  E(eV)    (-df/dE) (a.u.)    TDF(E)_(xx xy yy xz yz zz) (a.u.)   #
+
+# Temperature:  300.0000  Fermi Level:   6.550482
+
+   6.632612    2.0230556858340154E+01    0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00
+   6.633612    1.9522224579919563E+01    0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00   0.000000E+00
+   6.634612    1.8836601850198139E+01    0.122626E-03   0.507955E-13   0.122626E-03  -0.954877E-13  -0.185696E-12   0.122626E-03
+   ......
+</code></pre></div></div>
+
+<p>Column 1 is the carrier energy (eV), column 2 is the energy derivative of Fermi-Dirac distribution at the energy given by column 1, and column 3 is the TDF for each energy, respectively. The data for each temperature and chemical potential combination is given in a separate block in the file. In this case, we look at one temperature and one concentration, so there is only one block in the file.</p>
+
+<p>In more rigorous calculations, the user will need to converge the conductivity and mobility with respect to the number of k and q-points, namely the variables <em>boltz_kdim</em> and <em>boltz_qdim</em>.</p>
+
+<p>An example for hole carriers is also provided, in the folder “examples/example01-silicon-perturbo/perturbo/pert-trans-RTA-hole”.</p>
+
+<h4 id="iterative-approach-ita">Iterative approach (ITA)</h4>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-trans-ITA-electron (pert-trans-ITR-hole)    </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> The phonon-limited conductivity and carrier mobility using ITA  </div>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> The user needs to run the calculation modes “setup” and then “imsigma” since this calculation mode relies on their outputs</div>
+
+<p>Requires the same input file variables as the calculation mode “setup”, except for the following 6 variables:</p>
+<ul>
+  <li>_calc_mode is set to ‘trans’</li>
+  <li>_boltz_nstep contains the maximum number of iterations in the iterative scheme for solving Boltzmann equation, where a typical value is 10</li>
+  <li>_phfreq_cutoff contains phonon threshold (meV). Phonons with energy smaller than the cutoff will be ignored.</li>
+  <li>_delta_smear contains broadening (meV) for a Gaussian function to present the Dirac delta function</li>
+  <li><em>tmp_dir</em> contains output directory containing the e-ph matrix elements used in the calculations</li>
+  <li><em>load_scatter_eph</em>: if .true., it will read the e-ph matrix elements from <em>tmp_dir</em>. The default is .false.</li>
+</ul>
+
+<p>Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;perturbo
+ prefix      = 'si'
+ calc_mode   = 'trans'
+
+ boltz_kdim(1) = 80
+ boltz_kdim(2) = 80
+ boltz_kdim(3) = 80
+
+ boltz_emin = 6.4
+ boltz_emax = 6.9
+ band_min = 5
+ band_max = 6
+
+ ftemper  = 'si.temper'
+
+ tmp_dir = './tmp'
+ !load_scatter_eph = .true.
+
+ boltz_nstep = 10 !max number of iterations
+ phfreq_cutoff = 1  !meV
+ delta_smear = 10  !meV
+/
+</code></pre></div></div>
+
+<p>Before running the ITA calculation, make sure that the following files are in the current directory (“pert-trans-ITA-electron”):</p>
+
+<ul>
+  <li><em>prefix_epwan.h5</em>: here “si_epwan.h5”</li>
+  <li><em>ftemper</em>: here “si.temper”</li>
+  <li><em>prefix_tet.h5</em>: here “si_tet.h5”</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out
+</code></pre></div></div>
+
+<p>It takes ~20 hours using one thread and one MPI process. To speed up the calculations, the user can increase the OpenMP threads and/or the MPI processes. If the number of MPI processes is increased, one has to make sure that the RAM is large enough. After the calculation has completed, we obtain 3 output files, <em>prefix.cond</em>, <em>prefix.tdf</em>, and <em>prefix_tdf.h5</em>, similar to the RTA calculation.</p>
+
+<p>An example calculation for holes is also provided in the folder “examples/example01-silicon-perturbo/perturbo/pert-trans-ITR-hole”.</p>
+
+<h3 id="calc_mode--trans-pp">calc_mode = ‘trans-pp’</h3>
+
+<div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-trans-pp-electron  </div>
+
+<div class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Seebeck coefficient. Note that phonon drag effects are not included in this calculation.
+  </div>
+
+<p>Uses the same input file as the ‘trans’ calculation mode, but requires the additional file <em>prefix_tdf.h5</em> obtained in the ‘trans’ calculation. The Seebeck calculation is a quick post-processing of the ‘trans’ calculation, which needs to be done before running ‘trans-pp’</p>
+
+<p>Change the calculation mode in the input file to ‘trans-pp’. Before running perturbo.x, make sure that four files exist in the current directory:</p>
+
+<ul>
+  <li><em>prefix_epwan.h5</em>: here si_epwan.h5</li>
+  <li><em>ftemper</em>: here si.temper</li>
+  <li><em>prefix_tet.h5</em>: here si_tet.h5</li>
+  <li><em>prefix_tdf.h5</em>: here si_tdf.h5</li>
+</ul>
+
+<p>Run perturbo.x:</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ mpirun -n 1 &lt;perturbo_bin&gt;/perturbo.x -npools 1 -i pert.in &gt; pert.out</code></p>
+
+<p>It takes a few seconds. We obtain a file, <em>prefix.trans_coef</em>, in this case, si.trans_coef, which has the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>          #==========================================================#
+          #                  Conductivity (1/Ohm/m)                  #
+          #----------------------------------------------------------#
+
+#  T (K)   E_f(eV)   n_c (cm^-3)      sigma_xx       sigma_xy       sigma_yy       sigma_xz       sigma_yz       sigma_zz
+  300.00   6.55048   0.99458E+18    0.251810E+05  -0.106635E+00   0.251823E+05  -0.172325E+00   0.142428E+00   0.251812E+05
+
+          #==========================================================#
+          #                    Mobility (cm^2/V/s)                   #
+          #--------------------(for semiconductor)-------------------#
+
+#  T (K)   E_f(eV)   n_c (cm^-3)       mu_xx          mu_xy          mu_yy          mu_xz          mu_yz          mu_zz
+  300.00   6.55048   0.99458E+18    0.158023E+04  -0.669186E-02   0.158031E+04  -0.108143E-01   0.893806E-02   0.158025E+04
+
+          #==========================================================#
+          #                Seebeck coefficient (mV/K)                #
+          #----------------------------------------------------------#
+
+#  T (K)   E_f(eV)   n_c (cm^-3)        S_xx           S_xy           S_yy           S_xz           S_yz           S_zz
+  300.00   6.55048   0.99458E+18    0.425885E+00   0.186328E-06   0.425883E+00  -0.791938E-07  -0.329487E-06   0.425885E+00
+</code></pre></div></div>
+
+<p>The two blocks for the conductivity and mobility are the same as those in the ‘trans’ calculation mode, but the output file of ‘trans-pp’ has an additional block with the Seebeck coefficient results.</p>
+
+<p>An example calculation for holes is also provided in the folder “examples/example01-silicon-perturbo/perturbo/pert-trans-pp-hole”.</p>
+
+
+</div>
+
+    </div>
+
+</div>    <!-- /.container -->
+
+</body>
+
+</html>
+

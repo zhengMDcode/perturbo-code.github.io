@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>Silicon (with spin-orbit coupling)  | Perturbo | Manual</title>
+
+
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/modern-business.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/customstyles.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/theme-blue.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="/mydoc-pdf/css/printstyles.css">
+
+<script>
+    Prince.addScriptFunc("datestamp", function() {
+        return "PDF last generated: December 23, 2019";
+    });
+</script>
+
+<script>
+    Prince.addScriptFunc("guideName", function() {
+        return "Jekyll theme for documentation — mydoc product User Guide";
+    });
+</script>
+
+
+
+</head>
+
+<body class=" print">
+
+<!-- Page Content -->
+<div class="container">
+    <!-- Content Column -->
+    <div class="col-md-9">
+
+        <div class="post-header">
+    <h1 class="post-title-main" id="mydoc_tutorial_si.html">Silicon (with spin-orbit coupling)</h1>
+</div>
+
+<div class="post-content">
+
+    
+    <div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example03-silicon-soc  </div>
+
+<p>Run qe2pert.x and perturbo.x on silicon with spin-orbit coupling</p>
+
+<p>The input files can be found in the directory “pw-ph-wann”. Remember to run scf, nscf and Wannier90 calculations that include spinor-related variables. Once the DFT and DFPT calculations are complete, we run qe2pert.x to generate <em>prefix_epwan.h5</em>. In the input file for qe2pert.x (“qe2pert/pert.in”) the user does not need to specify any spinor-related variables since qe2pert.x is able to detect that spin-orbit coupling (SOC) was used in DFT. Here is the input file (pert.in):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&amp;qe2pert
+ prefix='si'
+ outdir='./tmp'
+ phdir='../pw-ph-wann/phonon/References/save'
+ nk1=8, nk2=8, nk3=8
+ qe_band_min = 1
+ qe_band_max = 32
+ num_wann = 16
+ lwannier=.true.
+/
+</code></pre></div></div>
+
+<p>The input file is similar to the one for silicon without SOC (“examples/example02-silicon-qe2pert”). We only need to double the number of Wannier functions (num_wann variable) and DFT bands (qe_band_min and qe_band_max) in the input file.</p>
+
+<p>The input files for perturbo.x are also similar to the silicon calculations without SOC, except for the band range given by <em>band_min</em> and <em>band_max</em>. Each calculation is the same as in the silicon example without SOC.</p>
+
+
+</div>
+
+    </div>
+
+</div>    <!-- /.container -->
+
+</body>
+
+</html>
+

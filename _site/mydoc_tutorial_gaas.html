@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="keywords" content=" ">
+<title>GaAs (polar material)  | Perturbo | Manual</title>
+
+
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/modern-business.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/customstyles.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/theme-blue.css">
+<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
+<link rel="stylesheet" href="/mydoc-pdf/css/printstyles.css">
+
+<script>
+    Prince.addScriptFunc("datestamp", function() {
+        return "PDF last generated: December 23, 2019";
+    });
+</script>
+
+<script>
+    Prince.addScriptFunc("guideName", function() {
+        return "Jekyll theme for documentation — mydoc product User Guide";
+    });
+</script>
+
+
+
+</head>
+
+<body class=" print">
+
+<!-- Page Content -->
+<div class="container">
+    <!-- Content Column -->
+    <div class="col-md-9">
+
+        <div class="post-header">
+    <h1 class="post-title-main" id="mydoc_tutorial_gaas.html">GaAs (polar material)</h1>
+</div>
+
+<div class="post-content">
+
+    
+    <div class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example04-gaas-polar  </div>
+
+<p>Example calculation in a polar material with long-range e-ph interactions</p>
+
+<p>Run the calculations in the directory “pw-ph-wann” to obtain the data needed to run qe2pert.x. Run qe2pert.x to get <em>prefix_epwan.h5</em>, which is required for all calculations using perturbo.x.</p>
+
+<p>The input file for each calculation using perturbo.x is similiar to the silicon case (“examples/example01-silicon-perturbo”). The main difference is the ‘imsigma’ calculation, where users can use a variable called <em>polar_split</em> to specify whether they want to compute the full matrix element (polar plus non-polar part), or just the polar or nonpolar part. For the long-range (polar) part, we set <em>polar_split</em> ‘polar’ in the input file. In this example, we use ‘cauchy’ for q-point importance <em>sampling</em> and set the variable <em>cauchy_scale</em> for the Cauchy distribution. For the short-range (nonpolar) part, we use ‘rmpol’ for the variable <em>polar_split</em> and ‘uniform’ for <em>sampling</em>. Remember to converge both the long- and short-range parts of the e-ph matrix elements with respect to the number of q-points (the variable <em>nsamples</em>). If <em>polar_split</em> is not specified, perturbo.x will compute e-ph matrix elements including both the short- and long-range interactions, which typically has a slow convergence with respect to number of q-points.</p>
+
+
+</div>
+
+    </div>
+
+</div>    <!-- /.container -->
+
+</body>
+
+</html>
+
