@@ -7,7 +7,7 @@ folder: mydoc
 toc: true
 ---
 
-Before running electron dynamics calculations using pertubo.x, the user needs to carry out electronic and phonon calculations, with DFT and DFPT respectively. At present, Perturbo can read the output of DFT and DFPT calculations done with Quantum Espresso (QE). Once the relevant output files have been obtained from QE, the first step is to use qe2pert.x to compute the e-ph matrix elements on a coarse k- and q-point Brillouin zone grid, and to store the data into the HDF5 format for perturbo.x to read. The generation of this HDF5 file, called _prefix\_epwan.h5_, is discussed in this section of the manual.
+Before running electron dynamics calculations using pertubo.x, the user needs to carry out electronic and phonon calculations, with DFT and DFPT respectively. At present, Perturbo can read the output of DFT and DFPT calculations done with Quantum Espresso (QE). Once the relevant output files have been obtained from QE and Wannier90 (W90), the first step is to use `qe2pert.x` to compute the e-ph matrix elements on a coarse k- and q-point Brillouin zone grid, to obtain e-ph matrix elements in Wannier function basis, and to store the data into the HDF5 format for `perturbo.x` to read. The generation of this HDF5 file, called _prefix\_epwan.h5_, is discussed in this section of the manual.
 
 The preparation stage consists of five steps:
 
@@ -15,7 +15,7 @@ The preparation stage consists of five steps:
 2. Run a phonon calculation using DFPT
 3. Run a non-scf (nscf) DFT calculation
 4. Run Wannier90 to obtain Wannier functions
-5. Run qe2pert.x
+5. Run `qe2pert.x`
 
 In the following, we use silicon as an example. The input files for QE and W90 are in the directory "examples-perturbo/example02-silicon-qe2pert/pw-ph-wann". As a reference, we also provide the results in a directory called "reference". 
 
@@ -93,6 +93,9 @@ Then run the nscf calculation with QE.
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> examples/example02-silicon-qe2pert/pw-ph-wan/wann</div>
 
+{% include note.html content="Requires Wannier90 v3.0.0 and higher." %}
+
+
 The directory contains two input files, one for wannier.x and the other for pw2wannier90.x. In the input file _si.win_, we instruct Wannier90 to write two important quantities for qe2pert.x, the $U^(\bm{k})$, $U^(\text{dis}\bm{k})$ matrices and the position of the Wannier function centers, using: _write\_u\_matrices=true_ and _write\_xyz=true_.
 
 We create tmp directory:
@@ -145,6 +148,8 @@ Here we show the input file for the executable qe2pert.x:
  qe_band_max = 16
  num_wann = 8
  lwannier=.true.
+ load_ephmat = .false.
+ system_2d = .false.
 / 
 ```
 
@@ -154,17 +159,24 @@ Here we show the input file for the executable qe2pert.x:
 * _nk1_, _nk2_, _nk3_ are the number of k-points along each direction used in the nscf and Wannier90 calculations.
 * _qe\_band\_min_ and _qe\_band\_max_ determine the range of bands we are interested in, and should be the same as the values used in the Wannierization process. For example, if we used 40 bands in the nscf calculation and we excluded bands 1-4 and 31-40 in the Wannierization, then _qe\_band\_min=5_ and  _qe\_band\_max=30_.  
 * _num\_wann_: the number of Wannier functions.
-* _lwannier_: a logical flag. When it is .true., the e-ph matrix elements are computed using the Bloch wave functions rotated with the Wannier unitary matrix; if .false., the e-ph matrix elements are computed using  the Bloch wave functions, and the e-ph matrix elements are then rotated using the Wannier unitary matrix. Set it to .true. to reduce computational cost. 
+* _lwannier_: a logical flag. When it is .true., the e-ph matrix elements are computed using the Bloch wave functions rotated with the Wannier unitary matrix; if .false., the e-ph matrix elements are computed using  the Bloch wave functions, and the e-ph matrix elements are then rotated using the Wannier unitary matrix. By default, it is .true. to reduce computational cost.
+* _load\_ephmat_: a logical flag. If .true., reuse e-ph matrix elements in Bloch function basis computed previously. This is useful if you want to test different Wannier basis. For example, you could first run `qe2pert.x` with _lwannier_=.false., and then rerun  `qe2pert.x` with _lwannier_=.false. and _load\_ephmat_ with different Wannier unitary matrix. 
 * _system\_2d_: if the materials is two-dimensional, so that in one direction only one k-point is used, set it to .true.; the default is .false.
 
 Now we are ready to run the e-ph matrix elements: 
 
 ```
-export OMP_NUM_THREADS=1
-$ mpirun -n 1 qe2pert.x -npools 1 -i qe2pert.in > qe2pert.out
+export OMP_NUM_THREADS=4
+$ mpirun -n 2 qe2pert.x -npools 2 -i qe2pert.in > qe2pert.out
 ```
 
-The executables perturbo.x and qe2pert.x employ hybrid parallelization (MPI plus OpenMP). To speed up the calculations, the user can can increase the number of OpenMP threads and MPI processes. 
+This task is usually time-consuming on a single core, but it can be made much faster (minutes) on multiple cores.
+The executables `qe2pert.x` employ hybrid parallelization (MPI plus OpenMP), e.g. 2 MPI processes and each processes span 4 OpenMP threads in this case. 
 
-Note that the number of pools (-npools) has to be equal to the number of MPI processes (-np or -n), otherwise the code will stop. This task takes 8 hours on a single core, but it can be made much faster (minutes) using MPI plus OpenMP. We particularly recommend using threads with OpenMP (usually, setting OMP_NUM_THREADS= half the value of cores per node is a good choice). (**Jin-Jian, can you revise these statements? **) . Once the calcalculation has completed, we obtain the output file _si\_epwan.h5_, which is an HDF5 database with all the information needed to run perturbo.x.
+{% include note.html content="The number of pools (-npools) has to be equal to the number of MPI processes (-np or -n), otherwise the code will stop." %}
+
+To speed up the calculations, the user could increase the number of OpenMP threads and MPI processes. 
+Threads with OpenMP is particularly useful if the RAM (meory) of computing node is limited. For example, the memory comsuption reduces to minimum when using 1 MPI processers per node and setting OMP_NUM_THREADS to the number of cores per node. 
+
+Once the calcalculation has completed, we obtain the output file _si\_epwan.h5_, which is an HDF5 database with all the information needed to run `perturbo.x`.
 
