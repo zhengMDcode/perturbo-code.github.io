@@ -1,7 +1,7 @@
 ---
 title: Quantum Espresso to PERTURBO
 sidebar: mydoc_sidebar
-last_updated: Decemer 19, 2019
+last_updated: Jan 1, 2020
 permalink: mydoc_qe2pertx.html
 folder: mydoc
 toc: true
@@ -171,12 +171,13 @@ $ mpirun -n 2 qe2pert.x -npools 2 -i qe2pert.in > qe2pert.out
 ```
 
 This task is usually time-consuming on a single core, but it can be made much faster (minutes) on multiple cores.
-The executables `qe2pert.x` employ hybrid parallelization (MPI plus OpenMP), e.g. 2 MPI processes and each processes span 4 OpenMP threads in this case. 
+The executables `qe2pert.x` employ hybrid parallelization (MPI plus OpenMP), e.g. 2 MPI processes and each process span 4 OpenMP threads in this example. 
+
 
 {% include note.html content="The number of pools (-npools) has to be equal to the number of MPI processes (-np or -n), otherwise the code will stop." %}
 
-To speed up the calculations, the user could increase the number of OpenMP threads and MPI processes. 
-Threads with OpenMP is particularly useful if the RAM (meory) of computing node is limited. For example, the memory comsuption reduces to minimum when using 1 MPI processers per node and setting OMP_NUM_THREADS to the number of cores per node. 
+
+To speed up the calculations, the users could increase the number of OpenMP threads and MPI processes. 
+Threads with OpenMP are particularly useful when the RAM (memory) of computing nodes is limited. The memory comsuption reduces to minimum when using 1 MPI process per node and setting OMP_NUM_THREADS to the number of cores per node. 
 
 Once the calcalculation has completed, we obtain the output file _si\_epwan.h5_, which is an HDF5 database with all the information needed to run `perturbo.x`.
-

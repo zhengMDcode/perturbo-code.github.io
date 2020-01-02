@@ -1,17 +1,17 @@
 ---
 title: PERTURBO calculation
 sidebar: mydoc_sidebar
-last_updated: Decemer 19, 2019
+last_updated: Jan 1, 2020
 permalink: mydoc_perturbox.html
 folder: mydoc
 toc: true
 ---
 
-In this section, we will discuss all the features (or calculation modes) of perturbo.x. The variable for the calculation mode is _calc\_mode_. Here are the possible values for calc_mode, and the corresponding tasks carried out by PERTURBO:
+In this section, we will discuss all the features (or calculation modes) of `perturbo.x`. The variable for the calculation mode is _calc\_mode_. Here are the possible values for calc_mode, and the corresponding tasks carried out by PERTURBO:
 
-* 'bands': interpolate electronic band structures using maximally localized Wannier functions
+* 'bands': interpolate electronic band structures using Wannier functions
 * 'phdips': interpolate phonon dispersion by Fourier transforming real-space interatomic force constants
-* 'ephmat': interpolate e-ph matrix elements using maximally localized Wannier functions 
+* 'ephmat': interpolate e-ph matrix elements using  Wannier functions 
 * 'setup': set up transport calculations
 * 'imsigma': compute the e-ph self-energy for electronic crystal momenta read from a list
 * 'meanfp': compute the e-ph mean free path
@@ -54,9 +54,16 @@ In this example, fklist='si\_band.kpt', the file si\_band.kpt containing the k-p
 0.000   0.000   0.000   1
 ```
 
-The first line specifies how many lines there are below the first line. Columns 1-3 give, respectively, the x, y, and z coordinates of a crystal momentum **in crystal units**. The last column is the number of points from the current crystal momentum to the next crystal momentum. One can also provide an explicit k-point list, rather than specifying the path, by providing the number of k points in the first line, the coordinates of each k point, and setting the values in the last column to 1. 
+The first line specifies how many lines there are below the first line. Columns 1-3 give, respectively, the x, y, and z coordinates of a crystal momentum **in crystal coordinate**. The last column is the number of points from the current crystal momentum to the next crystal momentum. One can also provide an explicit k-point list, rather than specifying the path, by providing the number of k points in the first line, the coordinates of each k point, and setting the values in the last column to 1. 
 
-Before running perturbo.x, remember to put si\_epwan.h5 in the current directory "pert-band" (You may choose to copy the HDF5 file using ```$ cp ../../qe2pert/si_epwan.h5 .```, or link the file using ```$ ln -sf ../../qe2pert/si_epwan.h5```. We recommend linking rather than copying the HDF5 file due to the relatively large file size). 
+
+Before running `perturbo.x`, remember to put si\_epwan.h5 in the current directory "pert-band" since `perturbo.x` needs to read si\_epwan.h5. You may choose to copy the HDF5 file using 
+
+```$ cp ../../qe2pert/si_epwan.h5 .```
+
+ But the size of the HDF5 file is usually quite large, creating a soft link that point to the original HDF5 file is strongly recommended:
+ 
+ ```$ ln -sf ../../qe2pert/si_epwan.h5```
 
 Run pertubo.x:
 
@@ -64,7 +71,9 @@ Run pertubo.x:
 $ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out 
 ```
 
-Remember to set the number of pools (-npools) equal to the number of MPI process (-n or -np).  It takes just a few seconds to obtain the interpolated band structure. We obtain an output file called prefix.bands (in this case, si.bands) with the following format:
+{% include note.html content="The number of pools (-npools) has to be equal to the number of MPI processes (-np or -n), otherwise the code will stop." %}
+
+It takes just a few seconds to obtain the interpolated band structure. We obtain an output file called prefix.bands (in this case, si.bands) with the following format:
 
 ```
  0.0000000      0.50000    0.50000    0.50000     -3.4658249872
@@ -246,7 +255,7 @@ The 1st column is a dummy index for the k-point. The 2nd column is the k-point c
 Requires to specify up to 14 variables in the input file (pert.in)
   - _prefix_: same prefix as in 'prefix'\_epwan.h5
   - _calc\_mode_: set to 'setup'
-  - _hole_: compute hole carrier concentration. By default _hole_ is set to .false., and electron carrier concentration will be computed. Set it to .true. when one needs hole carrier concentration.
+  - _hole_: By default _hole_ is set to .false.. Set it to .true. only when computing hole mobility of a semiconductor (the code compute hole concentration, instead of electron concentration, if _hole_ is .ture.). 
   - _boltz\_kdim(1)_, _boltz\_kdim(2)_, _boltz\_kdim(3)_: number of k points along each dimension of a k-point grid for the electrons momentum. This k-point grid is employed to compute the mobility or conductivity.
   - _boltz\_qdim(1)_, _boltz\_qdim(2)_, _boltz\_qdim(3)_: number of q points along each dimension of a uniform grid for the phonon momentum; the default is that _boltz\_qdim(i)=boltz\_kdim(i)_. If users need the size as same as the k grid, no need to specify these variables.
   - _boltz\_emin_, _boltz\_emax_: energy window (in eV units) used to compute transport properties. The suggested values are from 6 k_BT below E_F (boltz_emin) to 6k_BT above E_F (boltz_emax), where E<sub>F</sub> is the Fermi energy, k<sub>B</sub> the Boltzmann constant, and T is temperature in K units.
@@ -273,7 +282,7 @@ Here is the input file (pert.in):
 /
 ```
 
-In the input file pert.in, we use a k-grid of 80 x 80 x 80 for electrons, which corresponds to boltz_kdim(i)=80, and use a q-grid for phonons. When a phonon q-grid different from the electron k-grid is desired, the user has to provide the q-grid variables  _boltz\_qdim(1)_,  _boltz\_qdim(2)_, and _boltz\_qdim(3)_ in the input file.
+In the input file pert.in, we use a k-grid of 80 x 80 x 80 for electrons, which corresponds to boltz_kdim(i)=80, and use a q-grid for phonons of the same dimension as the k-grid. When a phonon q-grid different from the electron k-grid is desired, the user need to provide the q-grid variables  _boltz\_qdim(1)_,  _boltz\_qdim(2)_, and _boltz\_qdim(3)_ in the input file.
 
 In this example, we want to compute the electron mobility, so we choose an energy window that includes the conduction band minimum. Here the energy window is between 6.4 (_boltz\_emin_) and 6.9 eV (_boltz\_emax_), and the conduction band minimum is at 6.63 eV in this case. We include the two lowest conduction bands, with band indices 5 and 6 (_band\_min_ and _band\_max_).
 

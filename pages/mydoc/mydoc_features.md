@@ -1,7 +1,7 @@
 ---
 title: Features
 sidebar: mydoc_sidebar
-last_updated: Decemer 19, 2019
+last_updated: Jan 1, 2020
 permalink: mydoc_features.html
 folder: mydoc
 toc: false
