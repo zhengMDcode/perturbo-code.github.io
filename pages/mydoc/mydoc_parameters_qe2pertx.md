@@ -6,7 +6,6 @@ permalink: mydoc_parameters_qe2pertx.html
 folder: mydoc
 toc: false
 ---
-## Parameters for 
 
 
 <html>
