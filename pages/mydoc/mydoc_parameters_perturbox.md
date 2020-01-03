@@ -151,7 +151,7 @@ th, td {
   <tr>
        <td>sampling</td>
        <td>string</td>
-       <td>Options: 'uniform' (default), 'cauchy'</td>
+       <td>Random q points sampling method. Options: 'uniform' (default), 'cauchy'</td>
   </tr>
   <tr>
        <td>cauchy_scale</td>
@@ -161,15 +161,10 @@ th, td {
   <tr>
        <td>nsamples</td>
        <td>integer</td>
-       <td>Number of q-points for the summation over the q-points in imsigma calculation; the default is 1,000,000</td>
+       <td>Number of q-points for the summation over the q-points in imsigma calculation; the default is 100,000</td>
   </tr>
   <tr>
        <td colspan="3" >DYNAMICS (via the time-dependent BTE) </td>
-  </tr>
-  <tr>
-       <td>boltz_efield(1:3)</td>
-       <td>real</td>
-       <td>External electric field (in V/cm); the default is 0.0</td>
   </tr>
   <tr>
        <td>time_step</td>
@@ -184,12 +179,12 @@ th, td {
   <tr>
        <td>boltz_init_dist</td>
        <td>string</td>
-       <td>Initial electron distribution at time zero <br>options: 'restart', 'lorentz', 'fermi', 'gaussian'</br></td> 
+       <td>Initial electron distribution at time zero. options: 'restart', 'lorentz', 'fermi', 'gaussian'</td> 
   </tr>
   <tr>
        <td>boltz_init_e0</td>
        <td>real</td>
-       <td>Energy (in eV) at which the initial distribution is centered. Needs to be specified for boltz_init_dist='lorentz' or 'gaussian'.</td>
+       <td> Energy (in eV) parameter used to generate initial distribution. </td>
   </tr>  
   <tr>
        <td>boltz_init_smear</td>
@@ -199,7 +194,7 @@ th, td {
   <tr>
        <td>solver</td>
        <td>string</td>
-       <td>Options: 'euler' (default), 'rk4'</td>
+       <td>Options: 'rk4' (default), 'euler'</td>
   </tr>  
 </table>
 

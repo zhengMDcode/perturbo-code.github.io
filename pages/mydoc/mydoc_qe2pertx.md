@@ -144,8 +144,8 @@ Here we show the input file for the executable qe2pert.x:
  outdir='./tmp'
  phdir='../pw-ph-wann/phonon/save'
  nk1=8, nk2=8, nk3=8
- qe_band_min = 1
- qe_band_max = 16
+ dft_band_min = 1
+ dft_band_max = 16
  num_wann = 8
  lwannier=.true.
  load_ephmat = .false.
@@ -157,7 +157,7 @@ Here we show the input file for the executable qe2pert.x:
 * _outdir_ contains the save directroy obtained from the nscf calculations. The calculated e-ph matrix elements will be stored in this directory. 
 * _phdir_ is the save directory inside which we collected all the phonon information.
 * _nk1_, _nk2_, _nk3_ are the number of k-points along each direction used in the nscf and Wannier90 calculations.
-* _qe\_band\_min_ and _qe\_band\_max_ determine the range of bands we are interested in, and should be the same as the values used in the Wannierization process. For example, if we used 40 bands in the nscf calculation and we excluded bands 1-4 and 31-40 in the Wannierization, then _qe\_band\_min=5_ and  _qe\_band\_max=30_.  
+* _dft\_band\_min_ and _dft\_band\_max_ determine the range of bands we are interested in, and should be the same as the values used in the Wannierization process. For example, if we used 40 bands in the nscf calculation and we excluded bands 1-4 and 31-40 in the Wannierization, then _dft\_band\_min=5_ and  _dft\_band\_max=30_.  
 * _num\_wann_: the number of Wannier functions.
 * _lwannier_: a logical flag. When it is .true., the e-ph matrix elements are computed using the Bloch wave functions rotated with the Wannier unitary matrix; if .false., the e-ph matrix elements are computed using  the Bloch wave functions, and the e-ph matrix elements are then rotated using the Wannier unitary matrix. By default, it is .true. to reduce computational cost.
 * _load\_ephmat_: a logical flag. If .true., reuse e-ph matrix elements in Bloch function basis computed previously. This is useful if you want to test different Wannier basis. For example, you could first run `qe2pert.x` with _lwannier_=.false., and then rerun  `qe2pert.x` with _lwannier_=.false. and _load\_ephmat_ with different Wannier unitary matrix. 

@@ -19,14 +19,14 @@ The input files can be found in the directory "pw-ph-wann". Remember to run scf,
  outdir='./tmp'
  phdir='../pw-ph-wann/phonon/References/save'
  nk1=8, nk2=8, nk3=8
- qe_band_min = 1
- qe_band_max = 32
+ dft_band_min = 1
+ dft_band_max = 32
  num_wann = 16
  lwannier=.true.
 /
 ```
 
-The input file is similar to the one for silicon without SOC ("examples/example02-silicon-qe2pert"). We only need to double the number of Wannier functions (num_wann variable) and DFT bands (qe_band_min and qe_band_max) in the input file. 
+The input file is similar to the one for silicon without SOC ("examples/example02-silicon-qe2pert"). We only need to double the number of Wannier functions (num_wann variable) and DFT bands (`dft_band_min` and `dft_band_max`) in the input file. 
 
 The input files for perturbo.x are also similar to the silicon calculations without SOC, except for the band range given by _band\_min_ and _band\_max_. Each calculation is the same as in the silicon example without SOC.
 

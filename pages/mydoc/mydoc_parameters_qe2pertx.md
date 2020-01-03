@@ -40,12 +40,12 @@ toc: false
       <td>Name of the directory where the phonon "save" directory is located</td>
   </tr>
   <tr>
-      <td>qe_band_min</td>
+      <td>dft_band_min</td>
       <td>intger</td>
       <td>Lowest band index used in Wannier90; the default is 1</td>
   </tr>
   <tr>
-      <td>qe_band_max</td>
+      <td>dft_band_max</td>
       <td>intger</td>
       <td>Highest band index used in Wannier90; the default is 10000</td>
   </tr>
@@ -82,12 +82,12 @@ toc: false
   <tr>
       <td>eig_corr</td>
       <td>string</td>
-      <td>File containing the Kohn-Sham eigenvalues (usually called prefix.eig) prefix.eig</td>
+      <td> File containing the electron eigenvalues on the (nk1, nk2, nk3) grid. The format of this file is the same as the file `prefix.eig` generated in Wannier90. if present, `qe2pert.x` will read the eigenvalues from this file, rather than Kohn-Sham eigenvalues from QE-nscf calculation. This is usually used when one wants to use modified eigenvalues (e.g., from GW). </td>
   </tr>  
   <tr>
       <td>polar_alpha</td>
       <td>real</td>
-      <td>Used only in polar materials. to be consistent with rigid_bulk, enforce alpha=1.0 for lattice dynamical</td>
+      <td> Convergence parameter used in the Ewald sum when computing the polar correction in polar materials. The default value is 1.0. </td>
   </tr>  
   <tr>
       <td>asr</td>

@@ -17,8 +17,8 @@ Run the preliminary calculations (scf, phonon, nscf, and Wannier90) in the direc
   outdir='./tmp'
   phdir='../pw-ph-wann/phonon/References/save'
   nk1=36, nk2=36, nk3=1
-  qe_band_min = 1
-  qe_band_max = 11
+  dft_band_min = 1
+  dft_band_max = 11
   num_wann = 2
   lwannier = .true.
   system_2d = .true.
