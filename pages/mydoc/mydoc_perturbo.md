@@ -2,7 +2,7 @@
 title: PERTURBO calculation
 sidebar: mydoc_sidebar
 last_updated: Jan 1, 2020
-permalink: mydoc_perturbox.html
+permalink: mydoc_perturbo.html
 folder: mydoc
 toc: true
 ---
@@ -17,10 +17,13 @@ In this section, we will discuss the features (or calculation modes) of `perturb
 * 'meanfp': compute the e-ph mean free path, also output the corresponding band velocity and relaxition time. 
 * 'trans': compute electrical conductivity for metals, semiconductors, and insulators, or carrier mobility for semiconductors, using either the state-dependent RTA approach or the iterative approach of the BTE.
 * 'trans-pp': postprocessing of the 'trans' calculation, compute the Seebeck coefficient.  
-* (ADD ULTRAFAST DYNAMICS )
+* 'dynamics-run': ultrafast hot carrier dynamics via the time-dependent Boltzmann transport equation
+* 'dynamics-pp': postprocessing of the 'dynamics-run' calculation, compute the BZ-averaged energy-dependent carrier population 
 
 In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory "examples/example01-silicon-perturbo/perturbo"). **To run perturbo.x one first needs to generate the file perfix_epwan.h5** (in this case, si\_epwan.h5), which is prepared using qe2pert.x as we discuss in section **qe2pert.x**. The file si\_epwan.h5 is inside the directory "examples/example01-silicon-perturbo/qe2pert.x". For each calculation mode, we also provide reference results in the directory "References". In all calculations, the same prefix value as in the QE DFT calculation should be used.
 
+
+<a name="calc_mode_bands"></a>
 ### calc_mode = 'bands'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-band </div>
@@ -92,6 +95,7 @@ Note that there are 8 blocks in this example, one for each of the 8 bands, becau
 
 
 
+<a name="calc_mode_phdisp"></a>
 ### calc_mode = 'phdisp'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-phdisp  </div>
@@ -143,6 +147,7 @@ Note that there are 6 blocks, one for each of the to 6 phonon modes in silicon. 
 
 
 
+<a name="calc_mode_ephmat"></a>
 ### calc_mode = 'ephmat'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-ephmat  </div>
@@ -204,6 +209,7 @@ The calculation typically takes a few minutes. The output file, called _prefix.e
 
 The 1st column is a dummy index for the k-point. The 2nd column is the k-point coordinate used for plotting. The 3rd and 4th columns are the dummy index and the q-point coordinate used for plotting, respectively. The 5th column is the phonon mode index. The 6th column is the phonon energy (in meV). The 7th column is the deformation potential (in eV/Å units), namely the expectation value of the phonon perturbation potential with respect to the initial and final electronic states. The 8th column is the absolute values of the e-ph matrix elements (meV units) summed over the number of bands specified by the user. 
 
+<a name="calc_mode_setup"></a>
 ### calc_mode = 'setup'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-setup-electron (pert-setup-hole)  </div>
@@ -287,7 +293,7 @@ Note how perturbo.x has computed the chemical potential (second entry in the sec
 The above explanation focuses on electrons. For holes carriers, please refer to "examples/example01-silicon-perturbo/perturbo/pert-setup/pert-setup-hole". In the input file for holes, remember to use hole=.true. (default: hole=.false.), and choose an appropriate energy window and the band indices for holes. 
 
 
-
+<a name="calc_mode_imsigma"></a>
 ### calc_mode = 'imsigma'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-imsigma-electron (pert-imsigma-hole)  </div>
@@ -396,7 +402,7 @@ One way of obtaining the relaxation times (and their inverse, the scattering rat
 Also note that an example calculation of the e-ph self-energy for holes, is provided in the example folder "examples/example01-silicon-perturbo/perturbo/pert-imsigma-hole", where we use different band indices (_band\_min=2_ and _band\_max=4_), and the files, fklist and ftemper, are also different and obtained in a different perturbo 'setup' calculation. 
 
 
-
+<a name="calc_mode_meanfp"></a>
 ### calc_mode = 'meanfp'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-meanfp-electron (pert-meanfp-hole)  </div>
@@ -476,7 +482,7 @@ The 1st to 3rd columns are the same as in _prefix.mfp_. The 4th to 6th columns a
 For an example calculation of mean free paths for holes, please see the folder "examples/example01-silicon-perturbo/perturbo/pert-meanfp-hole".
 
 
-
+<a name="calc_mode_trans"></a>
 ### calc_mode = 'trans'
 
 The calculation mode 'trans' computes the electrical conductivity and carrier mobility tensors. The code can compute these quantities using the relaxation time approximantion (RTA) of the Boltzmann transport equation (BTE) or an iterative approach (ITA) to fully solve the linearized BTE. 
@@ -641,6 +647,7 @@ An example calculation for holes is also provided in the folder "examples/exampl
 
 
 
+<a name="calc_mode_trans-pp"></a>
 ### calc_mode = 'trans-pp'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b>  examples/example01-silicon-perturbo/perturbo/pert-trans-pp-electron  </div>
@@ -695,3 +702,135 @@ An example calculation for holes is also provided in the folder "examples/exampl
 
 
 
+<a name="calc_mode_dynamics-run"></a>
+### calc_mode = 'dynamics-run' 
+
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-dynamics-run </div>
+
+<div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Ultrafast hot carrier dynamics via the time-dependent Boltzmann transport equation: set an initial carrier distribution and calculate its evolution in time </div>
+
+For the ultrafast dynamics, one needs first to perform the ```calc_mode = 'setup'``` calculation, which is described [here](#calc_mode_setup). So, we assume that the user has already perform the setup calculation. From the setup calculation, we retain the following files necessary for the dynamics calculations: _prefix.temper_ and _prefix\_tet.h5_. 
+ 
+Specify the following variables in the input files (pert.in):
+  - <a href="mydoc_param_perturbo.html#prefix">prefix</a>: the same prefix as in 'prefix'\_epwan.h5
+  - <a href="mydoc_param_perturbo.html#calc_mode">calc_mode</a>: set to ```'dynamics-run'```
+  - <a href="mydoc_param_perturbo.html#boltz_kdim">boltz_kdim(1), boltz_kdim(2), boltz_kdim(3)</a>: k-grid for electrons, here we use a 80x80x80 grid
+  - <a href="mydoc_param_perturbo.html#boltz_qdim">boltz_qdim(1), boltz_qdim(2), boltz_qdim(3)</a>: q-grid for phonons, specify if it is different from the k-grid, here we use the same q-grid as k-grid
+  - <a href="mydoc_param_perturbo.html#boltz_emin">boltz_emin</a>, <a href="mydoc_input_parameters_perturbo.html#boltz_emax">boltz_emax</a>: energy window (in eV units), use the same as in the setup calculation
+  - <a href="mydoc_param_perturbo.html#band_min">band_min</a>, <a href="mydoc_input_parameters_perturbo.html#band_max">band_max</a>: band range
+  - <a href="mydoc_param_perturbo.html#ftemper">ftemper</a>: the filename of a file containing temperature, chemical potential, and carrier concentration values (for the format, see the [section](#calc_mode_setup) on the calculation mode ```'setup'```)
+  - <a href="mydoc_param_perturbo.html#time_step">time_step</a>: set to its typical value, 1 fs
+  - <a href="mydoc_param_perturbo.html#boltz_nstep">boltz_nstep</a>: set to 50; here we perform a relatively short simulation of 50 fs 
+  - <a href="mydoc_param_perturbo.html#output_nstep">output_nstep</a>: an optional variable to shorten the output; the output time step $$\Delta t_{out}$$ is determined in the following way: $$\Delta t_{out} = \texttt{output_nstep}\times \Delta t_{sim}  $$, where $$\Delta t_{sim} $$ is the simulation time step
+  - <a href="mydoc_param_perturbo.html#solver">solver</a>: set to ```'euler'```, here we use the Euler first order solver of BTE 
+  - <a href="mydoc_param_perturbo.html#boltz_init_dist">boltz_init_dist</a>: set to ```'gaussian'```, we select the Gaussian initial distribution. To restart the simulation, specify ```boltz_init_dist='restart'```.
+  - <a href="mydoc_param_perturbo.html#boltz_init_e0">boltz_init_e0</a>: in this example, the distribution is centered around 7.4 eV
+  - <a href="mydoc_param_perturbo.html#boltz_init_smear">boltz_init_smear</a>: we select a 40 meV smearing
+  - <a href="mydoc_param_perturbo.html#phfreq_cutoff">phfreq_cutoff</a>: we select a 1 meV phonon energy cutoff
+  - <a href="mydoc_param_perturbo.html#delta_smear">delta_smear</a>: the broadening to model the Dirac delta function is chosen to 8 meV
+
+Here is the input file (pert.in):
+<a name="input_file_dynamics-run"></a>
+
+```fortran
+&perturbo
+ prefix      = 'si'
+ calc_mode   = 'dynamics-pp'
+
+ boltz_kdim(1) = 80
+ boltz_kdim(2) = 80
+ boltz_kdim(3) = 80
+
+ boltz_emin = 6.4
+ boltz_emax = 6.9
+ band_min = 5
+ band_max = 6
+
+ ftemper  = 'si.temper'
+
+ time_step   = 1 !fs
+ boltz_nstep = 50
+ output_nstep = 2
+ solver = 'euler'
+
+ boltz_init_dist = 'gaussian'
+ boltz_init_e0 = 7.4 ! eV
+ boltz_init_smear = 40 !meV
+
+ tmp_dir = "./tmp"
+ phfreq_cutoff = 1 ! meV
+ delta_smear = 8 ! meV
+/
+```
+
+In this example, we calculate the evolution of the electron distribution. In order to perform the hole dynamics, set the parameter <a href="mydoc_param_perturbo.html#hole">hole</a> to ```true```.
+
+Run pertubo.x (remember to link or copy _prefix\_epwan.h5_ in the current directory):
+
+```
+$ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out
+```
+
+We obtain the _prefix\_cdyna.h5_ HDF5 output file (this file can be also found in the References directory). This file contains all the necessary output information about the performed simulation. This file is organized as follows:
+
+- ``` band_structure_ryd ```: electronic bandstructure in Ry; each column corresponds to the band index $$n$$ $$(~\texttt{band_min}\leq n \leq \texttt{band_max})$$
+- ``` dynamics_run_[i]```: an HDF5 group that contains information about the _i<sup> th</sup>_ simulation.<br/>  If the simulation was restarted (boltz_init_dist='restart'), one will have several dynamics_run_[i] groups, otherwise, only dynamics_run_1 will be present. A group dynamics_run_[i] is structured as follows:
+  - ```num_steps```: the number of _output_ time steps (taking into account <a href="mydoc_param_perturbo.html#output_nstep">output_nstep</a>), can be different for different dynamics_run_[i]
+  <br/><br/>
+  - ```snap_t_0```: $$f_{n\mathbf{k}}(t_0)$$
+  <br/>$$\vdots$$<br/>
+  - ```snap_t_[j]```: the distribution function $$f_{n\mathbf{k}}$$ for time $$t_j$$: $$t_j = t_0 + j\Delta t_{out}  $$, where $$\Delta t_{out} $$ is the output time step. Each column corresponds to the band index $$n$$
+  <br/>$$\vdots$$<br/>
+  - ```snap_t_[num_steps]```: $$f_{n\mathbf{k}}(t_{\texttt{num_steps}})$$
+  <br/><br/>
+  - ```time_step_fs```: the output time step $$\Delta t_{out}$$ (can be different for different dynamics_run_[i])
+- ``` num_runs```: total number of performed simulations (corresponds to the number of dynamics_run_[i] groups).
+
+<br/>
+The _prefix\_cdyna.h5_ file structure can be schematically represented as follows:
+<img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-run.svg" alt="diagram_hdf5_dynamics-run">
+
+In order to postprocess this file, see the next section.
+
+<a name="calc_mode_dynamics-pp"></a>
+### calc_mode = 'dynamics-pp' 
+
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> examples/example01-silicon-perturbo/perturbo/pert-dynamics-pp </div>
+
+<div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Postprocessing of the ultrafast dynamics calculations</div>
+
+In this section we aim to calculate the Brillouin zone-averaged _energy_-dependent carrier population $$\bar{f}(E,t) $$. Having calculated the distribution function $$f_{n\mathbf{k}}(t)$$, one can find $$\bar{f}(E,t) $$ in the following way:
+
+$$
+\bar{f}(E,t) = \sum_{n\mathbf{k}} f_{n\mathbf{k}}(t) \delta(\epsilon_{n\mathbf{k}}-E).
+$$
+
+The integral of $$\bar{f}(E,t)$$ over the energy gives the number of carriers per unit cell as a function of time.
+
+In order to calculate the $$\bar{f}(E,t)$$ quantity, one needs to have all the files required for the ``` calc_mode='dynamics-run'``` calculation ([previous section](#calc_mode_dynamics-run)) and the HDF5 output file _prefix\_cdyna.h5_ from the dynamics-run calculation. To perform the postprocessing, use a similar to the previous section [input file](#input_file_dynamics-run), but change the calculation mode to ```calc_mode='dynamics-pp' ```. Run pertubo.x (remember to link or copy _prefix\_epwan.h5_ in the current directory):
+
+```
+$ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out
+```
+
+On the output, we obtain the following files: 
+
+- _si\_popu.h5_: an HDF5 file that contains all the necessary information for $$\bar{f}(E,t) $$
+- _si_cdyna.dat_: an ASCII file that contains the number of carriers per unit cell as a function of time
+
+The _si\_popu.h5_ HDF5 file is organized as follows:
+
+- ```energy_distribution```: the group containing the populations for all the time instants of the dynamics-run simulation
+  <br/><br/>
+  - ```popu_t1```: $$ \bar{f}(E,t_1) $$
+  <br/>$$\vdots$$<br/>
+  - ```popu_t[j]```: the carrier population $$\bar{f}(E,t_j)$$ at time $$t_j$$
+  <br/>$$\vdots$$<br/>
+  - ```popu_t[num_steps+1]```: $$ \bar{f}(E,t_{\texttt{num_steps+1}}) $$
+  <br/><br/>
+- ```energy_grid_ev```: the grid of energies in eV; the number of energy grid points is given by $$ \frac{ \texttt{emax} - \texttt{emin} }{ \texttt{boltz_de} }+\texttt{3}$$
+- ```times_fs```: the array of time instants in fs
+
+<br/>
+The _si\_popu.h5_ HDF5 file can be schematically represented as follows:
+<img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-pp.svg" alt="diagram_hdf5_dynamics-pp">

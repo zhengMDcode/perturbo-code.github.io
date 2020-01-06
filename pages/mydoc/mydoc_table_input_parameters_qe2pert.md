@@ -1,55 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="keywords" content=" ">
-<title>Parameters for qe2pert.x  | Perturbo | Manual</title>
+---
+title: Parameters for qe2pert.x 
+sidebar: mydoc_sidebar
+last_updated: Decemer 19, 2019
+permalink: mydoc_table_input_parameters_qe2pert.html
+folder: mydoc
+toc: false
+---
 
-
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/modern-business.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/customstyles.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/theme-blue.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
-<link rel="stylesheet" href="/mydoc-pdf/css/printstyles.css">
-
-<script>
-    Prince.addScriptFunc("datestamp", function() {
-        return "PDF last generated: January 01, 2020";
-    });
-</script>
-
-<script>
-    Prince.addScriptFunc("guideName", function() {
-        return "Perturbo User Guide";
-    });
-</script>
-
-
-
-</head>
-
-<body class=" print">
-
-<!-- Page Content -->
-<div class="container">
-    <!-- Content Column -->
-    <div class="col-md-9">
-
-        <div class="post-header">
-    <h1 class="post-title-main" id="mydoc_parameters_qe2pertx.html">Parameters for qe2pert.x</h1>
-</div>
-
-<div class="post-content">
-
-    
-    <h2 id="parameters-for">Parameters for</h2>
 
 <html>
 <body>
@@ -57,9 +14,9 @@
 
 <table style="width=600">
 <!--<table style="text-align:center" width=600>-->
-  <col width="150" />
-  <col width="150" />
-  <col width="300" />
+  <col width="150">
+  <col width="150">
+  <col width="300">
 
 <tr>
     <th>Name</th>
@@ -83,12 +40,12 @@
       <td>Name of the directory where the phonon "save" directory is located</td>
   </tr>
   <tr>
-      <td>qe_band_min</td>
+      <td>dft_band_min</td>
       <td>intger</td>
       <td>Lowest band index used in Wannier90; the default is 1</td>
   </tr>
   <tr>
-      <td>qe_band_max</td>
+      <td>dft_band_max</td>
       <td>intger</td>
       <td>Highest band index used in Wannier90; the default is 10000</td>
   </tr>
@@ -125,12 +82,12 @@
   <tr>
       <td>eig_corr</td>
       <td>string</td>
-      <td>File containing the Kohn-Sham eigenvalues (usually called prefix.eig) prefix.eig</td>
+      <td> File containing the electron eigenvalues on the (nk1, nk2, nk3) grid. The format of this file is the same as the file `prefix.eig` generated in Wannier90. if present, `qe2pert.x` will read the eigenvalues from this file, rather than Kohn-Sham eigenvalues from QE-nscf calculation. This is usually used when one wants to use modified eigenvalues (e.g., from GW). </td>
   </tr>  
   <tr>
       <td>polar_alpha</td>
       <td>real</td>
-      <td>Used only in polar materials. to be consistent with rigid_bulk, enforce alpha=1.0 for lattice dynamical</td>
+      <td> Convergence parameter used in the Ewald sum when computing the polar correction in polar materials. The default value is 1.0. </td>
   </tr>  
   <tr>
       <td>asr</td>
@@ -145,16 +102,5 @@
 </table>
 
 </body>
-</html>
-
-
-</div>
-
-    </div>
-
-</div>    <!-- /.container -->
-
-</body>
-
 </html>
 

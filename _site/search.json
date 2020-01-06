@@ -50,10 +50,10 @@
 
 
 {
-"title": "Parameters for perturbo.x",
+"title": "PERTURBO input parameters",
 "tags": "",
 "keywords": "",
-"url": "mydoc_parameters_perturbox.html",
+"url": "mydoc_param_perturbo.html",
 "summary": ""
 }
 ,
@@ -61,10 +61,10 @@
 
 
 {
-"title": "Parameters for qe2pert.x",
+"title": "Quantum Espresso to PERTURBO input parameters",
 "tags": "",
 "keywords": "",
-"url": "mydoc_parameters_qe2pertx.html",
+"url": "mydoc_param_qe2pert.html",
 "summary": ""
 }
 ,
@@ -75,7 +75,7 @@
 "title": "PERTURBO calculation",
 "tags": "",
 "keywords": "",
-"url": "mydoc_perturbox.html",
+"url": "mydoc_perturbo.html",
 "summary": ""
 }
 ,
@@ -86,7 +86,7 @@
 "title": "Quantum Espresso to PERTURBO",
 "tags": "",
 "keywords": "",
-"url": "mydoc_qe2pertx.html",
+"url": "mydoc_qe2pert.html",
 "summary": ""
 }
 ,
@@ -110,6 +110,28 @@
 "keywords": "shuffle, card layout, dynamic grid, doc portal, support portal",
 "url": "mydoc_shuffle.html",
 "summary": "This layout shows an example of a knowledge-base style navigation system, where there is no hierarchy, just groups of pages that have certain tags."
+}
+,
+
+
+
+{
+"title": "Parameters for perturbo.x",
+"tags": "",
+"keywords": "",
+"url": "mydoc_table_input_parameters_perturbo.html",
+"summary": ""
+}
+,
+
+
+
+{
+"title": "Parameters for qe2pert.x",
+"tags": "",
+"keywords": "",
+"url": "mydoc_table_input_parameters_qe2pert.html",
+"summary": ""
 }
 ,
 
@@ -149,7 +171,7 @@
 
 
 {
-"title": "",
+"title": "Tutorials",
 "tags": "",
 "keywords": "",
 "url": "mydoc_tutorial_intro.html",

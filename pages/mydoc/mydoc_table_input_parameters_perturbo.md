@@ -1,55 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<html>
-<head>
-    <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="keywords" content=" ">
-<title>Parameters for perturbo.x  | Perturbo | Manual</title>
+---
+title: Parameters for perturbo.x
+sidebar: mydoc_sidebar
+last_updated: Decemer 19, 2019
+permalink: mydoc_table_input_parameters_perturbo.html
+folder: mydoc
+toc: false
+---
 
-
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/modern-business.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/customstyles.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/theme-blue.css">
-<link rel="stylesheet" href="http://localhost:4010/mydoc-pdf/css/syntax.css">
-<link rel="stylesheet" href="/mydoc-pdf/css/printstyles.css">
-
-<script>
-    Prince.addScriptFunc("datestamp", function() {
-        return "PDF last generated: January 01, 2020";
-    });
-</script>
-
-<script>
-    Prince.addScriptFunc("guideName", function() {
-        return "Perturbo User Guide";
-    });
-</script>
-
-
-
-</head>
-
-<body class=" print">
-
-<!-- Page Content -->
-<div class="container">
-    <!-- Content Column -->
-    <div class="col-md-9">
-
-        <div class="post-header">
-    <h1 class="post-title-main" id="mydoc_parameters_perturbox.html">Parameters for perturbo.x</h1>
-</div>
-
-<div class="post-content">
-
-    
-    <html>		
+<html>		
  <body>		
 
 <style>
@@ -66,9 +24,9 @@ th, td {
 
 <table style="width=600">
 <!--<table style="text-align:center" width=600>-->
-  <col width="150" />
-  <col width="150" />
-  <col width="300" />
+  <col width="150">
+  <col width="150">
+  <col width="300">
 
 <tr>
     <th>Name</th>
@@ -77,7 +35,7 @@ th, td {
   </tr>
 
   <tr>
-      <td colspan="3">JOB CONTROL</td>
+      <td colspan="3" >JOB CONTROL</td>
   </tr>
   <tr>
       <td>prefix</td>
@@ -125,7 +83,7 @@ th, td {
     <td>Read the e-ph matrix elements from the files in tmp_dir; the default is .false.; used in the calculation mode 'trans'</td>	
   </tr>
   <tr>
-      <td colspan="3">BOLTZMANN TRANSPORT EQUATION</td>
+      <td colspan="3" >BOLTZMANN TRANSPORT EQUATION</td>
   </tr>
   <tr>
       <td>boltz_kdim(1:3)</td>
@@ -183,7 +141,7 @@ th, td {
       <td>Threshold for the iterative procedure; the default is 0.002</td>
   </tr>
   <tr> 
-       <td colspan="3">POLAR CORRECTION (required only for calc_mode='imsigma')</td>
+       <td colspan="3" >POLAR CORRECTION (required only for calc_mode='imsigma')</td>
   </tr>
   <tr>
        <td>polar_split</td>
@@ -193,7 +151,7 @@ th, td {
   <tr>
        <td>sampling</td>
        <td>string</td>
-       <td>Options: 'uniform' (default), 'cauchy'</td>
+       <td>Random q points sampling method. Options: 'uniform' (default), 'cauchy'</td>
   </tr>
   <tr>
        <td>cauchy_scale</td>
@@ -203,15 +161,10 @@ th, td {
   <tr>
        <td>nsamples</td>
        <td>integer</td>
-       <td>Number of q-points for the summation over the q-points in imsigma calculation; the default is 1,000,000</td>
+       <td>Number of q-points for the summation over the q-points in imsigma calculation; the default is 100,000</td>
   </tr>
   <tr>
-       <td colspan="3">DYNAMICS (via the time-dependent BTE) </td>
-  </tr>
-  <tr>
-       <td>boltz_efield(1:3)</td>
-       <td>real</td>
-       <td>External electric field (in V/cm); the default is 0.0</td>
+       <td colspan="3" >DYNAMICS (via the time-dependent BTE) </td>
   </tr>
   <tr>
        <td>time_step</td>
@@ -226,12 +179,12 @@ th, td {
   <tr>
        <td>boltz_init_dist</td>
        <td>string</td>
-       <td>Initial electron distribution at time zero <br />options: 'restart', 'lorentz', 'fermi', 'gaussian'&lt;/br&gt;</td> 
+       <td>Initial electron distribution at time zero. options: 'restart', 'lorentz', 'fermi', 'gaussian'</td> 
   </tr>
   <tr>
        <td>boltz_init_e0</td>
        <td>real</td>
-       <td>Energy (in eV) at which the initial distribution is centered. Needs to be specified for boltz_init_dist='lorentz' or 'gaussian'.</td>
+       <td> Energy (in eV) parameter used to generate initial distribution. </td>
   </tr>  
   <tr>
        <td>boltz_init_smear</td>
@@ -241,21 +194,11 @@ th, td {
   <tr>
        <td>solver</td>
        <td>string</td>
-       <td>Options: 'euler' (default), 'rk4'</td>
+       <td>Options: 'rk4' (default), 'euler'</td>
   </tr>  
 </table>
 
  </body>	
-</html>
-
-
-</div>
-
-    </div>
-
-</div>    <!-- /.container -->
-
-</body>
-
-</html>
+</html>		
+	
 

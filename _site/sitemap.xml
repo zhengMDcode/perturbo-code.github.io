@@ -3,7 +3,7 @@
   
   
   <url>
-    <loc>http://localhost:4010/news_realease_10.html</loc>
+    <loc>http://localhost:4000/news_realease_10.html</loc>
   </url>
   
   
@@ -16,103 +16,115 @@
   
   
   <url>
-    <loc>http://localhost:4010/index.html</loc>
+    <loc>http://localhost:4000/index.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_about.html</loc>
+    <loc>http://localhost:4000/mydoc_about.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_features.html</loc>
+    <loc>http://localhost:4000/mydoc_features.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_installation.html</loc>
+    <loc>http://localhost:4000/mydoc_installation.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_parameters_perturbox.html</loc>
+    <loc>http://localhost:4000/mydoc_param_perturbo.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_parameters_qe2pertx.html</loc>
+    <loc>http://localhost:4000/mydoc_param_qe2pert.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_perturbox.html</loc>
+    <loc>http://localhost:4000/mydoc_perturbo.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_qe2pertx.html</loc>
+    <loc>http://localhost:4000/mydoc_qe2pert.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_release_notes_10.html</loc>
+    <loc>http://localhost:4000/mydoc_release_notes_10.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_shuffle.html</loc>
+    <loc>http://localhost:4000/mydoc_shuffle.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_tutorial_al.html</loc>
+    <loc>http://localhost:4000/mydoc_table_input_parameters_perturbo.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_tutorial_gaas.html</loc>
+    <loc>http://localhost:4000/mydoc_table_input_parameters_qe2pert.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_tutorial_graphene.html</loc>
+    <loc>http://localhost:4000/mydoc_tutorial_al.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_tutorial_intro.html</loc>
+    <loc>http://localhost:4000/mydoc_tutorial_gaas.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/mydoc_tutorial_si.html</loc>
+    <loc>http://localhost:4000/mydoc_tutorial_graphene.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/news.html</loc>
+    <loc>http://localhost:4000/mydoc_tutorial_intro.html</loc>
   </url>
   
   
   
   <url>
-    <loc>http://localhost:4010/news_archive.html</loc>
+    <loc>http://localhost:4000/mydoc_tutorial_si.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/news.html</loc>
+  </url>
+  
+  
+  
+  <url>
+    <loc>http://localhost:4000/news_archive.html</loc>
   </url>
   
   
@@ -132,7 +144,7 @@
   
   
   <url>
-    <loc>http://localhost:4010/assets/css/style.css</loc>
+    <loc>http://localhost:4000/assets/css/style.css</loc>
   </url>
   
   
