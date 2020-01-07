@@ -1,0 +1,38 @@
+.options_key {
+margin-left: 5%;
+width: 15%;
+float: left;
+}
+.options_value {
+width: 80%;
+float: left;
+}
+.clearfix{
+    clear:both
+}
+
+.input_param{
+  border-radius: 25px;
+  border: 2px solid var(--border);
+  padding: 20px; 
+  width: 100%;
+  background: var(--background);
+  /*height: 150px;  */
+}
+
+.family_watermark{
+ position: absolute;
+ margin-top:-15px;
+ text-align:right;
+ right: 35px;
+ opacity:0.6;
+ color: var(--color);
+}
+
+.family_watermark2{
+  position: absolute; 
+  top: 0; 
+  right: 0; 
+  width: 100px; 
+  text-align:right
+}

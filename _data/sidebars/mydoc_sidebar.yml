@@ -48,19 +48,19 @@ entries:
       url: /mydoc_release_notes_10.html
       output: web, pdf
 
-  - title: Workflow
+  - title: Tutorials
     output: web, pdf
     folderitems:
 
     - title: qe2pert.x
-      url: /mydoc_qe2pertx.html
+      url: /mydoc_qe2pert.html
       output: web, pdf
 
     - title: perturbo.x
-      url: /mydoc_perturbox.html
+      url: /mydoc_perturbo.html
       output: web, pdf
 
-  - title: Tutorials
+  - title: Other examples
     output: web, pdf
 
     folderitems:
@@ -89,10 +89,17 @@ entries:
 
     folderitems:
     - title: qe2pert.x
-      url: /mydoc_parameters_qe2pertx.html
-      output: web, pdf
+      url: /mydoc_param_qe2pert.html
+      output: web
 
     - title: perturbo.x
-      url: /mydoc_parameters_perturbox.html
-      output: web, pdf
+      url: /mydoc_param_perturbo.html
+      output: web
+    
+    - title: qe2pert.x
+      url: /mydoc_table_input_parameters_qe2pert.html
+      output: pdf
 
+    - title: perturbo.x
+      url: /mydoc_table_input_parameters_perturbo.html
+      output: pdf
