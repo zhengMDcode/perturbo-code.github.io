@@ -40,14 +40,6 @@ entries:
       url: /mydoc_about.html	
       output: web, pdf
 
-  - title: Release Notes
-    output: web, pdf
-    folderitems:
-
-    - title: 1.0 Release notes
-      url: /mydoc_release_notes_10.html
-      output: web, pdf
-
   - title: Tutorials
     output: web, pdf
     folderitems:
@@ -82,6 +74,14 @@ entries:
 
     - title: Aluminum 
       url: /mydoc_tutorial_al.html
+      output: web, pdf
+  
+  - title: Release Notes
+    output: web, pdf
+    folderitems:
+
+    - title: 1.0 Release notes
+      url: /mydoc_release_notes_10.html
       output: web, pdf
 
   - title: Input parameters

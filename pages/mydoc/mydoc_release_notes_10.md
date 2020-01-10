@@ -7,5 +7,4 @@ folder: mydoc
 toc: false
 ---
 
-Version 1.0 is the first release of the PERTURBO code.
-
+We are pleased to announce the first release of the PERTURBO code.

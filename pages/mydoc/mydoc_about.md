@@ -7,4 +7,4 @@ folder: mydoc
 toc: false
 ---
 
-The PERTURBO code is developed in Marco Bernardi's research group at Caltech. For more information, your are invited to visit the [group website](http://bernardi.caltech.edu).
+The PERTURBO code is developed in Marco Bernardi's research group at Caltech. For more information, your are invited to visit the <a href="http://bernardi.caltech.edu" target="_blank">group website</a>.

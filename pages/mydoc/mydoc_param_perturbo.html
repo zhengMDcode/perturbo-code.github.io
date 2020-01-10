@@ -1,7 +1,7 @@
 ---
 title: PERTURBO input parameters
 sidebar: mydoc_sidebar
-last_updated: January 09, 2020
+last_updated: January 10, 2020
 permalink: mydoc_param_perturbo.html
 folder: mydoc
 toc: false
@@ -24,6 +24,9 @@ To do some modifications, please, modify the script directly. -->
 <a href=#hole>hole</a> | 
 <a href=#tmp_dir>tmp_dir</a> | 
 <a href=#load_scatter_eph>load_scatter_eph</a> | 
+<a href=#sampling>sampling</a> | 
+<a href=#cauchy_scale>cauchy_scale</a> | 
+<a href=#nsamples>nsamples</a> | 
 <h3><a href=#bte style="color:Navy; text-decoration: none; border-bottom: 3px solid hsl(39,100.0%,50.0%);">Boltzmann Transport Equation</a></h3>
 <p>
 | <a href=#boltz_kdim>boltz_kdim</a> | 
@@ -40,13 +43,9 @@ To do some modifications, please, modify the script directly. -->
 <h3><a href=#polar_correction style="color:Navy; text-decoration: none; border-bottom: 3px solid hsl(147,50.0%,47.0%);">Polar correction</a></h3>
 <p>
 | <a href=#polar_split>polar_split</a> | 
-<a href=#sampling>sampling</a> | 
-<a href=#cauchy_scale>cauchy_scale</a> | 
-<a href=#nsamples>nsamples</a> | 
 <h3><a href=#dynamics style="color:Navy; text-decoration: none; border-bottom: 3px solid hsl(210,100.0%,56.0%);">Ultra-fast dynamics</a></h3>
 <p>
-| <a href=#boltz_efield>boltz_efield</a> | 
-<a href=#time_step>time_step</a> | 
+| <a href=#time_step>time_step</a> | 
 <a href=#output_nstep>output_nstep</a> | 
 <a href=#boltz_init_dist>boltz_init_dist</a> | 
 <a href=#boltz_init_e0>boltz_init_e0</a> | 
@@ -142,7 +141,7 @@ Calculation mode.</div>
   <br><br>
 <i>Variable type: </i>string<br>
 <br>
-Name of the file containing the k-point list (in crystal unit).</div>
+Name of the file containing the k-point list (in crystal coordiate).</div>
 <br>
 <a name=fqlist></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -151,7 +150,7 @@ Name of the file containing the k-point list (in crystal unit).</div>
   <br><br>
 <i>Variable type: </i>string<br>
 <br>
-Name of the file containing the q-point list (in crystal unit).</div>
+Name of the file containing the q-point list (in crystal coordiate).</div>
 <br>
 <a name=ftemper></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -200,6 +199,48 @@ The directory where the e-ph matrix elements are stored when <code><a href=#calc
 <i>Default value: </i><code>.false.</code><br>
 <br>
 Read the e-ph matrix elements from the files in tmp_dir. Used for <code><a href=#calc_mode>calc_mode</a>='trans'</code>.</div>
+<br>
+<a name=sampling></a>
+<div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
+<div class="family_watermark" style="--color: hsl(9,100.0%,57.6%)"><i>JOB CONTROL</i></div>
+<font size="4"><b>sampling</b></font>  
+  <br><br>
+<i>Variable type: </i>string<br>
+<i>Default value: </i><code>uniform</code><br>
+<i>Options:</i><br>
+<div class="options_key">
+<code>uniform</code>
+</div>
+<div class="options_value">
+random sampling from an uniform distribution.</div>
+<div class="clearfix"></div>
+<div class="options_key">
+<code>cauchy</code>
+</div>
+<div class="options_value">
+random sampling from a Cauchy disrtibution.</div>
+<div class="clearfix"></div>
+<br>
+Random q points sampling method.</div>
+<br>
+<a name=cauchy_scale></a>
+<div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
+<div class="family_watermark" style="--color: hsl(9,100.0%,57.6%)"><i>JOB CONTROL</i></div>
+<font size="4"><b>cauchy_scale</b></font>  
+  <br><br>
+<i>Variable type: </i>real<br>
+<br>
+Scale parameter gamma for the Cauchy distribution; used when <code><a href="sampling">sampling</a>='cauchy'</code>.</div>
+<br>
+<a name=nsamples></a>
+<div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
+<div class="family_watermark" style="--color: hsl(9,100.0%,57.6%)"><i>JOB CONTROL</i></div>
+<font size="4"><b>nsamples</b></font>  
+  <br><br>
+<i>Variable type: </i>integer<br>
+<i>Default value: </i><code>100000</code><br>
+<br>
+Number of q-points for the summation over the q-points in imsigma calculation.</div>
 <br>
 <br><br> <span style="display:inline-block;background:hsl(39,100.0%,50.0%);width:100%"><font size="5"><a style="color:Navy"; name=bte>&nbspBoltzmann Transport Equation</a></font></span>
 <br>
@@ -346,61 +387,8 @@ remainder part</div>
 <br>
 Polar correction mode.</div>
 <br>
-<a name=sampling></a>
-<div class="input_param" style="--background: hsl(147,6.5%,93.11%); --border: hsl(147,65.0%,32.9%)">
-<div class="family_watermark" style="--color: hsl(147,55.0%,42.300000000000004%)"><i>POLAR CORRECTION</i></div>
-<font size="4"><b>sampling</b></font>  
-  <br><br>
-<i>Variable type: </i>string<br>
-<i>Default value: </i><code>uniform</code><br>
-<i>Options:</i><br>
-<div class="options_key">
-<code>uniform</code>
-</div>
-<div class="options_value">
-uniform sampling</div>
-<div class="clearfix"></div>
-<div class="options_key">
-<code>cauchy</code>
-</div>
-<div class="options_value">
-random sampling from a Cauchy disrtibution</div>
-<div class="clearfix"></div>
-<br>
-Sampling mode.</div>
-<br>
-<a name=cauchy_scale></a>
-<div class="input_param" style="--background: hsl(147,6.5%,93.11%); --border: hsl(147,65.0%,32.9%)">
-<div class="family_watermark" style="--color: hsl(147,55.0%,42.300000000000004%)"><i>POLAR CORRECTION</i></div>
-<font size="4"><b>cauchy_scale</b></font>  
-  <br><br>
-<i>Variable type: </i>real<br>
-<br>
-Scale parameter gamma for the Cauchy distribution; used when <code><a href="sampling">sampling</a>='cauchy'</code>.</div>
-<br>
-<a name=nsamples></a>
-<div class="input_param" style="--background: hsl(147,6.5%,93.11%); --border: hsl(147,65.0%,32.9%)">
-<div class="family_watermark" style="--color: hsl(147,55.0%,42.300000000000004%)"><i>POLAR CORRECTION</i></div>
-<font size="4"><b>nsamples</b></font>  
-  <br><br>
-<i>Variable type: </i>integer<br>
-<i>Default value: </i><code>1000000</code><br>
-<br>
-Number of q-points for the summation over the q-points in imsigma calculation.</div>
-<br>
 <br><br> <span style="display:inline-block;background:hsl(210,100.0%,56.0%);width:100%"><font size="5"><a style="color:Navy"; name=dynamics>&nbspUltra-fast dynamics</a></font></span>
 <br>
-<br>
-<a name=boltz_efield></a>
-<div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
-<div class="family_watermark" style="--color: hsl(210,100.0%,50.4%)"><i>ULTRA-FAST DYNAMICS</i></div>
-<font size="4"><b>boltz_efield</b></font>  
-  <br><br>
-<i>Variable type: </i>real<br>
-<i>Default value: </i><code>(0.0,0.0,0.0)</code><br>
-<i>Dimensions: </i><code>(3)</code><br>
-<br>
-External electric field (in V/cm).</div>
 <br>
 <a name=time_step></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -432,7 +420,7 @@ Print out the results every <code>output_nstep</code> time steps.</div>
 <code>restart</code>
 </div>
 <div class="options_value">
-use the distribution from the previous calculation</div>
+restart from the previous calculations.</div>
 <div class="clearfix"></div>
 <div class="options_key">
 <code>lorentz</code>
@@ -453,7 +441,7 @@ Fermi-Dirac distribution</div>
 Gaussian distribution</div>
 <div class="clearfix"></div>
 <br>
-Initial electron distribution.</div>
+Initial electron distribution at time zero.</div>
 <br>
 <a name=boltz_init_e0></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -462,7 +450,7 @@ Initial electron distribution.</div>
   <br><br>
 <i>Variable type: </i>real<br>
 <br>
-Energy (in eV) at which the initial distribution is centered. Needs to be specified for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> or <code>'gaussian'</code>.</div>
+Energy (in eV) parameter used to generate initial distribution. Needs to be specified for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> (center), <code>'gaussian'</code> (center), or <code>'fermi'</code> (chemical potential).</div>
 <br>
 <a name=boltz_init_smear></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -471,7 +459,7 @@ Energy (in eV) at which the initial distribution is centered. Needs to be specif
   <br><br>
 <i>Variable type: </i>real<br>
 <br>
-The broadening or width (in meV) of the initial distribution. Needs to be specified for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> or <code>'gaussian'</code>.</div>
+The broadening or width (in meV) of the initial distribution for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> or <code>'gaussian'</code>, or temperature (in meV) for <code>'fermi'</code>.</div>
 <br>
 <a name=solver></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -479,7 +467,7 @@ The broadening or width (in meV) of the initial distribution. Needs to be specif
 <font size="4"><b>solver</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
-<i>Default value: </i><code>euler</code><br>
+<i>Default value: </i><code>rk4</code><br>
 <i>Options:</i><br>
 <div class="options_key">
 <code>euler</code>

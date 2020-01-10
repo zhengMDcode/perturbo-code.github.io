@@ -14,10 +14,12 @@ topnav_dropdowns:
   folders:
     - title: Help
       folderitems:
+        - title: Quantum Espresso
+          external_url: https://www.quantum-espresso.org
+        - title: HDF5 file format
+          external_url: https://portal.hdfgroup.org/display/HDF5/Introduction+to+HDF5
         - title: OpenMPI
           external_url: https://www.open-mpi.org
-        - title: Your suggestions ....
-          external_url: http://google.com
 #    - title: Products
 #      folderitems:
 #        - title: Jekyll Documentation Theme
