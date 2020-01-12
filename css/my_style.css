@@ -20,6 +20,14 @@ float: left;
   /*height: 150px;  */
 }
 
+.my_code_box{
+  border-radius: 5px;
+  border: 2px solid #555555;
+  padding: 20px; 
+  width: 100%;
+  background: #EEEEEE
+}
+
 .family_watermark{
  position: absolute;
  margin-top:-15px;
@@ -29,10 +37,45 @@ float: left;
  color: var(--color);
 }
 
-.family_watermark2{
-  position: absolute; 
-  top: 0; 
-  right: 0; 
-  width: 100px; 
-  text-align:right
+/* ==== COLLAPSIBLE ==== */
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: var(--background);
+  border-radius: 5px;
+  color: #000000;
+  cursor: pointer;
+  padding-top: 1.0px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 11px;
+  border-left: solid 6px var(--strip-color);
+  margin-bottom:-50px;
 }
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #AAAAAA;
+  border-radius: 5px 5px 0 0;
+}
+
+
+
+/*.collapsible:hover span {display:none}
+.collapsible:hover:before {content:"Reply!"} */
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding-left: 3%;
+  padding-bottom: 2%;
+  padding-right: calc(97% - 6px);
+  padding-top: 2%;
+  display: none;
+  overflow: hidden;
+  background-color: #ccc;
+  border-left: solid 6px var(--strip-color);
+  border-radius: 0 0 5px 5px
+}
+

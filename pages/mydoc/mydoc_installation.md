@@ -1,7 +1,7 @@
 ---
 title: Installation and compilation
 sidebar: mydoc_sidebar
-last_updated: Jan 1, 2020
+last_updated: January 10, 2020
 permalink: mydoc_installation.html
 folder: mydoc
 toc: true

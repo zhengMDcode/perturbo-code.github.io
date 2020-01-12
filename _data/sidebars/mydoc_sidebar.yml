@@ -84,6 +84,14 @@ entries:
       url: /mydoc_release_notes_10.html
       output: web, pdf
 
+  - title: Utils
+    output: web, pdf
+    folderitems:
+
+    - title: generate_input.py
+      url: /mydoc_generate_input_with_examples.html
+      output: web, pdf
+
   - title: Input parameters
     output: web, pdf
 

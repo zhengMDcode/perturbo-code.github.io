@@ -1,7 +1,7 @@
 ---
 title: Silicon (with spin-orbit coupling)
 sidebar: mydoc_sidebar
-last_updated: Decemer 19, 2019
+last_updated: January 10, 2020
 permalink: mydoc_tutorial_si.html
 folder: mydoc
 toc: false

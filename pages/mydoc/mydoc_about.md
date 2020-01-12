@@ -1,7 +1,7 @@
 ---
 title: Bernardi Research Group
 sidebar: mydoc_sidebar
-last_updated: Decemer 19, 2019
+last_updated: January 10, 2020
 permalink: mydoc_about.html
 folder: mydoc
 toc: false

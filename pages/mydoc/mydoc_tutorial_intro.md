@@ -1,7 +1,7 @@
 ---
 title: Tutorials
 sidebar: mydoc_sidebar
-last_updated: Jan 1, 2020
+last_updated: January 10, 2020
 permalink: mydoc_tutorial_intro.html
 folder: mydoc
 summary: In addition to the silicon example discussed above, we provide several tutorial examples to explore the various capabilities of Perturbo. Before starting this tutorial, please read the sections on qe2pert.x and perturbo.x of this manual.

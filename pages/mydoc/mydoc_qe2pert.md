@@ -1,7 +1,7 @@
 ---
 title: Quantum Espresso to PERTURBO
 sidebar: mydoc_sidebar
-last_updated: Jan 1, 2020
+last_updated: January 10, 2020
 permalink: mydoc_qe2pert.html
 folder: mydoc
 toc: true

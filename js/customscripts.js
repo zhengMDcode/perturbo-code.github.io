@@ -52,3 +52,71 @@ $(function() {
         }
     });
 });
+
+
+// ==== COLLAPSIBLE ====
+$(function() {
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      this.innerHTML = '<font size="1">'+'&#9660;'.repeat(1)+'</font>'+'&nbsp;'.repeat(10)+'Mandatory/Optional'+'&nbsp;'.repeat(10)+'<font size="1">'+'&#9660;'.repeat(1) + '</font>'
+      content.style.display = "none";
+    } else {
+      this.innerHTML = '<font size="1">'+'&#9650;'.repeat(1)+'</font>'+'&nbsp;'.repeat(10)+'Mandatory/Optional'+'&nbsp;'.repeat(10)+'<font size="1">'+'&#9650;'.repeat(1) + '</font>'
+      content.style.display = "block";
+    }
+  });
+}
+
+});
+
+// ==== DROP DOWN LISTS ====
+function DropDownFunction() {
+  // first, hide all modeblocks
+  var modeblocks = document.querySelectorAll("[id^=modeblock]");
+  for (var i = 0; i < modeblocks.length; i++) {
+    modeblocks[i].style.display = 'none';        
+   }
+
+  //second, show only the selected modeblock
+  var x = document.getElementById("CalcModeSelect").value;
+  document.getElementById("modeblock_"+x).style.display = "block";
+   
+   var containerid = "modeblock_setup"
+if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy");
+
+} else if (window.getSelection) {
+    var range = document.createRange();
+     range.selectNode(document.getElementById(containerid));
+     window.getSelection().addRange(range);
+     document.execCommand("copy");
+}
+ 
+
+}
+
+function CopyToClipboard(containerid) {
+if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy");
+
+} else if (window.getSelection) {
+    var range = document.createRange();
+     range.selectNode(document.getElementById(containerid));
+     window.getSelection().addRange(range);
+     document.execCommand("copy");
+     alert("text copied")
+}
+
+}

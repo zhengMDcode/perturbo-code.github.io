@@ -1,7 +1,7 @@
 ---
 title: PERTURBO input parameters
 sidebar: mydoc_sidebar
-last_updated: January 10, 2020
+last_updated: January 11, 2020
 permalink: mydoc_param_perturbo.html
 folder: mydoc
 toc: false
@@ -62,7 +62,7 @@ To do some modifications, please, modify the script directly. -->
   <br><br>
 <i>Variable type: </i>string<br>
 <br>
-Job name prefix. It should be the same as the prefix used in QE.</div>
+Job name prefix. It should be the same as the prefix used in QE.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><b>Mandatory for all calculation types.</b></nobr></div></div>
 <br>
 <a name=calc_mode></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -123,16 +123,16 @@ computes Seebeck coefficient (<a href="mydoc_perturbo.html#calc_mode_trans-pp">s
 <code>dynamics-run</code>
 </div>
 <div class="options_value">
-(<a href="mydoc_perturbo.html#calc_mode_dynamics-run">see in the section</a>)</div>
+ultrafast hot carrier dynamics (<a href="mydoc_perturbo.html#calc_mode_dynamics-run">see in the section</a>)</div>
 <div class="clearfix"></div>
 <div class="options_key">
 <code>dynamics-pp</code>
 </div>
 <div class="options_value">
-(<a href="mydoc_perturbo.html#calc_mode_dynamics-pp">see in the section</a>)</div>
+computes the energy-dependent carrier population as a function of time (<a href="mydoc_perturbo.html#calc_mode_dynamics-pp">see in the section</a>)</div>
 <div class="clearfix"></div>
 <br>
-Calculation mode.</div>
+Calculation mode.<br><br></div>
 <br>
 <a name=fklist></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -140,8 +140,10 @@ Calculation mode.</div>
 <font size="4"><b>fklist</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>prefix.kpt</code><br>
 <br>
-Name of the file containing the k-point list (in crystal coordiate).</div>
+Name of the file containing the k-point list (in crystal coordiate).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>bands</code>,&nbsp;<code>ephmat</code>,&nbsp;<code>imsigma</code>,&nbsp;<code>meanfp</code></nobr>
+</div></div>
 <br>
 <a name=fqlist></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -149,8 +151,11 @@ Name of the file containing the k-point list (in crystal coordiate).</div>
 <font size="4"><b>fqlist</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>prefix.qpt</code><br>
 <br>
-Name of the file containing the q-point list (in crystal coordiate).</div>
+Name of the file containing the q-point list (in crystal coordiate).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>phdisp</code>,&nbsp;<code>ephmat</code></nobr>
+<nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code></nobr>
+</div></div>
 <br>
 <a name=ftemper></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -158,8 +163,10 @@ Name of the file containing the q-point list (in crystal coordiate).</div>
 <font size="4"><b>ftemper</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>prefix.temper</code><br>
 <br>
-Name of the file containing values for the temperature (K), chemical potential (eV), and carrier concentration (cm<sup>-2</sup> or cm<sup>-3</sup>).</div>
+Name of the file containing values for the temperature (K), chemical potential (eV), and carrier concentration (cm<sup>-2</sup> or cm<sup>-3</sup>).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>setup</code>,&nbsp;<code>imsigma</code>,&nbsp;<code>meanfp</code>,&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-run</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=debug></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -169,7 +176,8 @@ Name of the file containing values for the temperature (K), chemical potential (
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Debug mode.</div>
+Debug mode.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=hole></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -179,7 +187,8 @@ Debug mode.</div>
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Set to .true. for calculations on hole carriers.</div>
+Set to .true. for calculations on hole carriers.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>setup</code>,&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-run</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=tmp_dir></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -187,8 +196,10 @@ Set to .true. for calculations on hole carriers.</div>
 <font size="4"><b>tmp_dir</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>./tmp</code><br>
 <br>
-The directory where the e-ph matrix elements are stored when <code><a href=#calc_mode>calc_mode</a>='trans'</code>.</div>
+The directory where the e-ph matrix elements are stored when <code><a href=#calc_mode>calc_mode</a>='trans'</code>.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code></nobr>
+</div></div>
 <br>
 <a name=load_scatter_eph></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -198,7 +209,8 @@ The directory where the e-ph matrix elements are stored when <code><a href=#calc
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Read the e-ph matrix elements from the files in tmp_dir. Used for <code><a href=#calc_mode>calc_mode</a>='trans'</code>.</div>
+Read the e-ph matrix elements from the files in tmp_dir. Used for <code><a href=#calc_mode>calc_mode</a>='trans'</code>.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code></nobr>
+</div></div>
 <br>
 <a name=sampling></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -221,7 +233,8 @@ random sampling from an uniform distribution.</div>
 random sampling from a Cauchy disrtibution.</div>
 <div class="clearfix"></div>
 <br>
-Random q points sampling method.</div>
+Random q points sampling method.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code></nobr>
+</div></div>
 <br>
 <a name=cauchy_scale></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -229,8 +242,10 @@ Random q points sampling method.</div>
 <font size="4"><b>cauchy_scale</b></font>  
   <br><br>
 <i>Variable type: </i>real<br>
+<i>Typical value: </i><code>1.0</code><br>
 <br>
-Scale parameter gamma for the Cauchy distribution; used when <code><a href="sampling">sampling</a>='cauchy'</code>.</div>
+Scale parameter gamma for the Cauchy distribution; used when <code><a href="sampling">sampling</a>='cauchy'</code>.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code></nobr>
+</div></div>
 <br>
 <a name=nsamples></a>
 <div class="input_param" style="--background: hsl(9,13.0%,95.32%); --border: hsl(9,100.0%,44.8%)">
@@ -240,7 +255,8 @@ Scale parameter gamma for the Cauchy distribution; used when <code><a href="samp
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>100000</code><br>
 <br>
-Number of q-points for the summation over the q-points in imsigma calculation.</div>
+Number of q-points for the summation over the q-points in imsigma calculation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(9,100.0%,57.6%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(9,100.0%,57.6%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code></nobr>
+</div></div>
 <br>
 <br><br> <span style="display:inline-block;background:hsl(39,100.0%,50.0%);width:100%"><font size="5"><a style="color:Navy"; name=bte>&nbspBoltzmann Transport Equation</a></font></span>
 <br>
@@ -254,7 +270,8 @@ Number of q-points for the summation over the q-points in imsigma calculation.</
 <i>Default value: </i><code>(1,1,1)</code><br>
 <i>Dimensions: </i><code>(3)</code><br>
 <br>
-Number of <b>k</b> points along each dimension for the Boltzmann equation.</div>
+Number of <b>k</b> points along each dimension for the Boltzmann equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>setup</code>,&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-run</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=boltz_qdim></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -262,10 +279,11 @@ Number of <b>k</b> points along each dimension for the Boltzmann equation.</div>
 <font size="4"><b>boltz_qdim</b></font>  
   <br><br>
 <i>Variable type: </i>integer<br>
-<i>Default value: </i><code>boltz_qdim(i)=boltz_kdim(i)</code><br>
+<i>Default value: </i><code>('boltz_kdim(1)','boltz_kdim(2)','boltz_kdim(3)')</code><br>
 <i>Dimensions: </i><code>(3)</code><br>
 <br>
-Number of <b>q</b> points along each dimension for the Boltzmann equation.</div>
+Number of <b>q</b> points along each dimension for the Boltzmann equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code>,&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=band_min></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -275,7 +293,8 @@ Number of <b>q</b> points along each dimension for the Boltzmann equation.</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>1</code><br>
 <br>
-Lowest band included.</div>
+Lowest band included.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>ephmat</code>,&nbsp;<code>setup</code>,&nbsp;<code>imsigma</code>,&nbsp;<code>meanfp</code>,&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-run</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=band_max></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -285,7 +304,8 @@ Lowest band included.</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>9999999</code><br>
 <br>
-Highest band included.</div>
+Highest band included.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>ephmat</code>,&nbsp;<code>setup</code>,&nbsp;<code>imsigma</code>,&nbsp;<code>meanfp</code>,&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-run</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=boltz_emin></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -295,7 +315,8 @@ Highest band included.</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>-9999.0</code><br>
 <br>
-Bottom of the energy window (in eV) for the Boltzmann equation.</div>
+Bottom of the energy window (in eV) for the Boltzmann equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>setup</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=boltz_emax></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -305,7 +326,8 @@ Bottom of the energy window (in eV) for the Boltzmann equation.</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>9999.0</code><br>
 <br>
-Top of the energy window (in eV) for the Boltzmann equation.</div>
+Top of the energy window (in eV) for the Boltzmann equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>setup</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=boltz_nstep></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -313,8 +335,11 @@ Top of the energy window (in eV) for the Boltzmann equation.</div>
 <font size="4"><b>boltz_nstep</b></font>  
   <br><br>
 <i>Variable type: </i>integer<br>
+<i>Typical value: </i><code>50</code><br>
 <br>
-Number of iterations for solving the Boltzmann transport equation.</div>
+Number of iterations for solving the Boltzmann transport equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+<nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code>,&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=boltz_de></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -324,7 +349,8 @@ Number of iterations for solving the Boltzmann transport equation.</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>1.0</code><br>
 <br>
-Energy step (in meV) for the integrals in the Boltzmann equation.</div>
+Energy step (in meV) for the integrals in the Boltzmann equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code>,&nbsp;<code>trans-pp</code>,&nbsp;<code>dynamics-pp</code></nobr>
+</div></div>
 <br>
 <a name=delta_smear></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -334,7 +360,8 @@ Energy step (in meV) for the integrals in the Boltzmann equation.</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>10.0</code><br>
 <br>
-Smearing (in meV) for the Dirac delta function.</div>
+Smearing (in meV) for the Dirac delta function.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code>,&nbsp;<code>trans</code>,&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=phfreq_cutoff></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -342,8 +369,10 @@ Smearing (in meV) for the Dirac delta function.</div>
 <font size="4"><b>phfreq_cutoff</b></font>  
   <br><br>
 <i>Variable type: </i>real<br>
+<i>Typical value: </i><code>1.0</code><br>
 <br>
-Phonon energy threshold (meV). Phonons with energy smaller than phfreq_cutoff will be excluded.</div>
+Phonon energy threshold (meV). Phonons with energy smaller than phfreq_cutoff will be excluded.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>ephmat</code>,&nbsp;<code>imsigma</code>,&nbsp;<code>trans</code>,&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=trans_thr></a>
 <div class="input_param" style="--background: hsl(39,13.0%,93.5%); --border: hsl(39,100.0%,35.0%)">
@@ -353,7 +382,8 @@ Phonon energy threshold (meV). Phonons with energy smaller than phfreq_cutoff wi
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>0.002</code><br>
 <br>
-Threshold for the iterative procedure.</div>
+Threshold for the iterative procedure.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(39,100.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(39,100.0%,45.0%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>trans</code></nobr>
+</div></div>
 <br>
 <br><br> <span style="display:inline-block;background:hsl(147,50.0%,47.0%);width:100%"><font size="5"><a style="color:Navy"; name=polar_correction>&nbspPolar correction</a></font></span>
 <br>
@@ -385,7 +415,8 @@ polar part only</div>
 remainder part</div>
 <div class="clearfix"></div>
 <br>
-Polar correction mode.</div>
+Polar correction mode.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(147,55.0%,42.300000000000004%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(147,55.0%,42.300000000000004%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>imsigma</code></nobr>
+</div></div>
 <br>
 <br><br> <span style="display:inline-block;background:hsl(210,100.0%,56.0%);width:100%"><font size="5"><a style="color:Navy"; name=dynamics>&nbspUltra-fast dynamics</a></font></span>
 <br>
@@ -396,8 +427,10 @@ Polar correction mode.</div>
 <font size="4"><b>time_step</b></font>  
   <br><br>
 <i>Variable type: </i>real<br>
+<i>Typical value: </i><code>1.0</code><br>
 <br>
-Time step for the carrier dynamics (in fs).</div>
+Time step for the carrier dynamics (in fs).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=output_nstep></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -407,7 +440,8 @@ Time step for the carrier dynamics (in fs).</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>1</code><br>
 <br>
-Print out the results every <code>output_nstep</code> time steps.</div>
+Print out the results every <code>output_nstep</code> time steps.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=boltz_init_dist></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -415,6 +449,7 @@ Print out the results every <code>output_nstep</code> time steps.</div>
 <font size="4"><b>boltz_init_dist</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>restart</code><br>
 <i>Options:</i><br>
 <div class="options_key">
 <code>restart</code>
@@ -441,7 +476,8 @@ Fermi-Dirac distribution</div>
 Gaussian distribution</div>
 <div class="clearfix"></div>
 <br>
-Initial electron distribution at time zero.</div>
+Initial electron distribution at time zero.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Mandatory&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=boltz_init_e0></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -449,8 +485,10 @@ Initial electron distribution at time zero.</div>
 <font size="4"><b>boltz_init_e0</b></font>  
   <br><br>
 <i>Variable type: </i>real<br>
+<i>Typical value: </i><code>1.0</code><br>
 <br>
-Energy (in eV) parameter used to generate initial distribution. Needs to be specified for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> (center), <code>'gaussian'</code> (center), or <code>'fermi'</code> (chemical potential).</div>
+Energy (in eV) parameter used to generate initial distribution. Needs to be specified for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> (center), <code>'gaussian'</code> (center), or <code>'fermi'</code> (chemical potential).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=boltz_init_smear></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -458,8 +496,10 @@ Energy (in eV) parameter used to generate initial distribution. Needs to be spec
 <font size="4"><b>boltz_init_smear</b></font>  
   <br><br>
 <i>Variable type: </i>real<br>
+<i>Typical value: </i><code>1.0</code><br>
 <br>
-The broadening or width (in meV) of the initial distribution for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> or <code>'gaussian'</code>, or temperature (in meV) for <code>'fermi'</code>.</div>
+The broadening or width (in meV) of the initial distribution for <code><a href=#boltz_init_dist>boltz_init_dist</a>='lorentz'</code> or <code>'gaussian'</code>, or temperature (in meV) for <code>'fermi'</code>.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <a name=solver></a>
 <div class="input_param" style="--background: hsl(210,13.0%,94.28%); --border: hsl(210,100.0%,39.199999999999996%)">
@@ -482,7 +522,8 @@ Euler method (first-order)</div>
 fourth-order Runge-Kutta method</div>
 <div class="clearfix"></div>
 <br>
-Solver type for the Boltzmann transport equation.</div>
+Solver type for the Boltzmann transport equation.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(210,100.0%,50.4%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(210,100.0%,50.4%)"><nobr><i>Optional&nbsp;for&nbsp;<a href=#calc_mode>calc_mode</a>:</i>&nbsp;&nbsp;<code>dynamics-run</code></nobr>
+</div></div>
 <br>
 <br><br></body>
 </html>

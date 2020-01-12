@@ -1,7 +1,7 @@
 ---
 title: Quantum Espresso to PERTURBO input parameters
 sidebar: mydoc_sidebar
-last_updated: January 09, 2020
+last_updated: January 11, 2020
 permalink: mydoc_param_qe2pert.html
 folder: mydoc
 toc: false
@@ -40,7 +40,7 @@ To do some modifications, please, modify the script directly. -->
   <br><br>
 <i>Variable type: </i>string<br>
 <br>
-Job name prefix. It should be the same as the prefix used in QE.</div>
+Job name prefix. It should be the same as the prefix used in QE.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><b>Mandatory for all calculation types.</b></nobr></div></div>
 <br>
 <a name=outdir></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -48,8 +48,10 @@ Job name prefix. It should be the same as the prefix used in QE.</div>
 <font size="4"><b>outdir</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>./tmp</code><br>
 <br>
-Name of the directory where the QE nscf output directory prefix.save is located, and where the e-ph matrix elements prefix_elph.h5 will be stored.</div>
+Name of the directory where the QE nscf output directory prefix.save is located, and where the e-ph matrix elements prefix_elph.h5 will be stored.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=phdir></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -57,8 +59,10 @@ Name of the directory where the QE nscf output directory prefix.save is located,
 <font size="4"><b>phdir</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>phdir</code><br>
 <br>
-Name of the directory where the phonon "save" directory is located.</div>
+Name of the directory where the phonon "save" directory is located.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=dft_band_min></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -68,7 +72,8 @@ Name of the directory where the phonon "save" directory is located.</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>1</code><br>
 <br>
-Lowest band index used in Wannier90.</div>
+Lowest band index used in Wannier90.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=dft_band_max></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -78,7 +83,8 @@ Lowest band index used in Wannier90.</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>10000</code><br>
 <br>
-Highest band index used in Wannier90.</div>
+Highest band index used in Wannier90.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=num_wann></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -88,7 +94,8 @@ Highest band index used in Wannier90.</div>
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>1</code><br>
 <br>
-Number of Wannier functions.</div>
+Number of Wannier functions.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=system_2d></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -98,7 +105,8 @@ Number of Wannier functions.</div>
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Set it to .true. if the system is 2D.</div>
+Set it to .true. if the system is 2D.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=nk1></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -106,8 +114,10 @@ Set it to .true. if the system is 2D.</div>
 <font size="4"><b>nk1</b></font>  
   <br><br>
 <i>Variable type: </i>integer<br>
+<i>Typical value: </i><code>8</code><br>
 <br>
-Number of k points along x-axis used in the Wannierization.</div>
+Number of k points along x-axis used in the Wannierization.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=nk2></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -115,8 +125,10 @@ Number of k points along x-axis used in the Wannierization.</div>
 <font size="4"><b>nk2</b></font>  
   <br><br>
 <i>Variable type: </i>integer<br>
+<i>Typical value: </i><code>8</code><br>
 <br>
-Number of k points along y-axis used in the Wannierization.</div>
+Number of k points along y-axis used in the Wannierization.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=nk3></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -124,8 +136,10 @@ Number of k points along y-axis used in the Wannierization.</div>
 <font size="4"><b>nk3</b></font>  
   <br><br>
 <i>Variable type: </i>integer<br>
+<i>Typical value: </i><code>8</code><br>
 <br>
-Number of k points along z-axis used in the Wannierization.</div>
+Number of k points along z-axis used in the Wannierization.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Mandatory&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=debug></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -135,7 +149,8 @@ Number of k points along z-axis used in the Wannierization.</div>
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Set to .true. to turn on the debug mode.</div>
+Set to .true. to turn on the debug mode, in which the code stop after g(k,q) (does not compute g in wannier basis)<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=lwannier></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -145,7 +160,8 @@ Set to .true. to turn on the debug mode.</div>
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.true.</code><br>
 <br>
-Set to .true. to rotate the wavefunctions using Wannier unitary matrix before computing e-ph matrix elements.</div>
+Set to .true. to rotate the wavefunctions using Wannier unitary matrix before computing e-ph matrix elements.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=load_ephmat></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -155,7 +171,8 @@ Set to .true. to rotate the wavefunctions using Wannier unitary matrix before co
 <i>Variable type: </i>logical<br>
 <i>Default value: </i><code>.false.</code><br>
 <br>
-Set to .true. to load prefix_elph.h5 from the directory specified by the variable outdir.</div>
+Set to .true. to load prefix_elph.h5 from the directory specified by the variable outdir.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=eig_corr></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -163,8 +180,10 @@ Set to .true. to load prefix_elph.h5 from the directory specified by the variabl
 <font size="4"><b>eig_corr</b></font>  
   <br><br>
 <i>Variable type: </i>string<br>
+<i>Typical value: </i><code>eig_corr</code><br>
 <br>
-File containing the Kohn-Sham eigenvalues (usually called prefix.eig).</div>
+File containing the electron eigenvalues on the (nk1, nk2, nk3) grid. The format of this file is the same as the file <code>prefix.eig</code> generated in Wannier90. if present, <code>qe2pert.x</code> will read the eigenvalues from this file, rather than Kohn-Sham eigenvalues from QE-nscf calculation. This is usually used when one wants to use modified eigenvalues (e.g., from GW).<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=polar_alpha></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -174,7 +193,8 @@ File containing the Kohn-Sham eigenvalues (usually called prefix.eig).</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>1.0</code><br>
 <br>
-Used only in polar materials. To be consistent with rigid_bulk, enforce alpha=1.0 for lattice dynamical.</div>
+Convergence parameter used in the Ewald sum when computing the polar correction in polar materials. The default value is 1.0.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=asr></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -203,7 +223,8 @@ no Acoustic Sum Rules imposed</div>
 3 translational asr imposed by optimized correction of the force constants (projection)</div>
 <div class="clearfix"></div>
 <br>
-Indicates the type of Acoustic Sum Rule imposed.</div>
+Indicates the type of Acoustic Sum Rule imposed.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <a name=thickness_2d></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
@@ -213,7 +234,8 @@ Indicates the type of Acoustic Sum Rule imposed.</div>
 <i>Variable type: </i>real<br>
 <i>Default value: </i><code>6.0</code><br>
 <br>
-Thickness of the 2d system (in Å), used in the 2D polar e-ph correction. Only needed when system_2d=.true.</div>
+Thickness of the 2d system (in Å), used in the 2D polar e-ph correction. Only needed when system_2d=.true.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+</div></div>
 <br>
 <br><br></body>
 </html>
