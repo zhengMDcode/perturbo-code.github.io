@@ -742,7 +742,7 @@ Here is the input file (_pert.in_):
 ```fortran
 &perturbo
  prefix      = 'si'
- calc_mode   = 'dynamics-pp'
+ calc_mode   = 'dynamics-run'
 
  boltz_kdim(1) = 80
  boltz_kdim(2) = 80
@@ -775,7 +775,8 @@ In this example, we calculate the evolution of the electron distribution. In ord
 Run `perturbo.x` (remember to link or copy _'prefix'\_epwan.h5_ in the current directory):
 
 ```bash
-$ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out
+$ export OMP_NUM_THREADS=4
+$ mpirun -n 8 <perturbo_bin>/perturbo.x -npools 8 -i pert.in > pert.out
 ```
 
 We obtain the _'prefix'\_cdyna.h5_ HDF5 output file (this file can be also found in the _"References"_ directory). This file contains all the necessary output information about the performed simulation. This file is organized as follows:
@@ -797,9 +798,34 @@ We obtain the _'prefix'\_cdyna.h5_ HDF5 output file (this file can be also found
 The _'prefix'\_cdyna.h5_ file structure can be schematically represented as follows:
 <img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-run.svg" alt="diagram_hdf5_dynamics-run">
 
-The HDF5 files can be easily processed by python pakage <a href="https://docs.h5py.org/en/stable/">python package h5py</a>.
+The HDF5 files can be easily processed by python pakage <a href="https://docs.h5py.org/en/stable/">python package h5py</a>. As an example, we present here a simple Python script that visualizes the distribution function for the time $$t_5$$ of the simulation and for the first band (in the selected band range):
 
-In order to postprocess this file with `perturbo.x`, see the next section.
+```python
+#!/usr/bin/env python3
+import h5py
+import matplotlib.pyplot as plt
+
+prefix='si'
+snap_number=5
+band_index=0
+
+# load the HDF5 file
+h5file = h5py.File(prefix+'_cdyna.h5', 'r')
+
+# get the data
+ryd2ev = h5file['band_structure_ryd'].attrs['ryd2ev']
+energy_ev = h5file['band_structure_ryd'][:,band_index] * ryd2ev
+dist_func = h5file['dynamics_run_1']['snap_t_'+str(snap_number)][:,band_index]
+h5file.close()
+
+# plot the data
+plt.plot(energy_ev,dist_func,marker='o',linestyle='')
+plt.xlabel('Energy (eV)')
+plt.ylabel('Distribution function')
+plt.show()
+```
+
+In order to postprocess this file using `perturbo.x`, see the next section.
 
 <a name="calc_mode_dynamics-pp"></a>
 ### calc_mode = 'dynamics-pp' 
@@ -844,4 +870,27 @@ The _si\_popu.h5_ HDF5 file is organized as follows:
 The _si\_popu.h5_ HDF5 file can be schematically represented as follows:
 <img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-pp.svg" alt="diagram_hdf5_dynamics-pp">
 
+Similarly to the previous section, we provide here a simplistic Python script showing an example how to manipulate this HDF5 file. For example, to plot the electron population for the time $$t_{25}$$, run:
 
+```python
+#!/usr/bin/env python3
+import h5py
+import matplotlib.pyplot as plt
+
+prefix='si'
+snap_number=25
+
+# load the HDF5 file
+h5file = h5py.File(prefix+'_popu.h5', 'r')
+
+# get the data
+energy_ev = h5file['energy_grid_ev'][()]
+population = h5file['energy_distribution']['popu_t'+str(snap_number)][()]
+h5file.close()
+
+# plot the data
+plt.plot(energy_ev,population,marker='o',linestyle='')
+plt.xlabel('Energy (eV)')
+plt.ylabel('Electron population')
+plt.show()
+```

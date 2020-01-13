@@ -18,7 +18,7 @@ The scattering rate can be then found as the inverse of the relaxation time, $$\
 In order to calculate the relaxation times and the scattering rates from the `'imsigma'` calculation, we provide the `relaxation_time.py` Python script.
 To use it, you should have a _'preifx'_.imsigma file obtained as an output from the `'imsigma'` calculation.
 
-Run the script in the directory where the _'preifx'_.imsigma is located:
+Run the script in the directory where the _'preifx'.imsigma_ file is located:
 
 ```bash
 $ [your_prerturbo_path]/utils/relaxation_time.py
