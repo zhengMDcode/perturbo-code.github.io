@@ -20,7 +20,7 @@ In this section, we will discuss the features (or calculation modes) of `perturb
 * `'dynamics-run'`: ultrafast hot carrier dynamics via the time-dependent Boltzmann transport equation.
 * `'dynamics-pp'`: postprocessing of the 'dynamics-run' calculation, compute the BZ-averaged energy-dependent carrier population.
 
-In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory _"examples/example01-silicon-perturbo/perturbo"_). **To run** `perturbo.x` **one first needs to generate the file _perfix_epwan.h5_** (in this case, _si\_epwan.h5_), which is prepared using `qe2pert.x` as we discuss in section [qe2pert.x](mydoc_qe2pert.html#qe2pert.x). The file _si\_epwan.h5_ is inside the directory _"examples/example01-silicon-perturbo/qe2pert.x"_. For each calculation mode, we also provide reference results in the directory _"References"_. In all calculations, the same prefix value as in the QE DFT calculation should be used.
+In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory _"examples/example01-silicon-perturbo/perturbo"_). **To run** `perturbo.x` **one first needs to generate the file _'perfix'\_epwan.h5_** (in this case, _si\_epwan.h5_), which is prepared using `qe2pert.x` as we discuss in section [qe2pert.x](mydoc_qe2pert.html#qe2pert.x). The file _si\_epwan.h5_ is inside the directory _"examples/example01-silicon-perturbo/qe2pert.x"_. For each calculation mode, we also provide reference results in the directory _"References"_. In all calculations, the same prefix value as in the QE DFT calculation should be used.
 
 
 <a name="calc_mode_bands"></a>
@@ -359,6 +359,7 @@ We obtain two output files:
 
 The following is the format of _'prefix'.imsigma_ (in this case, _si.imsigma_):
 
+<a name="imsigma_file"></a>
 ```python
 #  Electron (Imaginary) Self-Energy in the Migdal Approx.  #
 #      ( only for bands within [band_min, band_max] )      #
@@ -398,7 +399,7 @@ Similarly, the format for _si.imsigma\_mode_ is
 Here we have an extra column with the phonon mode index (_imode_). 
 
 
-{% include note.html content="One should always check the convergence of the e-ph self-energy with respect to the number of $$\mathbf{q}$$ points and the smearing parameter \([delta_smear](mydoc_param_perturbo#delta_smear)\). Check <a href=\"https://arxiv.org/abs/1608.03514\">this paper</a> for more detail." %}
+{% include note.html content="One should always check the convergence of the e-ph self-energy with respect to the number of $$\mathbf{q}$$ points and the smearing parameter \([delta_smear](mydoc_param_perturbo#delta_smear)\). Check <a href='https://arxiv.org/abs/1608.03514' target='_blank'>this paper</a> for more detail." %}
 
 
 Using the results in the _'prefix'.imsigma_ file, one can easily obtain, with a small script, the scattering rates for each state, which are equal to $${2}/{\hbar} \operatorname{Im}\Sigma$$ (it's convenient to use $$\hbar = 0.65821195\,\mathrm{eV}\,\mathrm{fs}$$ to this end). Using additional tools provided in `perturbo.x`, we can also compute the mean free path for each electronic state, as well as a range of phonon-limited transport properties.
@@ -468,7 +469,7 @@ The format of _'prefix'.mfp_ is as follows:
   ......
 ```
 
-The variable _it_ is the dummy variable for temperature; in this case, we only used one temperature (300 K). _ik_ is the dummy variable for the given crystal momentum in the file fklist. _ibnd_ is the dummy variable for bands; in this case, ibnd=1 corresponds to band index 5 and ibnd=2 is the band index 6. The 3<sup>rd</sup>, 4<sup>th</sup>, and 5<sup>th</sup> columns are energy (eV), relaxation time (fs), and mean free path (nm) of each state, respectively.
+The variable _it_ is the dummy variable for temperature; in this case, we only used one temperature (300 K). _ik_ is the dummy variable for the given crystal momentum in the file fklist. _ibnd_ is the dummy variable for bands; in this case, ibnd=1 corresponds to band index 5 and ibnd=2 is the band index 6. The 4<sup>th</sup>, 5<sup>th</sup>, and 6<sup>th</sup> columns are energy (eV), relaxation time (fs), and mean free path (nm) of each state, respectively.
 
 The format of _'prefix'.vel_ is shown below: 
 

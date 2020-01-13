@@ -87,21 +87,6 @@ function DropDownFunction() {
   var x = document.getElementById("CalcModeSelect").value;
   document.getElementById("modeblock_"+x).style.display = "block";
    
-   var containerid = "modeblock_setup"
-if (document.selection) {
-    var range = document.body.createTextRange();
-    range.moveToElementText(document.getElementById(containerid));
-    range.select().createTextRange();
-    document.execCommand("copy");
-
-} else if (window.getSelection) {
-    var range = document.createRange();
-     range.selectNode(document.getElementById(containerid));
-     window.getSelection().addRange(range);
-     document.execCommand("copy");
-}
- 
-
 }
 
 function CopyToClipboard(containerid) {

@@ -89,7 +89,11 @@ entries:
     folderitems:
 
     - title: generate_input.py
-      url: /mydoc_generate_input_with_examples.html
+      url:  /mydoc_generate_input_with_examples.html
+      output: web, pdf
+
+    - title: relaxation_time.py
+      url:  /mydoc_relaxation_time.html
       output: web, pdf
 
   - title: Input parameters
