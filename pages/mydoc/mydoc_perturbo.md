@@ -1,7 +1,7 @@
 ---
 title: PERTURBO calculation
 sidebar: mydoc_sidebar
-last_updated: Jan 1, 2020
+last_updated: January 10, 2020
 permalink: mydoc_perturbo.html
 folder: mydoc
 toc: true
@@ -20,7 +20,7 @@ In this section, we will discuss the features (or calculation modes) of `perturb
 * `'dynamics-run'`: ultrafast hot carrier dynamics via the time-dependent Boltzmann transport equation.
 * `'dynamics-pp'`: postprocessing of the 'dynamics-run' calculation, compute the BZ-averaged energy-dependent carrier population.
 
-In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory _"examples/example01-silicon-perturbo/perturbo"_). **To run** `perturbo.x` **one first needs to generate the file _perfix_epwan.h5_** (in this case, _si\_epwan.h5_), which is prepared using `qe2pert.x` as we discuss in section [qe2pert.x](mydoc_qe2pert.html#qe2pert.x). The file _si\_epwan.h5_ is inside the directory _"examples/example01-silicon-perturbo/qe2pert.x"_. For each calculation mode, we also provide reference results in the directory _"References"_. In all calculations, the same prefix value as in the QE DFT calculation should be used.
+In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory _"examples/example01-silicon-perturbo/perturbo"_). **To run** `perturbo.x` **one first needs to generate the file _'perfix'\_epwan.h5_** (in this case, _si\_epwan.h5_), which is prepared using `qe2pert.x` as we discuss in section [qe2pert.x](mydoc_qe2pert.html#qe2pert.x). The file _si\_epwan.h5_ is inside the directory _"examples/example01-silicon-perturbo/qe2pert.x"_. For each calculation mode, we also provide reference results in the directory _"References"_. In all calculations, the same prefix value as in the QE DFT calculation should be used.
 
 
 <a name="calc_mode_bands"></a>
@@ -78,7 +78,7 @@ $ mpirun -n 1 perturbo.x -npools 1 -i pert.in > pert.out
 
 {% include note.html content="The number of pools (-npools) has to be equal to the number of MPI processes (-np or -n), otherwise the code will stop." %}
 
-It takes just a few seconds to obtain the interpolated band structure. We obtain an output file called _prefix.bands_ (in this case, _si.bands_) with the following format:
+It takes just a few seconds to obtain the interpolated band structure. We obtain an output file called _'prefix'.bands_ (in this case, _si.bands_) with the following format:
 
 ```python
  0.0000000      0.50000    0.50000    0.50000     -3.4658249872
@@ -193,7 +193,7 @@ For the format of [fklist](mydoc_param_perturbo#fklist) or [fqlist](mydoc_param_
 
 Before running `perturbo.x`, ensure that three files exist in the current directory _"pert-ephmat"_:
 
-* _prefix\_epwan.h5_: here _si\_epwan.h5_
+* _'prefix'\_epwan.h5_: here _si\_epwan.h5_
 * _fklist_: here _eph.kpt_
 * _fqlist_: here _eph.qpt_
 
@@ -280,12 +280,12 @@ Run `perturbo.x` with the following command (remember to link or copy _'prefix'\
 $ mpirun -n 1 perturbo.x -npools 1 -i pert.in > pert.out 
 ```
 
-The calculation will take a few minutes or longer, depending the number of $$\mathbf{k}$$ and $$\mathbf{q}$$ points and the size of the energy window. We obtain 4 output files (_prefix.doping_, _prefix\_tet.h5_, _prefix\_tet.kpt_, and _prefix.dos_): 
+The calculation will take a few minutes or longer, depending the number of $$\mathbf{k}$$ and $$\mathbf{q}$$ points and the size of the energy window. We obtain 4 output files (_'prefix'.doping_, _'prefix'\_tet.h5_, _'prefix'\_tet.kpt_, and _'prefix'.dos_): 
 
-* _prefix.doping_ contains chemical potentials and carrier concentrations for each tempearture of interest. The format is easy to understand so we do not show it here. Please take a look at the file by yourself. 
-* _prefix\_tet.h5_ contains information on the $$\mathbf{k}$$ points (both in the irreducible wedge and full grid) and the associated $$\mathbf{k}$$ point tetrahedra in the energy window of interest. This file will be used to compute transport properties. Users familiar with HDF5 can read and manipulate this file with the standard HDF5 commands. The other users can just ignore the data stored in the file. 
-* _prefix\_tet.kpt_ contains the coordinates (in crystal units) of the irreducible $$\mathbf{k}$$ points in the energy window of interest. Note that the irreducible $$\mathbf{k}$$ points coordinates is already included in _prefix\_tet.h5_, we output to this file in a format compatiable with that of _fklist_ discussed in the calculation mode `'bands'` ([above](#calc_mode_bands)) or `'imsigma'` ([below](#calc_mode_imsigma)).
-* _prefix.dos_ contains the density of states (number of states per eV per unit cell) as a function of energy (eV). The format is easy to understand so we do not show it here. The density of states sets the phase space for several electron scattering processes, so it is convenient to compute it and print it out.
+* _'prefix'.doping_ contains chemical potentials and carrier concentrations for each tempearture of interest. The format is easy to understand so we do not show it here. Please take a look at the file by yourself. 
+* _'prefix'\_tet.h5_ contains information on the $$\mathbf{k}$$ points (both in the irreducible wedge and full grid) and the associated $$\mathbf{k}$$ point tetrahedra in the energy window of interest. This file will be used to compute transport properties. Users familiar with HDF5 can read and manipulate this file with the standard HDF5 commands. The other users can just ignore the data stored in the file. 
+* _'prefix'\_tet.kpt_ contains the coordinates (in crystal units) of the irreducible $$\mathbf{k}$$ points in the energy window of interest. Note that the irreducible $$\mathbf{k}$$ points coordinates is already included in _'prefix'\_tet.h5_, we output to this file in a format compatiable with that of _fklist_ discussed in the calculation mode `'bands'` ([above](#calc_mode_bands)) or `'imsigma'` ([below](#calc_mode_imsigma)).
+* _'prefix'.dos_ contains the density of states (number of states per eV per unit cell) as a function of energy (eV). The format is easy to understand so we do not show it here. The density of states sets the phase space for several electron scattering processes, so it is convenient to compute it and print it out.
 
 In our example, since we used `'T'` in the first line of ftemper, a new _ftemper_ file is generated as output: that the _ftemper_ file _'si.temper'_ has now become:
 
@@ -359,6 +359,7 @@ We obtain two output files:
 
 The following is the format of _'prefix'.imsigma_ (in this case, _si.imsigma_):
 
+<a name="imsigma_file"></a>
 ```python
 #  Electron (Imaginary) Self-Energy in the Migdal Approx.  #
 #      ( only for bands within [band_min, band_max] )      #
@@ -398,10 +399,10 @@ Similarly, the format for _si.imsigma\_mode_ is
 Here we have an extra column with the phonon mode index (_imode_). 
 
 
-{% include note.html content="One should always check the convergence of the e-ph self-energy with respect to the number of $$\mathbf{q}$$ points and the smearing parameter \([delta_smear](mydoc_param_perturbo#delta_smear)\). Check <a href=\"https://arxiv.org/abs/1608.03514\">this paper</a> for more detail." %}
+{% include note.html content="One should always check the convergence of the e-ph self-energy with respect to the number of $$\mathbf{q}$$ points and the smearing parameter \([delta_smear](mydoc_param_perturbo#delta_smear)\). Check <a href='https://arxiv.org/abs/1608.03514' target='_blank'>this paper</a> for more detail." %}
 
 
-Using the results in the _prefix.imsigma_ file, one can easily obtain, with a small script, the scattering rates for each state, which are equal to $${2}/{\hbar} \operatorname{Im}\Sigma$$ (it's convenient to use $$\hbar = 0.65821195\,\mathrm{eV}\,\mathrm{fs}$$ to this end). Using additional tools provided in `perturbo.x`, we can also compute the mean free path for each electronic state, as well as a range of phonon-limited transport properties.
+Using the results in the _'prefix'.imsigma_ file, one can easily obtain, with a small script, the scattering rates for each state, which are equal to $${2}/{\hbar} \operatorname{Im}\Sigma$$ (it's convenient to use $$\hbar = 0.65821195\,\mathrm{eV}\,\mathrm{fs}$$ to this end). Using additional tools provided in `perturbo.x`, we can also compute the mean free path for each electronic state, as well as a range of phonon-limited transport properties.
 
 One way of obtaining the relaxation times (and their inverse, the scattering rates) is to run the Python script `relaxation_time.py` we provide to post-process the imsigma output. Another way is to obtain the relaxation times is to run a calculation of the mean free paths (see below), which conveniently outputs both the relaxation times and the mean free path for the desired electronic states. 
 
@@ -417,7 +418,7 @@ Also note that an example calculation of the e-ph self-energy for holes, is prov
 
 {% include note.html content="The mean free path calculation relies on the results of the calculation mode `'imsigma'` values obtained. Therefore, the user should first run the calculation mode `'imsigma'`, and then compute the mean free paths" %}
 
-Requires the same files as `calc_mode='imsigma'` but needs an additional file, _prefix.imsigma_, obtained as an output in the `'imsigma'` calculation.
+Requires the same files as `calc_mode='imsigma'` but needs an additional file, _'prefix'.imsigma_, obtained as an output in the `'imsigma'` calculation.
 
 Here is the input file (_pert.in_). It should be the same input as the one for the `'imsigma'` calculation mode, except for the line specifying `calc_mode='meanfp'`:
 
@@ -448,10 +449,10 @@ $ mpirun -n 1 perturbo.x -npools 1 -i pert.in > pert.out
 
 This calculation usually takes only takes a few seconds. We obtain two output files:
 
-* _prefix.mfp_ contains the relaxation time and mean free path of each electronic state. Note that the MFP is the product of the state relaxation time and the absolute value of the band velocity.
-* _prefix.vel_ contains the band velocity of each state  
+* _'prefix'.mfp_ contains the relaxation time and mean free path of each electronic state. Note that the MFP is the product of the state relaxation time and the absolute value of the band velocity.
+* _'prefix'.vel_ contains the band velocity of each state  
 
-The format of _prefix.mfp_ is as follows:
+The format of _'prefix'.mfp_ is as follows:
 
 ```python
 #==========================================================#
@@ -468,9 +469,9 @@ The format of _prefix.mfp_ is as follows:
   ......
 ```
 
-The variable _it_ is the dummy variable for temperature; in this case, we only used one temperature (300 K). _ik_ is the dummy variable for the given crystal momentum in the file fklist. _ibnd_ is the dummy variable for bands; in this case, ibnd=1 corresponds to band index 5 and ibnd=2 is the band index 6. The 3<sup>rd</sup>, 4<sup>th</sup>, and 5<sup>th</sup> columns are energy (eV), relaxation time (fs), and mean free path (nm) of each state, respectively.
+The variable _it_ is the dummy variable for temperature; in this case, we only used one temperature (300 K). _ik_ is the dummy variable for the given crystal momentum in the file fklist. _ibnd_ is the dummy variable for bands; in this case, ibnd=1 corresponds to band index 5 and ibnd=2 is the band index 6. The 4<sup>th</sup>, 5<sup>th</sup>, and 6<sup>th</sup> columns are energy (eV), relaxation time (fs), and mean free path (nm) of each state, respectively.
 
-The format of _prefix.vel_ is shown below: 
+The format of _'prefix'.vel_ is shown below: 
 
 ```python
 
@@ -483,7 +484,7 @@ The format of _prefix.vel_ is shown below:
 ......
 ```
 
-The 1<sup>st</sup> to 3<sup>rd</sup> columns are the same as in _prefix.mfp_. The 4<sup>th</sup> to 6<sup>th</sup> columns are the $$\mathbf{k}$$ point coordinates in the crystal units. The 7<sup>th</sup> to 9<sup>th</sup> columns are the components of the unit vector specifying the direction of the velocity of each electronic states. The last column is the magnitude of the velocity (m/s) of each state. 
+The 1<sup>st</sup> to 3<sup>rd</sup> columns are the same as in _'prefix'.mfp_. The 4<sup>th</sup> to 6<sup>th</sup> columns are the $$\mathbf{k}$$ point coordinates in the crystal units. The 7<sup>th</sup> to 9<sup>th</sup> columns are the components of the unit vector specifying the direction of the velocity of each electronic states. The last column is the magnitude of the velocity (m/s) of each state. 
 
 For an example calculation of mean free paths for holes, please see the folder _"examples/example01-silicon-perturbo/perturbo/pert-meanfp-hole"_.
 
@@ -531,8 +532,8 @@ Before running perturbo.x, remember to put the following files in the current di
 
 * _'prefix'\_epwan.h5_: here _si\_epwan.h5_
 * _ftemper_: here _si.temper_ obtained in the `'setup'` calculation 
-* _prefix\_tet.h5_: here _si\_tet.h5_ obtained in the `'setup'` calculation 
-* _prefix.imsigma_: here _si.imsigma_ obtained in the `'imsigma'` calculation     
+* _'prefix'\_tet.h5_: here _si\_tet.h5_ obtained in the `'setup'` calculation 
+* _'prefix'.imsigma_: here _si.imsigma_ obtained in the `'imsigma'` calculation     
 
 Run `perturbo.x`:
 
@@ -542,9 +543,9 @@ $ mpirun -n 1 perturbo.x -npools 1 -i pert.in > pert.out
 
 This calculation usually takes a few minutes. We obtain three output files:
 
-* _prefix.cond_ contains the conductivity and mobility tensors as a function of temperature
-* _prefix.tdf_ contains transport distribution function (TDF) as a function of carrier energy and temperature
-* _prefix\_tdf.h5_ includes all the information of the TDF for each temperature in HDF5 format
+* _'prefix'.cond_ contains the conductivity and mobility tensors as a function of temperature
+* _'prefix'.tdf_ contains transport distribution function (TDF) as a function of carrier energy and temperature
+* _'prefix'\_tdf.h5_ includes all the information of the TDF for each temperature in HDF5 format
 
 In our example, the output file is _si.cond_, which is shown here:
 
@@ -636,16 +637,16 @@ Here is the input file (_pert.in_):
 
 Before running the ITA calculation, make sure that the following files are in the current directory (_"pert-trans-ITA-electron"_):
 
-* _prefix\_epwan.h5_: here _si_epwan.h5_
+* _'prefix'\_epwan.h5_: here _si_epwan.h5_
 * _ftemper_: here _si.temper_
-* _prefix\_tet.h5_: here _si\_tet.h5_ 
+* _'prefix'\_tet.h5_: here _si\_tet.h5_ 
 
 ```bash
 export OMP_NUM_THREADS=4
 $ mpirun -n 8 perturbo.x -npools 8 -i pert.in > pert.out
 ```
 
-This task is time-comsuming using one thread and one MPI process on a single core. To speed up the calculations, we run it on multiple cores using hybrid MPI plus openMP parallelization. After the calculation has completed, we obtain 3 output files, _prefix.cond_, _prefix.tdf_, and _prefix\_tdf.h5_, similar to the RTA calculation.
+This task is time-comsuming using one thread and one MPI process on a single core. To speed up the calculations, we run it on multiple cores using hybrid MPI plus openMP parallelization. After the calculation has completed, we obtain 3 output files, _'prefix'.cond_, _'prefix'.tdf_, and _'prefix'\_tdf.h5_, similar to the RTA calculation.
 
 {% include note.html content="For ITA calculations, each MPI process could consume a significnat amount of RAM (memory). If RAM of computing nodes is limited, one can set `OMP_NUM_THREADS` to the total number of cores of the computing node, and set the MPI process per node to 1" %}
 
@@ -661,14 +662,14 @@ An example calculation for holes is also provided in the folder _"examples/examp
 <div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Seebeck coefficient. Note that phonon drag effects are not included in this calculation.
   </div>
 
-Uses the same input file as the `'trans'` calculation mode, but requires the additional file _prefix\_tdf.h5_ obtained in the `'trans'` calculation. The Seebeck calculation is a quick post-processing of the 'trans' calculation, which needs to be done before running `'trans-pp'`.
+Uses the same input file as the `'trans'` calculation mode, but requires the additional file _'prefix'\_tdf.h5_ obtained in the `'trans'` calculation. The Seebeck calculation is a quick post-processing of the 'trans' calculation, which needs to be done before running `'trans-pp'`.
 
 Change the calculation mode in the input file to `'trans-pp'`. Before running `perturbo.x`, make sure that four files exist in the current directory:
 
-* _prefix_epwan.h5_: here _si\_epwan.h5_
+* _'prefix'_epwan.h5_: here _si\_epwan.h5_
 * _ftemper_: here _si.temper_
-* _prefix_tet.h5_: here _si\_tet.h5_
-* _prefix_tdf.h5_: here _si\_tdf.h5_
+* _'prefix'_tet.h5_: here _si\_tet.h5_
+* _'prefix'_tdf.h5_: here _si\_tdf.h5_
 
 Run `perturbo.x`:
 
@@ -676,7 +677,7 @@ Run `perturbo.x`:
 $ mpirun -n 1 perturbo.x -npools 1 -i pert.in > pert.out
 ```
 
-It takes a few seconds. We obtain a file, _prefix.trans_coef_, in this case, si.trans_coef, which has the following format:
+It takes a few seconds. We obtain a file, _'prefix'.trans_coef_, in this case, si.trans_coef, which has the following format:
 
 ```python
 #==========================================================#
@@ -715,7 +716,7 @@ An example calculation for holes is also provided in the folder _"examples/examp
 
 <div markdown="span" class="alert alert-success" role="alert"><i class="fa fa-server fa"></i> <b> Computes:</b> Ultrafast hot carrier dynamics via the time-dependent Boltzmann transport equation: set an initial carrier distribution and calculate its evolution in time </div>
 
-For the ultrafast dynamics, one needs first to perform the `calc_mode = 'setup'` calculation, which is described [here](#calc_mode_setup). So, we assume that the user has already performed the `'setup'` calculation. From the `'setup'` calculation, we retain the following files necessary for the dynamics calculations: _prefix.temper_ and _prefix\_tet.h5_. 
+For the ultrafast dynamics, one needs first to perform the `calc_mode = 'setup'` calculation, which is described [here](#calc_mode_setup). So, we assume that the user has already performed the `'setup'` calculation. From the `'setup'` calculation, we retain the following files necessary for the dynamics calculations: _'prefix'.temper_ and _'prefix'\_tet.h5_. 
  
 For the `'dynamics-run'` calculation, specify the following variables in the input file (_pert.in_):
   - [preifx](mydoc_param_perturbo#prefix): the same prefix as in _'prefix'\_epwan.h5_
@@ -741,7 +742,7 @@ Here is the input file (_pert.in_):
 ```fortran
 &perturbo
  prefix      = 'si'
- calc_mode   = 'dynamics-pp'
+ calc_mode   = 'dynamics-run'
 
  boltz_kdim(1) = 80
  boltz_kdim(2) = 80
@@ -771,16 +772,17 @@ Here is the input file (_pert.in_):
 
 In this example, we calculate the evolution of the electron distribution. In order to perform the hole dynamics, set the parameter <a href="mydoc_param_perturbo.html#hole">hole</a> to `true`.
 
-Run `perturbo.x` (remember to link or copy _prefix\_epwan.h5_ in the current directory):
+Run `perturbo.x` (remember to link or copy _'prefix'\_epwan.h5_ in the current directory):
 
 ```bash
-$ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out
+$ export OMP_NUM_THREADS=4
+$ mpirun -n 8 <perturbo_bin>/perturbo.x -npools 8 -i pert.in > pert.out
 ```
 
-We obtain the _prefix\_cdyna.h5_ HDF5 output file (this file can be also found in the _"References"_ directory). This file contains all the necessary output information about the performed simulation. This file is organized as follows:
+We obtain the _'prefix'\_cdyna.h5_ HDF5 output file (this file can be also found in the _"References"_ directory). This file contains all the necessary output information about the performed simulation. This file is organized as follows:
 
 - `band_structure_ryd`: electronic bandstructure in Ry; each column corresponds to the band index $$n$$ $$(~\texttt{band_min}\leq n \leq \texttt{band_max})$$
-- `dynamics_run_[i]`: an HDF5 group that contains information about the _i<sup> th</sup>_ simulation.<br/>  If the simulation was restarted (`boltz_init_dist='restart'`), one will have several dynamics_run_[i] groups, otherwise, only dynamics_run_1 will be present. A group dynamics_run_[i] is structured as follows:
+- `dynamics_run_[i]`: an HDF5 group that contains information about the _i<sup> th</sup>_ simulation.<br/>  If the simulation was restarted (`boltz_init_dist='restart'`) one or more times, one will have several dynamics_run_[i] groups, otherwise, only dynamics_run_1 will be present. A group dynamics_run_[i] is structured as follows:
   - `num_steps`: the number of _output_ time steps (taking into account [output_nstep](mydoc_param_perturbo#output_nstep)), can be different for different dynamics_run_[i]
   <br/><br/>
   - `snap_t_0`: $$f_{n\mathbf{k}}(t_0)$$
@@ -793,10 +795,37 @@ We obtain the _prefix\_cdyna.h5_ HDF5 output file (this file can be also found i
 - `num_runs`: total number of performed simulations (corresponds to the number of dynamics_run_[i] groups).
 
 <br/>
-The _prefix\_cdyna.h5_ file structure can be schematically represented as follows:
+The _'prefix'\_cdyna.h5_ file structure can be schematically represented as follows:
 <img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-run.svg" alt="diagram_hdf5_dynamics-run">
 
-In order to postprocess this file, see the next section.
+The HDF5 files can be easily processed by python pakage <a href="https://docs.h5py.org/en/stable/">python package h5py</a>. As an example, we present here a simple Python script that visualizes the distribution function for the time $$t_5$$ of the simulation and for the first band (in the selected band range):
+
+```python
+#!/usr/bin/env python3
+import h5py
+import matplotlib.pyplot as plt
+
+prefix='si'
+snap_number=5
+band_index=0
+
+# load the HDF5 file
+h5file = h5py.File(prefix+'_cdyna.h5', 'r')
+
+# get the data
+ryd2ev = h5file['band_structure_ryd'].attrs['ryd2ev']
+energy_ev = h5file['band_structure_ryd'][:,band_index] * ryd2ev
+dist_func = h5file['dynamics_run_1']['snap_t_'+str(snap_number)][:,band_index]
+h5file.close()
+
+# plot the data
+plt.plot(energy_ev,dist_func,marker='o',linestyle='')
+plt.xlabel('Energy (eV)')
+plt.ylabel('Distribution function')
+plt.show()
+```
+
+In order to postprocess this file using `perturbo.x`, see the next section.
 
 <a name="calc_mode_dynamics-pp"></a>
 ### calc_mode = 'dynamics-pp' 
@@ -813,7 +842,7 @@ $$
 
 The integral of $$\bar{f}(E,t)$$ over the energy gives the number of carriers per unit cell as a function of time.
 
-In order to calculate the $$\bar{f}(E,t)$$ quantity, one needs to have all the files required for the `calc_mode='dynamics-run'` calculation ([previous section](#calc_mode_dynamics-run)) and the HDF5 output file _prefix\_cdyna.h5_ from the dynamics-run calculation. To perform the postprocessing, use a similar to the previous section [input file](#input_file_dynamics-run), but change the calculation mode to `calc_mode='dynamics-pp'`. Run `perturbo.x` (remember to link or copy _prefix\_epwan.h5_ in the current directory):
+In order to calculate the $$\bar{f}(E,t)$$ quantity, one needs to have all the files required for the `calc_mode='dynamics-run'` calculation ([previous section](#calc_mode_dynamics-run)) and the HDF5 output file _'prefix'\_cdyna.h5_ from the dynamics-run calculation. To perform the postprocessing, use a similar to the previous section [input file](#input_file_dynamics-run), but change the calculation mode to `calc_mode='dynamics-pp'`. Run `perturbo.x` (remember to link or copy _'prefix'\_epwan.h5_ in the current directory):
 
 ```bash
 $ mpirun -n 1 <perturbo_bin>/perturbo.x -npools 1 -i pert.in > pert.out
@@ -826,7 +855,7 @@ On the output, we obtain the following files:
 
 The _si\_popu.h5_ HDF5 file is organized as follows:
 
-- `energy_distribution`: the group that contains the populations for all the time instants of the dynamics-run simulation
+- `energy_distribution`: a group that contains the populations for all the time instants of the dynamics-run simulation
   <br/><br/>
   - `popu_t1`: $$ \bar{f}(E,t_1) $$
   <br/>$$\vdots$$<br/>
@@ -841,4 +870,27 @@ The _si\_popu.h5_ HDF5 file is organized as follows:
 The _si\_popu.h5_ HDF5 file can be schematically represented as follows:
 <img src="images/diagram_hdf5_dynamics/diagram_hdf5_dynamics-pp.svg" alt="diagram_hdf5_dynamics-pp">
 
+Similarly to the previous section, we provide here a simplistic Python script showing an example how to manipulate this HDF5 file. For example, to plot the electron population for the time $$t_{25}$$, run:
 
+```python
+#!/usr/bin/env python3
+import h5py
+import matplotlib.pyplot as plt
+
+prefix='si'
+snap_number=25
+
+# load the HDF5 file
+h5file = h5py.File(prefix+'_popu.h5', 'r')
+
+# get the data
+energy_ev = h5file['energy_grid_ev'][()]
+population = h5file['energy_distribution']['popu_t'+str(snap_number)][()]
+h5file.close()
+
+# plot the data
+plt.plot(energy_ev,population,marker='o',linestyle='')
+plt.xlabel('Energy (eV)')
+plt.ylabel('Electron population')
+plt.show()
+```

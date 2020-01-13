@@ -25,7 +25,12 @@ entries:
 
     - title: Introduction
       url: /index.html
-      output: web, pdf
+      output: web
+      type: homepage
+
+    - title: Introduction
+      url: /index_for_pdf.html
+      output: pdf
       type: homepage
 
     - title: Supported features
@@ -38,14 +43,6 @@ entries:
 
     - title: Research team	
       url: /mydoc_about.html	
-      output: web, pdf
-
-  - title: Release Notes
-    output: web, pdf
-    folderitems:
-
-    - title: 1.0 Release notes
-      url: /mydoc_release_notes_10.html
       output: web, pdf
 
   - title: Tutorials
@@ -82,6 +79,26 @@ entries:
 
     - title: Aluminum 
       url: /mydoc_tutorial_al.html
+      output: web, pdf
+  
+  - title: Release Notes
+    output: web, pdf
+    folderitems:
+
+    - title: 1.0 Release notes
+      url: /mydoc_release_notes_10.html
+      output: web, pdf
+
+  - title: Utils
+    output: web, pdf
+    folderitems:
+
+    - title: generate_input.py
+      url:  /mydoc_generate_input_with_examples.html
+      output: web, pdf
+
+    - title: relaxation_time.py
+      url:  /mydoc_relaxation_time.html
       output: web, pdf
 
   - title: Input parameters

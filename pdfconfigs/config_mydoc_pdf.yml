@@ -1,5 +1,5 @@
 destination: _site/
-url: "http://127.0.0.1:4010"
+url: "http://127.0.0.1:4020"
 baseurl: "/mydoc-pdf"
 port: 4010
 output: pdf

@@ -2,88 +2,9 @@
 title: "Introduction"
 keywords: introduction homepage 
 sidebar: mydoc_sidebar
-permalink: index.html
+permalink: index_for_pdf.html
 toc: false
 ---
-
-
-<style>
-.mySlides {display:none;
-margin-left: 40px
-}
-
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  background-color: rgba(0, 0, 0, 0.2);
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-.image_box{
-  height: 250px;
-  display: block;
-  position:relative;
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-}
-
-</style>
-
-<div class="image_box">
-  <img class="mySlides" src="/images/slideshow/img1.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img2.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img3.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img4.png" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img5.jpg" style="width:80%;margin-left:10%">
-
-  <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
-  <button class="next" onclick="plusDivs(1)">&#10095;</button>
-</div>
-
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  x[slideIndex-1].style.display = "block";  
-}
-</script>
 
 PERTURBO is an open source software to compute from first principles the scattering processes between charge carriers (electrons and holes) and phonons, defects, and photons in solid state materials, including metals, semiconductors, oxides, and insulators. In the current version, PERTURBO mainly computes electron-phonon (e-ph) interactions and phonon limited transport properties in the framework of the Boltzmann transport equation (BTE). These include the carrier mobility, electrical conductivity, and Seebeck coefficient. PERTURBO can also compute the ultrafast carrier dynamics (for now, with fixed phonon occupations) by explicitly time-stepping the time-dependent BTE. We will include other additional electron interactions, transport and ultrafast dynamics calculations in future releases.
 
