@@ -25,7 +25,12 @@ entries:
 
     - title: Introduction
       url: /index.html
-      output: web, pdf
+      output: web
+      type: homepage
+
+    - title: Introduction
+      url: /index_for_pdf.html
+      output: pdf
       type: homepage
 
     - title: Supported features
