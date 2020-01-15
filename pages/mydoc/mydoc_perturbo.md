@@ -404,7 +404,7 @@ Here we have an extra column with the phonon mode index (_imode_).
 
 Using the results in the _'prefix'.imsigma_ file, one can easily obtain, with a small script, the scattering rates for each state, which are equal to $${2}/{\hbar} \operatorname{Im}\Sigma$$ (it's convenient to use $$\hbar = 0.65821195\,\mathrm{eV}\,\mathrm{fs}$$ to this end). Using additional tools provided in `perturbo.x`, we can also compute the mean free path for each electronic state, as well as a range of phonon-limited transport properties.
 
-One way of obtaining the relaxation times (and their inverse, the scattering rates) is to run the Python script `relaxation_time.py` we provide to post-process the imsigma output. Another way is to obtain the relaxation times is to run a calculation of the mean free paths (see below), which conveniently outputs both the relaxation times and the mean free path for the desired electronic states. 
+One way of obtaining the relaxation times (and their inverse, the scattering rates) is to run the Python script `relaxation_time.py` we provide to post-process the imsigma output (the desciption of the script is [here](mydoc_relaxation_time)). Another way is to obtain the relaxation times is to run a calculation of the mean free paths (see below), which conveniently outputs both the relaxation times and the mean free path for the desired electronic states. 
 
 Also note that an example calculation of the e-ph self-energy for holes, is provided in the example folder _"examples/example01-silicon-perturbo/perturbo/pert-imsigma-hole"_, where we use different band indices (`band_min=2` and `band_max=4`), and the files, _fklist_ and _ftemper_, are also different and obtained in a different perturbo `'setup'` calculation. 
 

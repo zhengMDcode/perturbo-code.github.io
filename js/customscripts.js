@@ -105,3 +105,8 @@ if (document.selection) {
 }
 
 }
+
+function SetSelectCalcMode(calc_mode) {
+    document.getElementById("CalcModeSelect").value = calc_mode
+    DropDownFunction()
+}
