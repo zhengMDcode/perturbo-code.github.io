@@ -7,7 +7,7 @@ folder: mydoc
 toc: false
 ---
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <i>examples/example04-gaas-polar</i>  </div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example04-gaas-polar" target="_blank"><i>perturbo-examples/example04-gaas-polar</i></a>  </div>
 
 Example calculation in a polar material with long-range e-ph interactions.
 

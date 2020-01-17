@@ -1,0 +1,54 @@
+---
+title: Installation and compilation
+sidebar: mydoc_sidebar
+last_updated: January 10, 2020
+permalink: mydoc_installation.html
+folder: mydoc
+toc: true
+---
+
+
+{% include note.html content="PERTURBO uses a small number of subroutines from the PWSCF and Phonon packages of QE. Therefore, it needs to be compiled on top of QE. We assume that the users have already compiled QE successfully" %}
+
+
+## Download
+Perturbo is distributed as a gzipped tar file, e.g. _perturbo-x.x.tar.gz_ (x.x is the version number). 
+Download _perturbo-x.x.tar.gz_ and move it into the QE directory. 
+Change into the QE directory and unpack it
+
+
+```bash
+$ cd <Quantum Espresso directory>
+$ tar -xvzf perturbo-x.x.tar.gz
+```
+
+which creates a directory containing the source files, utitlities, documentation, and examples. 
+Change into the directory _"perturbo-x.x"_.
+
+```bash
+$ cd perturbo-x.x
+```
+
+There are four subdirectories inside the directory _"perturbo"_:
+
+* _"config"_ contains the system-dependent makefiles _make.sys.XXX_
+* _"pert-src"_ contains the source code of `perturbo.x` to compute electron dynamics 
+* _"qe2pert-src"_ contains the source code of the interface program `qe2pert.x`
+* _"examples"_ has input files for examples and tutorials on `perturbo.x` and `qe2pert.x`
+
+## Compilation
+There are two files in the _"perturbo"_ directory, _Makefile_ and _make.sys_. Modify _make.sys_ to make it suitable for your system or copy an existing _make.sys.XXX_ file from the directory _"config"_.
+
+```bash
+$ vim make.sys
+or 
+$ cp ./config/make.sys.XXX ./make.sys
+```
+
+Once the file _make.sys_ has been modified, you are ready to compile PERTURBO.
+
+```bash
+$ make
+```
+
+After the compiling, a directory called _"bin"_ is generated, which contains two executables, `perturbo.x` and `qe2pert.x`.

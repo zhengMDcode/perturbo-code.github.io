@@ -7,7 +7,7 @@ folder: mydoc
 toc: false
 ---
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <i>examples/example03-silicon-soc</i>  </div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example03-silicon-soc" target="_blank"><i>perturbo-examples/example03-silicon-soc</i></a>  </div>
 
 Run qe2pert.x and perturbo.x on silicon with spin-orbit coupling
 

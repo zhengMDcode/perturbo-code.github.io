@@ -49,6 +49,10 @@ entries:
     output: web, pdf
     folderitems:
 
+    - title: Organization
+      url: /mydoc_org.html
+      output: web, pdf
+
     - title: qe2pert.x
       url: /mydoc_qe2pert.html
       output: web, pdf

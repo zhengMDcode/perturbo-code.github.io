@@ -17,17 +17,17 @@ The preparation stage consists of five steps:
 4. Run Wannier90 to obtain Wannier functions
 5. Run `qe2pert.x`
 
-In the following, we use silicon as an example. The input files for QE and W90 are in the directory _"examples-perturbo/example02-silicon-qe2pert/pw-ph-wann"_. As a reference, we also provide the results in a directory called _"References"_. 
+In the following, we use silicon as an example. The input files for QE and W90 are in the directory <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/pw-ph-wann" target="_blank">_"perturbo-examples/example01-silicon-qe2pert/pw-ph-wann"_</a>. As a reference, we also provide the results in a directory called _"References"_. 
 
 ### Step 1: scf calculation
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> _examples/example02-silicon-qe2pert/pw-ph-wan/scf_ </div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/pw-ph-wann/scf" target="_blank">_perturbo-examples/example01-silicon-qe2pert/pw-ph-wan/scf_</a> </div>
 
 Run an SCF calculation and obtain the QE _'prefix'.save_ directory. In this case, we obtain _./tmp/si.save_, which is needed for phonon and nscf calculations.
 
 ### Step 2: phonon calculation
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> _examples/example02-silicon-qe2pert/pw-ph-wan/phonon_ </div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/pw-ph-wann/phonon" target="_blank">_perturbo-examples/example01-silicon-qe2pert/pw-ph-wan/phonon_</a> </div>
 
 We provide an example input file  _ph-ref.in_ for phonon calculations in QE, and two shell scripts (`ph-submit.sh` and `ph-collect.sh`) to set up and run a separate phonon calculation for each $$\mathbf{q}$$ point and collect the results. The user can modify the reference input file and the two shell scripts to use them for their material of choice and on their computing system. In this step, make sure that the number of $$\mathbf{q}$$ points is commensurate with the number of $$\mathbf{k}$$ points used in the nscf and Wannierization calculations. For example, a $$\mathbf{q}$$ grid of 8x8x8 can be used with a wannierization $$\mathbf{k}$$ grid of 8x8x8 or 16x16x16, but not with a 10x10x10 or 12x12x12 grid.  
 
@@ -78,7 +78,7 @@ Since phonon calculations using DFPT can be  computationally expensive, it is of
 
 ### Step 3: nscf calculation
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> _examples/example02-silicon-qe2pert/pw-ph-wan/nscf_</div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/pw-ph-wann/nscf" target="_blank">_perturbo-examples/example01-silicon-qe2pert/pw-ph-wan/nscf_</a></div>
 
 We now run the nscf calculations needed to generate the wavefunctions on the full $$\mathbf{k}$$ point grid, which we'll need both for generating Wannier functions with Wannier90 and for forming the coarse-grid e-ph matrix elements in Perturbo. Make sure that the number of k points is commensurate with the number of $$\mathbf{q}$$ points used for phonons, otherwise, qe2pert.x will stop. Remember to copy the QE _'prefix'.save_ directory from the scf calculation the current directory:
 
@@ -91,7 +91,7 @@ Then run the nscf calculation with QE.
 
 ### Step 4: Wannier90 calculation
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> _examples/example02-silicon-qe2pert/pw-ph-wan/wann_</div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/pw-ph-wann/wann" target="_blank">_perturbo-examples/example01-silicon-qe2pert/pw-ph-wan/wann_</a></div>
 
 {% include note.html content="Requires Wannier90 v3.0.0 and higher." %}
 
@@ -117,7 +117,7 @@ The user has to run Wannier90 3.0 or higher, since otherwise the $$U$$ matrices 
 
 ### Step 5: Running qe2pert.x 
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> _examples/example02-silicon-qe2pert/qe2pert_</div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder"></i> <b>Directory:</b> <a href="https://github.com/perturbo-code/perturbo-examples/tree/master/example01-silicon-qe2pert/qe2pert" target="_blank"> _perturbo-examples/example01-silicon-qe2pert/qe2pert_</a></div>
 
 We are ready to compute the e-ph matrix elements on the coarse $$\mathbf{k}$$ point (determined by the nscf step) and $$\mathbf{q}$$ point (determined by the phonon step) Brillouin zone grids. First, copy or link the electronic and phonon calculation results to the current directory.
 
