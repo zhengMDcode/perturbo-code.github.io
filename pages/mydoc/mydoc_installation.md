@@ -8,10 +8,18 @@ toc: true
 ---
 
 
-{% include note.html content="PERTURBO uses a small number of subroutines from the PWSCF and Phonon packages of QE. Therefore, it needs to be compiled on top of QE. We assume that the users have already compiled QE successfully" %}
+{% include note.html content="PERTURBO uses a small number of subroutines from the PWSCF and Phonon packages of QE. Therefore, it needs to be compiled on top of QE. We assume that the users have already compiled QE successfully." %}
 
 
 ## Download
+
+In order to download the source code,
+<a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body=I would like to download the PERTURBO code.' "><i class="fa fa-envelope-o"> contact us</i>{{feedback_text}}</a> and we will:
+
+- [Recommended] add you as a collaborator in our GitHub project
+- [If you do not have a GitHub account] send you a _.tar.gz_ file.
+
+<!--
 Perturbo is distributed as a gzipped tar file, e.g. _perturbo-x.x.tar.gz_ (x.x is the version number). 
 Download _perturbo-x.x.tar.gz_ and move it into the QE directory. 
 Change into the QE directory and unpack it
@@ -28,7 +36,9 @@ Change into the directory _"perturbo-x.x"_.
 ```bash
 $ cd perturbo-x.x
 ```
+-->
 
+Clone from GitHub (or extract _.tar.gz_) into the QE directory.
 There are four subdirectories inside the directory _"perturbo"_:
 
 * _"config"_ contains the system-dependent makefiles _make.sys.XXX_
