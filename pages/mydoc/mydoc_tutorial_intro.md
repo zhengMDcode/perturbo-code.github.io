@@ -1,5 +1,5 @@
 ---
-title: Tutorials
+title: Other tutorials
 sidebar: mydoc_sidebar
 last_updated: January 10, 2020
 permalink: mydoc_tutorial_intro.html

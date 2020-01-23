@@ -38,7 +38,7 @@ exclude:
 
 feedback_subject_line: PERTURBO code user
 
-feedback_email: perturbo.project@gmail.com
+feedback_email: perturbo@caltech.edu
 # used as a contact email for the Feedback link in the top navigation bar
 
 # feedback_disable: true
