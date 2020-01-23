@@ -1,6 +1,4 @@
-
-pdf/mydoc.pdf
-
+.swp
 tags
 
 .pdf-mydoc.sh.swp
@@ -14,4 +12,3 @@ _pdf
 vendor/
 .bundle/
 
-pdf/

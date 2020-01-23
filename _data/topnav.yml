@@ -3,8 +3,8 @@
 topnav:
 - title: Topnav
   items:
-#    - title: GitHub
-#      external_url: https://.../documentation...
+    - title: View in PDF
+      external_url: /pdf/mydoc.pdf
     - title: News
       url: /news
 
