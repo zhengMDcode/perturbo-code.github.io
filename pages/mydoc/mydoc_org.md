@@ -22,8 +22,17 @@ We recommend users to download the input files from the _perturbo-examples-light
 
 In the tutorail text, we specify the path for a given tutorial section in the following way:
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <i>example02-silicon-perturbo/perturbo/pert-band  </i>
-<a href="https://caltech.box.com/s/p4qk1gs5snudd8blk3dh18kwn5m2bdsm" target="_blank">link</a>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
+<b> Directory:</b>
+<i>
+example02-silicon-perturbo/perturbo/pert-bands/
+</i>
+&nbsp;&nbsp;
+<span style="float: right;">
+<a href=
+"https://caltech.box.com/s/p4qk1gs5snudd8blk3dh18kwn5m2bdsm"
+target="_blank">link</a>
+</span>
 </div>
 
 The path is the same for the _-light_ and _-full_ repositories. We also provide a link to a given folder in the _-full_ repository. The output files can be found in the _References_ folder.
