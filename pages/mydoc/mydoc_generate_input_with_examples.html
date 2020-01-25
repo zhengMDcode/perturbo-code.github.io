@@ -13,9 +13,9 @@ toc: false
 </head>
 <body>
 
-   <p>The PERTURBO huicode has many calculation modes (specified by the <a href="mydoc_param_perturbo#calc_mode">calc_mode</a> variable). Each calculation mode implies different mandatory and optional input parameters. In order to simplify and systematize the input files for the user, we provide a python script which can generate the PERTURBO input files for different calculation modes.</p>
+   <p>The PERTURBO code has many calculation modes (specified by the <a href="mydoc_param_perturbo#calc_mode">calc_mode</a> variable). Each calculation mode implies different mandatory and optional input parameters. In order to simplify and systematize the input files for the user, we provide a python script which can generate the PERTURBO input files for different calculation modes.</p>
 
-<p>To use the script, go to the <em>utils</em> directory:</p>
+<p>To use the script, go to the <em>utils</em> directory of the PERTURBO code folder:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ./utils
 </code></pre></div></div>
@@ -48,14 +48,14 @@ toc: false
 
 <p>It contains a block of mandatory parameters for this calculation mode and a block of optional ones, which is commented. As one can see, this input file containes some <em>typical</em> values for the input parameters. The user should modify them for a given calculation.</p>
 
-<p>Setting the variables is also possible using the scipt. For example, to set <code class="language-plaintext highlighter-rouge">prefix</code> to <code class="language-plaintext highlighter-rouge">'si'</code> and <code class="language-plaintext highlighter-rouge">band_min</code> to <code class="language-plaintext highlighter-rouge">'10'</code>, run:</p>
+<p>Setting the variables is also possible using the script. For example, to set <code class="language-plaintext highlighter-rouge">prefix</code> to <code class="language-plaintext highlighter-rouge">'si'</code> and <code class="language-plaintext highlighter-rouge">band_min</code> to <code class="language-plaintext highlighter-rouge">'10'</code>, run:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./generate_input.py <span class="nt">-c</span> ephmat <span class="nt">--prefix</span> si <span class="nt">--band_min</span> 10
 </code></pre></div></div>
 
 <p>The values of these parameters were changed in the <em>pert.in</em> file. Note, that since we specified an optional parameter <code class="language-plaintext highlighter-rouge">band_min</code>, it was uncommented in the input file.</p>
 
-<p>To change the name of the input file, run the script with <code class="language-plaintext highlighter-rouge">-i your_name.in</code> option. Setting the input parameter values from the scipt could be usefull in the case, when one needs to create automatically many different input files.</p>
+<p>To change the name of the input file, run the script with <code class="language-plaintext highlighter-rouge">-i input_name.in</code> option. Setting the input parameter values from the script could be usefull in the case, when one needs to create automatically many different input files.</p>
 
 <p>In order to generate the input files for the <code class="language-plaintext highlighter-rouge">qe2pert.x</code> calcuation, select <code class="language-plaintext highlighter-rouge">-c qe2pert</code>. Run the script with <code class="language-plaintext highlighter-rouge">-h</code> to get the whole list of possible options.</p>
 
