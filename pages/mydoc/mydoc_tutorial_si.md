@@ -7,7 +7,18 @@ folder: mydoc
 toc: false
 ---
 
-<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i> <b> Directory:</b> <i>examples/example03-silicon-soc</i>  </div>
+<div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
+<b> Directory:</b>
+<i>
+example03-silicon-soc/
+</i>
+&nbsp;&nbsp;
+<span style="float: right;">
+<a href=
+"https://caltech.box.com/s/ddvsbsxehoqbcunfmuf1hfjtklinedz7"
+target="_blank">link</a>
+</span>
+</div>
 
 Run qe2pert.x and perturbo.x on silicon with spin-orbit coupling
 
@@ -26,7 +37,7 @@ The input files can be found in the directory _"pw-ph-wann"_. Remember to run sc
 /
 ```
 
-The input file is similar to the one for silicon without SOC (_"examples/example02-silicon-qe2pert"_). We only need to double the number of Wannier functions ([num_wann](mydoc_param_qe2pert#num_wann) variable) and DFT bands ([dft_band_min](mydoc_param_qe2pert#dft_band_min) and [dft_band_max](mydoc_param_qe2pert#dft_band_max)) in the input file. 
+The input file is similar to the one for silicon without SOC (_"example02-silicon-qe2pert"_, <a href="https://caltech.box.com/s/amtb8t0na3rfgge42e58l8brb5a4f9b2" target="_blank">link</a>). We only need to double the number of Wannier functions ([num_wann](mydoc_param_qe2pert#num_wann) variable) and DFT bands ([dft_band_min](mydoc_param_qe2pert#dft_band_min) and [dft_band_max](mydoc_param_qe2pert#dft_band_max)) in the input file. 
 
 The input files for `perturbo.x` are also similar to the silicon calculations without SOC, except for the band range given by [dft_band_min](mydoc_param_qe2pert#dft_band_min) and [dft_band_max](mydoc_param_qe2pert#dft_band_max). Each calculation is the same as in the silicon example without SOC.
 
