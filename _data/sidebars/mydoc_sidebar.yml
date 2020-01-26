@@ -98,7 +98,7 @@ entries:
     folderitems:
 
     - title: generate_input.py
-      url:  /mydoc_generate_input_with_examples.html
+      url:  /mydoc_generate_input.html
       output: web, pdf
 
     - title: relaxation_time.py

@@ -21,7 +21,7 @@ To use it, you should have a _'preifx'_.imsigma file obtained as an output from 
 Run the script in the directory where the _'preifx'.imsigma_ file is located:
 
 ```bash
-$ [your_prerturbo_path]/utils/relaxation_time.py
+$ [perturbo_path]/utils/relaxation_time.py
 ```
 If you have more than one _.imsigma_ file in the directory, specify the file name with `--imsigma_file [file.imsigma]` (or `-i [file.imsigma]`) option.
 
