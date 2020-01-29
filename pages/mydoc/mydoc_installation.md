@@ -1,5 +1,5 @@
 ---
-title: Installation and compilation
+title: Download and Installation
 sidebar: mydoc_sidebar
 last_updated: January 10, 2020
 permalink: mydoc_installation.html
@@ -46,7 +46,7 @@ There are four subdirectories inside the directory _"perturbo"_:
 * _"qe2pert-src"_ contains the source code of the interface program `qe2pert.x`
 * _"examples"_ has input files for examples and tutorials on `perturbo.x` and `qe2pert.x`
 
-## Compilation
+## Installation
 There are two files in the _"perturbo"_ directory, _Makefile_ and _make.sys_. Modify _make.sys_ to make it suitable for your system or copy an existing _make.sys.XXX_ file from the directory _"config"_.
 
 ```bash
