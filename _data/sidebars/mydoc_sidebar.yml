@@ -37,7 +37,7 @@ entries:
       url: /mydoc_features.html
       output: web, pdf
 
-    - title: Installation and compilation
+    - title: Download and installation
       url: /mydoc_installation.html
       output: web, pdf
 
