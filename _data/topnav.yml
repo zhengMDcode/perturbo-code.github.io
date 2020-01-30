@@ -4,7 +4,7 @@ topnav:
 - title: Topnav
   items:
     - title: View in PDF
-      external_url: /pdf/mydoc.pdf
+      external_url: /pdf/perturbo_manual.pdf
     - title: News
       url: /news
 

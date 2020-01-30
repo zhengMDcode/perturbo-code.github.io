@@ -112,7 +112,8 @@ body.title { page: title }
 }
 
 body.frontmatter { page: frontmatter }
-body.frontmatter {counter-reset: page 1}
+
+/*body.frontmatter {counter-reset: page 1}*/
 
 
 @page frontmatter {
@@ -129,7 +130,7 @@ body.frontmatter {counter-reset: page 1}
         content: "perturbo@caltech.edu";   }
 }
 
-body.first_page {counter-reset: page 1}
+/*body.first_page {counter-reset: page 1}*/
 
 h1 { string-set: doctitle content() }
 

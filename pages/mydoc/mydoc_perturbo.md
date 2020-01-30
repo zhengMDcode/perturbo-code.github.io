@@ -42,7 +42,7 @@ target="_blank">link</a>
 
 
  Users specify three variables in the input file (_pert.in_)
-  - [prefix](mydoc_param_perturbo#prefix): the same prefix used in __'prefix'\_epwan.h5__
+  - [prefix](mydoc_param_perturbo.html#prefix): the same prefix used in __'prefix'\_epwan.h5__
   - [calc\_mode](mydoc_param_perturbo.html#calc_mode): set to `'bands'` 
   - [fklist](mydoc_param_perturbo.html#fklist): the filename of a file containing the high-symmetry crystal momentum path or k list
 
