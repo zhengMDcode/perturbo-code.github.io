@@ -13,8 +13,13 @@ table .table {max-width:650px;}
 
 #navig a[href]::after { content: leader(".") target-counter(attr(href), page); }
 
+/*
 a[href]::after {
     content: " (page " target-counter(attr(href), page) ")"
+}
+*/
+a[href]::after {
+    content: "" 
 }
 
 a[href^="http:"]::after, a[href^="https:"]::after {
@@ -24,10 +29,10 @@ a[href^="http:"]::after, a[href^="https:"]::after {
 a[href] {
     color: blue !important;
 }
+
 a[href*="mailto"]::after, a[data-toggle="tooltip"]::after, a[href].noCrossRef::after {
     content: "";
 }
-
 
 @page {
     margin: 60pt 90pt 60pt 90pt;
@@ -107,7 +112,8 @@ body.title { page: title }
 }
 
 body.frontmatter { page: frontmatter }
-body.frontmatter {counter-reset: page 1}
+
+/*body.frontmatter {counter-reset: page 1}*/
 
 
 @page frontmatter {
@@ -124,7 +130,7 @@ body.frontmatter {counter-reset: page 1}
         content: "perturbo@caltech.edu";   }
 }
 
-body.first_page {counter-reset: page 1}
+/*body.first_page {counter-reset: page 1}*/
 
 h1 { string-set: doctitle content() }
 

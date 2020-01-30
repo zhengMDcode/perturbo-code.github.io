@@ -21,9 +21,8 @@ When using results from PERTURBO in your publications, please, cite the above pa
 </div>
 
 
-
 <div class="alert alert-success" role="alert"><i class="fa fa-download fa-lg"></i>
-&nbsp;  To download the code, contact us:  <i class="fa fa-envelope-o"></i> perturbo@caltech.edu. For more information, please, visit the <a href="mydoc_installation">Download and installation</a> section. </div>
+&nbsp;  To download the code, contact us:  <i class="fa fa-envelope-o"></i> perturbo@caltech.edu. For more information, please, visit the <a href="mydoc_installation.html">Download and installation</a> section. </div>
 
 <hr>
 

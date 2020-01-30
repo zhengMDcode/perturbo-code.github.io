@@ -86,12 +86,12 @@ entries:
       output: web, pdf
   
   - title: Release Notes
-    output: web, pdf
+    output: web
     folderitems:
 
     - title: 1.0 Release notes
       url: /mydoc_release_notes_10.html
-      output: web, pdf
+      output: web
 
   - title: Utils
     output: web, pdf
