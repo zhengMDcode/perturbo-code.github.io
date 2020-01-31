@@ -1199,6 +1199,12 @@ h4.panel-title {
     }
 }
 
+.prince_link {
+   visibility: hidden;
+   font-size: 0;
+   line-height: 0;
+}
+
 /* FOR SCROLLING IN CODE */
 /*
 .highlight pre code * {
