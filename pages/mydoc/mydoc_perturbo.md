@@ -23,7 +23,7 @@ In this section, we will discuss the features (or calculation modes) of `perturb
 In the following, we use silicon as an example to demonstrate the features of PERTURBO (see the directory _"example02-silicon-perturbo/perturbo"_, <a href="https://caltech.box.com/s/u1o6zyrdx88ftdvmtt77cduhbrwo9jpv" target="_blank">link</a>). **To run** `perturbo.x` **one first needs to generate the file _'perfix'\_epwan.h5_** (in this case, _si\_epwan.h5_), which is prepared using `qe2pert.x` as we discuss in section [qe2pert.x](mydoc_qe2pert.html#qe2pert.x). The file _si\_epwan.h5_ is inside the directory _"example02-silicon-perturbo/qe2pert.x"_, <a href="https://caltech.box.com/s/fyswa1mp0vgfvq4fllsrq44gu26zufgd" target="_blank">link</a>. For each calculation mode, we also provide reference results in the directory _"References"_. In all calculations, the same prefix value as in the QE DFT calculation should be used.
 
 
-<a name="calc_mode_bands"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_bands"></a></div>
 ### calc_mode = 'bands'
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -58,7 +58,7 @@ Here is the input file or namelist (_pert.in_):
 
 In this example, `fklist='si_band.kpt'`, the file _si\_band.kpt_ containing the $$\mathbf{k}$$ point list: 
 
-<a name="fklist_file"></a>
+<div class="prince_link">&#xA0;<a name="fklist_file"></a></div>
 ```python
 6
 0.500   0.500   0.500   50
@@ -107,7 +107,7 @@ Note that there are 8 blocks in this example, one for each of the 8 bands, becau
 
 
 
-<a name="calc_mode_phdisp"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_phdisp"></a></div>
 ### calc_mode = 'phdisp'
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -172,7 +172,7 @@ Note that there are 6 blocks, one for each of the to 6 phonon modes in silicon. 
 
 
 
-<a name="calc_mode_ephmat"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_ephmat"></a></div>
 ### calc_mode = 'ephmat'
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -244,7 +244,7 @@ The calculation typically takes a few minutes. The output file, called _'prefix'
 
 The 1<sup>st</sup> column is a dummy index for the $$\mathbf{k}$$ point. The 2<sup>nd</sup> column is the $$\mathbf{k}$$ point coordinate used for plotting. The 3<sup>rd</sup> and 4<sup>th</sup> columns are the dummy index and the $$\mathbf{q}$$ point coordinate used for plotting, respectively. The 5th column is the phonon mode index. The 6<sup>th</sup> column is the phonon energy (in meV). The 7<sup>th</sup> column is the deformation potential (in eV/Å units), namely the expectation value of the phonon perturbation potential with respect to the initial and final electronic states. The 8<sup>th</sup> column is the absolute values of the e-ph matrix elements (meV units) summed over the number of bands specified by the user. 
 
-<a name="calc_mode_setup"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_setup"></a></div>
 ### calc_mode = 'setup'
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -299,7 +299,7 @@ The 'setup' calculation find all the relevant $$\mathbf{k}$$ points (both irredu
 
 In this case, the ftemper file `si.temper` has the following format:
 
-<a name="ftemper_file"></a>
+<div class="prince_link">&#xA0;<a name="ftemper_file"></a></div>
 ```python
 1 T
 300.00   6.52   1.0E+18
@@ -339,7 +339,7 @@ Note how `perturbo.x` has computed the chemical potential (second entry in the s
 The above explanation focuses on electrons. For holes carriers, please refer to _"example02-silicon-perturbo/perturbo/pert-setup-hole"_, <a href="https://caltech.box.com/s/zgucbdo77i88tcfod8zkinlxng79u441" target="_blank">link</a>. In the input file for holes, remember to use `hole=.true.` (default: `hole=.false.`), and choose an appropriate energy window and the band indices for holes. 
 
 
-<a name="calc_mode_imsigma"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_imsigma"></a></div>
 ### calc_mode = 'imsigma'
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -407,9 +407,8 @@ We obtain two output files:
 * _'prefix'.imsigma_ contains the computed imaginary part of the e-ph self-energy
 * _'prefix'.imsigma\_mode_ contains the computed imaginary part of the e-ph self-energy (where phonon modes are numbered for increasing energy values).
 
+<div class="prince_link">&#xA0;<a name="imsigma_file"></a></div>
 The following is the format of _'prefix'.imsigma_ (in this case, _si.imsigma_):
-
-<a name="imsigma_file"></a>
 ```python
 #  Electron (Imaginary) Self-Energy in the Migdal Approx.  #
 #      ( only for bands within [band_min, band_max] )      #
@@ -459,7 +458,7 @@ One way of obtaining the relaxation times (and their inverse, the scattering rat
 Also note that an example calculation of the e-ph self-energy for holes, is provided in the example folder _"example02-silicon-perturbo/perturbo/pert-imsigma-hole"_, <a href="https://caltech.box.com/s/uorougr1783u7d6bcjdsm4e2d62xfvta" target="_blank">link</a>, where we use different band indices (`band_min=2` and `band_max=4`), and the files, _fklist_ and _ftemper_, are also different and obtained in a different perturbo `'setup'` calculation. 
 
 
-<a name="calc_mode_meanfp"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_meanfp"></a></div>
 ### calc_mode = 'meanfp'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
@@ -550,7 +549,7 @@ The 1<sup>st</sup> to 3<sup>rd</sup> columns are the same as in _'prefix'.mfp_. 
 For an example calculation of mean free paths for holes, please see the folder _"example02-silicon-perturbo/perturbo/pert-meanfp-hole"_, <a href="https://caltech.box.com/s/ad7lknmib8wdxjsgf0e1ex3m54z211v3" target="_blank">link</a>.
 
 
-<a name="calc_mode_trans"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_trans"></a></div>
 ### calc_mode = 'trans'
 
 The calculation mode `'trans'` computes the electrical conductivity and carrier mobility tensors. The code can compute these quantities using the relaxation time approximantion (RTA) of the Boltzmann transport equation (BTE) or an iterative approach (ITA) to fully solve the linearized BTE. 
@@ -735,7 +734,7 @@ An example calculation for holes is also provided in the folder _"example02-sili
 
 
 
-<a name="calc_mode_trans-pp"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_trans-pp"></a></div>
 ### calc_mode = 'trans-pp'
 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
@@ -801,7 +800,7 @@ An example calculation for holes is also provided in the folder _"example02-sili
 
 
 
-<a name="calc_mode_dynamics-run"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_dynamics-run"></a></div>
 ### calc_mode = 'dynamics-run' 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
@@ -839,7 +838,7 @@ For the `'dynamics-run'` calculation, specify the following variables in the inp
   - [delta_smear](mydoc_param_perturbo#delta_smear): the broadening to model the Dirac delta function is chosen to 8 meV
 
 Here is the input file (_pert.in_):
-<a name="input_file_dynamics-run"></a>
+<div class="prince_link">&#xA0;<a name="input_file_dynamics-run"></a></div>
 
 ```fortran
 &perturbo
@@ -929,7 +928,7 @@ plt.show()
 
 In order to postprocess this file using `perturbo.x`, see the next section.
 
-<a name="calc_mode_dynamics-pp"></a>
+<div class="prince_link">&#xA0;<a name="calc_mode_dynamics-pp"></a></div>
 ### calc_mode = 'dynamics-pp' 
 <div markdown="span" class="alert alert-warning" role="alert"><i class="fa fa-folder fa"></i>
 <b> Directory:</b>
