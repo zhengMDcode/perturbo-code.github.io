@@ -1,7 +1,7 @@
 ---
 title: Quantum Espresso to PERTURBO input parameters
 sidebar: mydoc_sidebar
-last_updated: January 29, 2020
+last_updated: January 31, 2020
 permalink: mydoc_param_qe2pert.html
 folder: mydoc
 toc: false
@@ -20,6 +20,7 @@ To do some modifications, please, modify the script directly. -->
 <a href=#phdir>phdir</a> | 
 <a href=#dft_band_min>dft_band_min</a> | 
 <a href=#dft_band_max>dft_band_max</a> | 
+<a href=#dis_win_min>dis_win_min</a> | 
 <a href=#num_wann>num_wann</a> | 
 <a href=#system_2d>system_2d</a> | 
 <a href=#nk1>nk1</a> | 
@@ -83,8 +84,18 @@ Lowest band index used in Wannier90.<br><br><button type="button" class="collaps
 <i>Variable type: </i>integer<br>
 <i>Default value: </i><code>10000</code><br>
 <br>
-Highest band index used in Wannier90.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
+Highest band index used in Wannier90. Be default, it will be reset to the highest band index in the DFT results.<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"><nobr><i>Optional&nbsp;for</i>&nbsp;&nbsp;<code>qe2pert</code></nobr>
 </div></div>
+<br>
+<a name=dis_win_min></a>
+<div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
+<div class="family_watermark" style="--color: hsl(0,10.0%,45.0%)"><i>GENERAL INPUT PARAMETERS</i></div>
+<font size="4"><b>dis_win_min</b></font>  
+  <br><br>
+<i>Variable type: </i>real<br>
+<i>Default value: </i><code>-9999.0</code><br>
+<br>
+the 'dis_win_min' used in Wannier90, the lower boundary of the outer windows<br><br><button type="button" class="collapsible" style="--background: #999999; --backgr_active: #FFFFFF; --strip-color:hsl(0,10.0%,45.0%)">&#9660;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mandatory/Optional&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#9660;</button><div class="content" style="--strip-color: hsl(0,10.0%,45.0%)"></div></div>
 <br>
 <a name=num_wann></a>
 <div class="input_param" style="--background: hsl(0,0.0%,93.5%); --border: hsl(0,30.0%,35.0%)">
