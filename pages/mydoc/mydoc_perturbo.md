@@ -1006,3 +1006,20 @@ plt.xlabel('Energy (eV)')
 plt.ylabel('Electron population')
 plt.show()
 ```
+
+It is also convenient to postprocess and visualize the data in HDF5 file using other high level languages, such as Julia. For example, the following Julia script does the same thing as the above Python script: 
+
+```python
+using HDF5, Plots
+
+prefix = "si"
+fname = prefix * "_popu.h5"
+snap_number = 25
+
+# read the data
+energy_ev = h5read(fname, "energy_grid_ev")
+population = h5read(fname, "energy_distribution/popu_t"*string(snap_number))
+
+# plot
+plot(energy_ev, population, xlabel="Energy (eV)", ylabel="Electron population")
+```
