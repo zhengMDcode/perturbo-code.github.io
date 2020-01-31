@@ -1009,7 +1009,7 @@ plt.show()
 
 It is also convenient to postprocess and visualize the data in HDF5 file using other high level languages, such as Julia. For example, the following Julia script does the same thing as the above Python script: 
 
-```Julia
+```python
 using HDF5, Plots
 
 prefix = "si"
