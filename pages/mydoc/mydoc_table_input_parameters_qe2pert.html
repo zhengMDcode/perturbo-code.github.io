@@ -1,7 +1,7 @@
 ---
 title: Quantum Espresso to PERTURBO input parameters
 sidebar: mydoc_sidebar
-last_updated: January 29, 2020
+last_updated: January 31, 2020
 permalink: mydoc_table_input_parameters_qe2pert.html
 folder: mydoc
 toc: false
@@ -73,7 +73,17 @@ Lowest band index used in Wannier90.</br><p><i>Default:</i> <code>1</code></p></
 </td>
 <td>integer</td>
 <td>
-Highest band index used in Wannier90.</br><p><i>Default:</i> <code>10000</code></p></td>
+Highest band index used in Wannier90. Be default, it will be reset to the highest band index in the DFT results.</br><p><i>Default:</i> <code>10000</code></p></td>
+</tr>
+
+<tr>
+<td>
+<a name=dis_win_min></a>
+<code>dis_win_min</code>
+</td>
+<td>real</td>
+<td>
+the 'dis_win_min' used in Wannier90, the lower boundary of the outer windows</br><p><i>Default:</i> <code>-9999.0</code></p></td>
 </tr>
 
 <tr>
