@@ -41,6 +41,8 @@ feedback_subject_line: PERTURBO code user
 feedback_email: perturbo@caltech.edu
 # used as a contact email for the Feedback link in the top navigation bar
 
+feedback_body: "Thank you for your interest in the PERTURBO code. %0D%0A%0D%0A In order to have access to the code, please provide us the following information: %0D%0A Name: %0D%0A Organization: %0D%0A I am going to use PERTURBO for: %0D%0A%0D%0A If you have a GitHub account, please provide us your GitHub username so we can add you as a collaborator to our GitHub project (recommended option): %0D%0A GitHub username: %0D%0A%0D%0A Otherwise, we will send you a .tar.gz file of the source code."
+
 # feedback_disable: true
 # if you uncomment the previous line, the Feedback link gets removed
 

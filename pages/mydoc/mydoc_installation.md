@@ -14,7 +14,7 @@ toc: true
 ## Download
 
 In order to download the source code,
-<a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body=I would like to download the PERTURBO code.' "><i class="fa fa-envelope-o"> contact us</i>{{feedback_text}}</a> and we will:
+<a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body={{site.feedback_body}}' "><i class="fa fa-envelope-o"> contact us</i>{{feedback_text}}</a> and we will:
 
 - [Recommended] add you as a collaborator in our GitHub project
 - [If you do not have a GitHub account] send you a _.tar.gz_ file.
@@ -39,7 +39,7 @@ $ cd perturbo-x.x
 -->
 
 Clone from GitHub (or extract _.tar.gz_) into the QE directory.
-There are four subdirectories inside the directory _"perturbo"_:
+There are three subdirectories inside the directory _"perturbo"_:
 
 * _"config"_ contains the system-dependent makefiles _make.sys.XXX_
 * _"pert-src"_ contains the source code of `perturbo.x` to compute electron dynamics 
