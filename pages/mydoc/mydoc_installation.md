@@ -49,7 +49,7 @@ There are four subdirectories inside the directory _"perturbo"_:
 * _"examples"_ has input files for examples and tutorials on `perturbo.x` and `qe2pert.x`
 -->
 
-The source code is supplemented by the tutorial examples input and output files. More details about the examples can be found in the [Orgnization](mydoc_org.html) section.
+The source code is supplemented by the tutorial examples input and output files. More details about the examples can be found in the [Organization](mydoc_org.html) section.
 
 ## Installation
 There are two files in the _"perturbo"_ directory, _Makefile_ and _make.sys_. Modify _make.sys_ to make it suitable for your system or copy an existing _make.sys.XXX_ file from the directory _"config"_.
