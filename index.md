@@ -96,7 +96,7 @@ For more details on the code structure of PERTURBO, we refer the users to the ma
 <div markdown="span" class="alert alert-warning" role="alert">
 <img src="images/newspaper-regular.svg" style="width:3.5%;margin-top:0.1%" > 
 &nbsp;
-When using results from PERTURBO in your publications, please, cite the above paper and acknowledge the use of the code.
+When using results from PERTURBO in your publications, please cite the PERTURBO paper given above and acknowledge the use of the code.
 </div>
 
 
