@@ -91,7 +91,7 @@ PERTURBO is written in Fortran95 with hybrid parallelization <a href="https://ww
 
 For more details on the code structure of PERTURBO, we refer the users to the manuscript accompying the source code: 
 
-- Jin-Jian Zhou, Jinsoo Park, I-Te Lu, Ivan Maliyov, Xiao Tong, Marco Bernardi, <i>"Perturbo: a software package for electron-phonon interactions, charge transport and ultrafast dynamics"<i>.
+- Jin-Jian Zhou, Jinsoo Park, I-Te Lu, Ivan Maliyov, Xiao Tong, Marco Bernardi, <i>"Perturbo: a software package for ab initio electron-phonon interactions, charge transport and ultrafast dynamics"<i>.
 
 <div markdown="span" class="alert alert-warning" role="alert">
 <img src="images/newspaper-regular.svg" style="width:3.5%;margin-top:0.1%" > 
