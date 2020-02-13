@@ -13,8 +13,8 @@ toc: true
 
 ## Download
 
-In order to download the source code,
-<a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body={{site.feedback_body}}' "><i class="fa fa-envelope-o"> contact us</i>{{feedback_text}}</a> and we will:
+In order to download the source code, contact us
+(<a class="email" title="{{site.download_title}}" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body={{site.feedback_body}}' ">click here{{feedback_text}}</a>) and we will:
 
 - [Recommended] add you as a collaborator in our GitHub project
 - [If you do not have a GitHub account] send you a _.tar.gz_ file.

@@ -102,7 +102,7 @@ When using results from PERTURBO in your publications, please cite the PERTURBO 
 
 
 <div class="alert alert-success" role="alert"><i class="fa fa-download fa-lg"></i> 
-&nbsp;  To download the code, <a class="email" title="Submit feedback" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body={{site.feedback_body}}' "><i class="fa fa-envelope-o"> contact us</i>{{feedback_text}}</a>. For more information, please, visit the <a href="mydoc_installation">Download and installation</a> section. </div>
+&nbsp;  To download the code, contact us (<a class="email" title="{{site.download_title}}" href="#" onclick="javascript:window.location='mailto:{{site.feedback_email}}?subject={{site.feedback_subject_line}} &body={{site.feedback_body}}' ">click here{{feedback_text}}</a>). For more information, please, visit the <a href="mydoc_installation">Download and installation</a> section. </div>
 
 <hr>
 
