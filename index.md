@@ -55,16 +55,16 @@ margin-left: 40px
 </style>
 
 <div class="image_box">
+  <img class="mySlides" src="/images/slideshow/figure_workflow.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_scaling.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_naph.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_trans.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_cdyna.pdf" style="width:86%;margin-left:7%">
   <img class="mySlides" src="/images/slideshow/img1.jpg" style="width:86%;margin-left:7%">
   <img class="mySlides" src="/images/slideshow/img2.jpg" style="width:86%;margin-left:7%">
   <img class="mySlides" src="/images/slideshow/img3.jpg" style="width:86%;margin-left:7%">
   <img class="mySlides" src="/images/slideshow/img4.png" style="width:86%;margin-left:7%">
   <img class="mySlides" src="/images/slideshow/img5.jpg" style="width:86%;margin-left:7%">
-  <img class="mySlides" src="/images/slideshow/figure_workflow.pdf" style="width:86%;margin-left:7%">
-  <img class="mySlides" src="/images/slideshow/figure_cdyna.pdf" style="width:86%;margin-left:7%">
-  <img class="mySlides" src="/images/slideshow/figure_naph.pdf" style="width:86%;margin-left:7%">
-  <img class="mySlides" src="/images/slideshow/figure_trans.pdf" style="width:86%;margin-left:7%">
-  <img class="mySlides" src="/images/slideshow/figure_scaling.pdf" style="width:86%;margin-left:7%">
 
   <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
   <button class="next" onclick="plusDivs(1)">&#10095;</button>
