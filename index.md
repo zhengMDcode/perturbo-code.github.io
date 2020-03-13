@@ -55,11 +55,16 @@ margin-left: 40px
 </style>
 
 <div class="image_box">
-  <img class="mySlides" src="/images/slideshow/img1.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img2.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img3.jpg" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img4.png" style="width:80%;margin-left:10%">
-  <img class="mySlides" src="/images/slideshow/img5.jpg" style="width:80%;margin-left:10%">
+  <img class="mySlides" src="/images/slideshow/img1.jpg" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/img2.jpg" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/img3.jpg" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/img4.png" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/img5.jpg" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_workflow.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_cdyna.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_naph.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_trans.pdf" style="width:86%;margin-left:7%">
+  <img class="mySlides" src="/images/slideshow/figure_scaling.pdf" style="width:86%;margin-left:7%">
 
   <button class="prev" onclick="plusDivs(-1)">&#10094;</button>
   <button class="next" onclick="plusDivs(1)">&#10095;</button>
@@ -84,6 +89,8 @@ function showDivs(n) {
   x[slideIndex-1].style.display = "block";  
 }
 </script>
+
+<br>
 
 PERTURBO is an open source software to compute from first principles the scattering processes between charge carriers (electrons and holes) and phonons, defects, and photons in solid state materials, including metals, semiconductors, oxides, and insulators. In the current version, PERTURBO mainly computes electron-phonon (e-ph) interactions and phonon limited transport properties in the framework of the Boltzmann transport equation (BTE). These include the carrier mobility, electrical conductivity, and Seebeck coefficient. PERTURBO can also compute the ultrafast carrier dynamics (for now, with fixed phonon occupations) by explicitly time-stepping the time-dependent BTE. We will include additional electron interactions, transport and ultrafast dynamics calculations in future releases.
 
