@@ -11,7 +11,7 @@ toc: true
 <link rel="stylesheet" href="css/my_style.css">
 </head>
 
-{% include note.html content="PERTURBO uses a small number of subroutines from the PWSCF and Phonon packages of QE. Therefore, it needs to be compiled on top of QE. We assume that the users have already compiled QE successfully. The supported version of QE is 6.4.1. Support of the version 6.5 will be provided soon." %}
+{% include note.html content="PERTURBO uses a small number of subroutines from the PWSCF and Phonon packages of QE. Therefore, it needs to be compiled on top of QE. We assume that the users have already compiled QE successfully. The supported version of QE is 6.4.1. Compatibility with the version 6.5 will be provided soon." %}
 
 
 ## Download
