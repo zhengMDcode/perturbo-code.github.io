@@ -58,12 +58,10 @@ The source code is supplemented by the tutorial examples input and output files.
 
 ## Installation
 There are two files in the _"perturbo"_ directory, _Makefile_ and _make.sys_. PERTURBO uses the config file _make.inc_ of QE for most of the compiler options. The config file _make.sys_ inside the directory _“perturbo”_ specifies additional options required by PERTURBO.
-Modify _make.sys_ to make it suitable for your system, such as the OpenMP options and path to the HDF5 library (not needed if HDF5 library is already specified in make.inc of QE) or copy an existing _make.sys.XXX_ file from the directory _"config"_.
+Modify _make.sys_ to make it suitable for your system, such as the OpenMP options and path to the HDF5 library (not needed if HDF5 library is already specified in make.inc of QE).
 
 ```bash
 $ vim make.sys
-or 
-$ cp ./config/make.sys.XXX ./make.sys
 ```
 
 Once the file _make.sys_ has been modified, you are ready to compile PERTURBO.
