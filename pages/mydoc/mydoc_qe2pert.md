@@ -233,6 +233,6 @@ The executables `qe2pert.x` employ hybrid parallelization (MPI plus OpenMP), e.g
 
 
 To speed up the calculations, the users could increase the number of OpenMP threads and MPI processes. 
-Threads with OpenMP are particularly useful when the RAM (memory) of computing nodes is limited. The memory comsuption reduces to minimum when using 1 MPI process per node and setting `OMP_NUM_THREADS` to the number of cores per node. 
+Threads with OpenMP are particularly useful when the RAM (memory) of computing nodes is limited. The memory consumption reduces to minimum when using 1 MPI process per node and setting `OMP_NUM_THREADS` to the number of cores per node. 
 
 Once the calcalculation has completed, we obtain the output file _si\_epwan.h5_, which is an HDF5 database with all the information needed to run `perturbo.x` (which is described in the [next section](mydoc_perturbo.html)).

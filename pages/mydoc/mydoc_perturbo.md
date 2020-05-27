@@ -400,7 +400,7 @@ Before running `perturbo.x`, remember to link or copy _'prefix'\_epwan.h5_ in th
 export OMP_NUM_THREADS=4
 $ mpirun -n 8 perturbo.x -npools 8 -i pert.in > pert.out
 ```
-This task is usually time-comsuming time-consuming on a single core, thus we run this calculation on multiple cores (32 cores in this case) using hybrid MPI plus openMP parallelization.
+This task is usually time-consuming on a single core, thus we run this calculation on multiple cores (32 cores in this case) using hybrid MPI plus openMP parallelization.
 
 We obtain two output files:
 
@@ -726,7 +726,7 @@ export OMP_NUM_THREADS=4
 $ mpirun -n 8 perturbo.x -npools 8 -i pert.in > pert.out
 ```
 
-This task is time-comsuming using one thread and one MPI process on a single core. To speed up the calculations, we run it on multiple cores using hybrid MPI plus openMP parallelization. After the calculation has completed, we obtain 3 output files, _'prefix'.cond_, _'prefix'.tdf_, and _'prefix'\_tdf.h5_, similar to the RTA calculation.
+This task is time-consuming using one thread and one MPI process on a single core. To speed up the calculations, we run it on multiple cores using hybrid MPI plus openMP parallelization. After the calculation has completed, we obtain 3 output files, _'prefix'.cond_, _'prefix'.tdf_, and _'prefix'\_tdf.h5_, similar to the RTA calculation.
 
 {% include note.html content="For ITA calculations, each MPI process could consume a significnat amount of RAM (memory). If RAM of computing nodes is limited, one can set `OMP_NUM_THREADS` to the total number of cores of the computing node, and set the MPI process per node to 1" %}
 
